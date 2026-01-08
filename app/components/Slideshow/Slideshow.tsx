@@ -24,6 +24,7 @@ const Slideshow = ({ images, currentIndex }: SlideshowProps) => {
             fill
             className="object-cover"
             priority
+            quality={100}
           />
         </div>
       </div>

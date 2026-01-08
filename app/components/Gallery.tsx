@@ -214,6 +214,7 @@ const Gallery = () => {
                   height={814}
                   className="w-full h-auto rounded-[8px] block border-[0.5px] border-border"
                   priority
+                  quality={100}
                 />
               </motion.div>
             </AnimatePresence>
@@ -264,6 +265,7 @@ const Gallery = () => {
                   width={1638}
                   height={814}
                   className="w-full h-auto block"
+                  quality={100}
                 />
               </div>
             );
