@@ -73,7 +73,7 @@ body {
 
 /* Social link styles */
 .social-link {
-  color: var(--muted);
+  color: #71717a;
   transition: color 0.2s ease;
   border-radius: 9999px;
   position: relative;
@@ -82,7 +82,7 @@ body {
 
 @media (min-width: 768px) {
   .social-link {
-    padding: 6px 12px;
+    padding: 6px 8px;
   }
 }
 

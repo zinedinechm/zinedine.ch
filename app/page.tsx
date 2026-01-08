@@ -16,13 +16,13 @@ export default function Home() {
           className="max-w-[670px] ml-0 mr-auto md:mx-auto w-[320px] md:w-full"
         >
           {/* Greeting */}
-          <p className="text-muted text-[14px] md:text-[16px] leading-[1.7] mb-4">
+          <p className="text-zinc-500 text-[14px] md:text-[16px] leading-[1.7] mb-4">
             {content.greeting}
           </p>
 
           {/* Bio & Social */}
           <div className="space-y-4 w-full">
-            <p className="text-[14px] md:text-[16px] leading-[1.7] w-full">
+            <p className="text-[14px] md:text-[16px] leading-[1.85] md:leading-[1.7] w-full">
               <span className="font-normal">{content.name}</span> {content.bio}{" "}
               {content.companies.map((company, index) => (
                 <span key={company.name}>
@@ -39,7 +39,7 @@ export default function Home() {
               ))}
             </p>
 
-            <p className="text-[14px] md:text-[16px] leading-[1.7] w-full">
+            <p className="text-[14px] md:text-[16px] leading-[1.85] md:leading-[1.7] w-full">
               {content.interests}
             </p>
 
@@ -60,11 +60,7 @@ export default function Home() {
         <div className="max-w-[670px] mx-auto">
           <Gallery />
 
-          <div className="mt-[28px] pt-[26px] flex flex-col md:flex-row items-start md:items-center gap-4">
-            <div className="text-[14px] md:text-[16px] text-accent">
-              It is <LiveClock /> for Zinedine
-            </div>
-          </div>
+          <div className="mt-[28px] pt-[40px] md:pt-[60px]" />
         </div>
       </motion.section>
     </main>

@@ -43,7 +43,7 @@ export default function SocialLinks() {
   return (
     <div
       ref={containerRef}
-      className="flex gap-4 md:gap-1.5 md:-ml-3 relative items-center"
+      className="flex gap-4 md:gap-1 relative items-center md:-ml-2"
     >
       {/* The Blob */}
       <div
@@ -63,7 +63,7 @@ export default function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="social-link text-[14px] md:text-[16px] cursor-pointer relative"
+          className="social-link text-zinc-500 text-[14px] md:text-[16px] cursor-pointer relative"
           onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
