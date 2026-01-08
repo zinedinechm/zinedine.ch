@@ -30,5 +30,17 @@
       "name": "Github",
       "url": "https://github.com/zinedinechm"
     }
+  ],
+  "gallery": [
+    { "src": "/gallery/shot-1.png", "alt": "Design Shot 1" },
+    { "src": "/gallery/shot-10.png", "alt": "Design Shot 2" },
+    { "src": "/gallery/shot-9.png", "alt": "Design Shot 3" },
+    { "src": "/gallery/shot-8.png", "alt": "Design Shot 4" },
+    { "src": "/gallery/shot-7.png", "alt": "Design Shot 5" },
+    { "src": "/gallery/shot-6.png", "alt": "Design Shot 6" },
+    { "src": "/gallery/shot-5.png", "alt": "Design Shot 7" },
+    { "src": "/gallery/shot-4.png", "alt": "Design Shot 8" },
+    { "src": "/gallery/shot-3.png", "alt": "Design Shot 9" },
+    { "src": "/gallery/shot-2.png", "alt": "Design Shot 10" }
   ]
 }

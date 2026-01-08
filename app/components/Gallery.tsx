@@ -9,23 +9,24 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { createPortal } from "react-dom";
+import content from "../data/content.json";
 
 const Gallery = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [direction, setDirection] = useState(0);
   const [mounted, setMounted] = useState(false);
-  const placeholders = Array.from({ length: 10 });
+  const gallery = content.gallery;
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const handleNext = useCallback(() => {
-    if (selectedId !== null && selectedId < placeholders.length - 1) {
+    if (selectedId !== null && selectedId < gallery.length - 1) {
       setDirection(1);
       setSelectedId(selectedId + 1);
     }
-  }, [selectedId, placeholders.length]);
+  }, [selectedId, gallery.length]);
 
   const handlePrev = useCallback(() => {
     if (selectedId !== null && selectedId > 0) {
@@ -95,7 +96,7 @@ const Gallery = () => {
               </button>
               <button
                 onClick={handleNext}
-                disabled={selectedId === placeholders.length - 1}
+                disabled={selectedId === gallery.length - 1}
                 className="p-2 rounded-full hover:bg-black/5 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
                 <ChevronDownIcon className="w-5 h-5 text-foreground" />
@@ -142,11 +143,11 @@ const Gallery = () => {
                 className="relative w-full max-w-[1200px]"
               >
                 <Image
-                  src="/banner.png"
-                  alt="Selected design shot"
+                  src={gallery[selectedId].src}
+                  alt={gallery[selectedId].alt}
                   width={1638}
                   height={814}
-                  className="w-full h-auto rounded-[8px] block"
+                  className="w-full h-auto rounded-[8px] block border-[0.5px] border-border"
                   priority
                 />
               </motion.div>
@@ -157,21 +158,26 @@ const Gallery = () => {
     </AnimatePresence>
   );
 
+  const handleImageClick = (index: number) => {
+    // Only open modal on desktop (md breakpoint and above)
+    if (window.innerWidth >= 768) {
+      setDirection(0);
+      setSelectedId(index);
+    }
+  };
+
   return (
     <>
-      <div className="space-y-[28px] group/gallery">
-        {placeholders.map((_, index) => (
+      <div className="space-y-[16px] md:space-y-[28px] group/gallery">
+        {gallery.map((image, index) => (
           <div
             key={index}
-            onClick={() => {
-              setDirection(0);
-              setSelectedId(index);
-            }}
-            className="w-full border border-border bg-muted/5 rounded-[8px] overflow-hidden relative transition-opacity duration-500 group-hover/gallery:opacity-[0.95] hover:!opacity-100 cursor-pointer"
+            onClick={() => handleImageClick(index)}
+            className="w-full border-[0.5px] border-border bg-muted/5 rounded-[8px] overflow-hidden relative md:cursor-pointer transition-transform duration-300 md:hover:scale-[0.98]"
           >
             <Image
-              src="/banner.png"
-              alt={`Design Shot ${index + 1}`}
+              src={image.src}
+              alt={image.alt}
               width={1638}
               height={814}
               className="w-full h-auto"
