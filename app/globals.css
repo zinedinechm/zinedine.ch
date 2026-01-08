@@ -18,10 +18,10 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1a1a1a;
-  --muted: #999999;
-  --accent: #000000;
-  --border: #e5e5e5;
+  --foreground: #18181b;
+  --muted: #71717a;
+  --accent: #18181b;
+  --border: #e4e4e7;
 }
 
 @theme inline {

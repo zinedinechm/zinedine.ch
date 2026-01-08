@@ -44,7 +44,7 @@ export default function SocialLinks() {
     <div ref={containerRef} className="flex gap-2 -ml-3 relative items-center">
       {/* The Blob */}
       <div
-        className="absolute bg-[#f5f5f5] rounded-full transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-none"
+        className="absolute bg-zinc-100/80 rounded-full transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-none"
         style={{
           left: hoveredRect?.left ?? 0,
           width: hoveredRect?.width ?? 0,

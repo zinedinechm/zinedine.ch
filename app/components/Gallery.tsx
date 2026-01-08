@@ -10,16 +10,35 @@ import {
 } from "@heroicons/react/24/outline";
 import { createPortal } from "react-dom";
 import content from "../data/content.json";
+import Slideshow from "./Slideshow/Slideshow";
 
 const Gallery = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [slideshowIndex, setSlideshowIndex] = useState(1);
   const [direction, setDirection] = useState(0);
   const [mounted, setMounted] = useState(false);
   const gallery = content.gallery;
+  const slideshowImages = gallery.filter(
+    (image) =>
+      ![
+        "Design Shot 2",
+        "Design Shot 5",
+        "Design Shot 7",
+        "Design Shot 10",
+      ].includes(image.alt)
+  );
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Slideshow logic
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideshowIndex((prev) => (prev + 1) % slideshowImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [slideshowImages.length]);
 
   const handleNext = useCallback(() => {
     if (selectedId !== null && selectedId < gallery.length - 1) {
@@ -38,7 +57,9 @@ const Gallery = () => {
   // Prevent scroll when modal is open and handle keyboard
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelectedId(null);
+      if (e.key === "Escape") {
+        setSelectedId(null);
+      }
       if (e.key === "ArrowUp") handlePrev();
       if (e.key === "ArrowDown") handleNext();
     };
@@ -86,27 +107,29 @@ const Gallery = () => {
         >
           {/* Controls */}
           <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
-            <div className="flex bg-zinc-50 rounded-full p-1">
+            <div className="flex bg-zinc-100 rounded-full p-1">
               <button
                 onClick={handlePrev}
                 disabled={selectedId === 0}
-                className="p-2 rounded-full hover:bg-black/5 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
-                <ChevronUpIcon className="w-5 h-5 text-foreground" />
+                <ChevronUpIcon className="w-5 h-5 text-zinc-900" />
               </button>
               <button
                 onClick={handleNext}
                 disabled={selectedId === gallery.length - 1}
-                className="p-2 rounded-full hover:bg-black/5 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
-                <ChevronDownIcon className="w-5 h-5 text-foreground" />
+                <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
               </button>
             </div>
             <button
-              onClick={() => setSelectedId(null)}
-              className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-100 transition-colors"
+              onClick={() => {
+                setSelectedId(null);
+              }}
+              className="p-3 rounded-full bg-zinc-100 hover:bg-zinc-200/80 transition-colors"
             >
-              <XMarkIcon className="w-5 h-5 text-foreground" />
+              <XMarkIcon className="w-5 h-5 text-zinc-900" />
             </button>
           </div>
 
@@ -168,22 +191,41 @@ const Gallery = () => {
 
   return (
     <>
-      <div className="space-y-[16px] md:space-y-[28px] group/gallery">
-        {gallery.map((image, index) => (
-          <div
-            key={index}
-            onClick={() => handleImageClick(index)}
-            className="w-full border-[0.5px] border-border bg-muted/5 rounded-[8px] overflow-hidden relative md:cursor-pointer transition-transform duration-300 md:hover:scale-[0.98]"
-          >
-            <Image
-              src={image.src}
-              alt={image.alt}
-              width={1638}
-              height={814}
-              className="w-full h-auto"
-            />
-          </div>
-        ))}
+      <div className="space-y-4 md:space-y-7 group/gallery">
+        {/* Slideshow at the top */}
+        <Slideshow images={slideshowImages} currentIndex={slideshowIndex} />
+
+        {/* Separator with large gap */}
+        <div className="border-t-[0.5px] border-border w-full !mt-8 md:!mt-16 !mb-8 md:!mb-16" />
+
+        {/* Full Gallery starting from Shot 1 */}
+        <div className="space-y-4 md:space-y-7">
+          {gallery.map((image, index) => {
+            const isContained = [
+              "Design Shot 2",
+              "Design Shot 5",
+              "Design Shot 7",
+              "Design Shot 10",
+            ].includes(image.alt);
+            return (
+              <div
+                key={index}
+                onClick={() => handleImageClick(index)}
+                className={`w-full border-[0.5px] border-border rounded-[8px] overflow-hidden relative transition-transform duration-300 md:cursor-pointer md:hover:scale-[0.98] ${
+                  isContained ? "bg-zinc-50" : "bg-zinc-100/30"
+                }`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={1638}
+                  height={814}
+                  className="w-full h-auto"
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {mounted && createPortal(modal, document.body)}
