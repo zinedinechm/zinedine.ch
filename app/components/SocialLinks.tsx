@@ -11,7 +11,7 @@ export default function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="social-link text-[16px]"
+          className="social-link text-[14px] md:text-[16px]"
         >
           {link.name}
         </a>
