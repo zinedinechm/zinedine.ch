@@ -14,10 +14,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Zinedine Chami · Product Designer",
-  description: "Product designer based in Paris, interested in AI, web3, and online culture. Building software interfaces and visual identities.",
+  description:
+    "Product designer based in Paris, interested in AI, web3, and online culture. Building software interfaces and visual identities.",
   openGraph: {
     title: "Zinedine Chami · Product Designer",
-    description: "Product designer based in Paris, interested in AI, web3, and online culture.",
+    description:
+      "Product designer based in Paris, interested in AI, web3, and online culture.",
     url: "https://zinedine.ch",
     siteName: "Zinedine Chami",
     locale: "en_US",
@@ -26,7 +28,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Zinedine Chami · Product Designer",
-    description: "Product designer based in Paris, interested in AI, web3, and online culture.",
+    description:
+      "Product designer based in Paris, interested in AI, web3, and online culture.",
   },
 };
 
@@ -40,6 +43,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <div className="hidden md:block fixed top-0 left-0 right-0 h-[25px] z-[100] pointer-events-none bg-gradient-to-b from-white to-transparent" />
         {children}
       </body>
     </html>

@@ -14,19 +14,12 @@ import Slideshow from "./Slideshow/Slideshow";
 
 const Gallery = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [slideshowIndex, setSlideshowIndex] = useState(1);
+  const [slideshowIndex, setSlideshowIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [mounted, setMounted] = useState(false);
-  const gallery = content.gallery;
-  const slideshowImages = gallery.filter(
-    (image) =>
-      ![
-        "Design Shot 2",
-        "Design Shot 5",
-        "Design Shot 7",
-        "Design Shot 10",
-      ].includes(image.alt)
-  );
+
+  const slideshowImages = content.slideshow;
+  const galleryImages = content.gallery;
 
   useEffect(() => {
     setMounted(true);
@@ -41,11 +34,11 @@ const Gallery = () => {
   }, [slideshowImages.length]);
 
   const handleNext = useCallback(() => {
-    if (selectedId !== null && selectedId < gallery.length - 1) {
+    if (selectedId !== null && selectedId < galleryImages.length - 1) {
       setDirection(1);
       setSelectedId(selectedId + 1);
     }
-  }, [selectedId, gallery.length]);
+  }, [selectedId, galleryImages.length]);
 
   const handlePrev = useCallback(() => {
     if (selectedId !== null && selectedId > 0) {
@@ -107,7 +100,7 @@ const Gallery = () => {
         >
           {/* Controls */}
           <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
-            <div className="flex bg-zinc-100 rounded-full p-1">
+            <div className="flex bg-zinc-50 rounded-full p-1">
               <button
                 onClick={handlePrev}
                 disabled={selectedId === 0}
@@ -117,7 +110,7 @@ const Gallery = () => {
               </button>
               <button
                 onClick={handleNext}
-                disabled={selectedId === gallery.length - 1}
+                disabled={selectedId === galleryImages.length - 1}
                 className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
                 <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
@@ -127,7 +120,7 @@ const Gallery = () => {
               onClick={() => {
                 setSelectedId(null);
               }}
-              className="p-3 rounded-full bg-zinc-100 hover:bg-zinc-200/80 transition-colors"
+              className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-200/80 transition-colors"
             >
               <XMarkIcon className="w-5 h-5 text-zinc-900" />
             </button>
@@ -166,8 +159,8 @@ const Gallery = () => {
                 className="relative w-full max-w-[1200px]"
               >
                 <Image
-                  src={gallery[selectedId].src}
-                  alt={gallery[selectedId].alt}
+                  src={galleryImages[selectedId].src}
+                  alt={galleryImages[selectedId].alt}
                   width={1638}
                   height={814}
                   className="w-full h-auto rounded-[8px] block border-[0.5px] border-border"
@@ -200,13 +193,14 @@ const Gallery = () => {
 
         {/* Full Gallery starting from Shot 1 */}
         <div className="space-y-4 md:space-y-7">
-          {gallery.map((image, index) => {
+          {galleryImages.map((image, index) => {
             const isContained = [
-              "Design Shot 2",
-              "Design Shot 5",
-              "Design Shot 7",
-              "Design Shot 10",
+              "shot-12",
+              "frame-random",
+              "contributor-view",
+              "frame-457",
             ].includes(image.alt);
+
             return (
               <div
                 key={index}
@@ -220,7 +214,7 @@ const Gallery = () => {
                   alt={image.alt}
                   width={1638}
                   height={814}
-                  className="w-full h-auto"
+                  className="w-full h-auto block"
                 />
               </div>
             );

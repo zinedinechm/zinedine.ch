@@ -75,10 +75,15 @@ body {
 .social-link {
   color: var(--muted);
   transition: color 0.2s ease;
-  padding: 6px 12px;
   border-radius: 9999px;
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .social-link {
+    padding: 6px 12px;
+  }
 }
 
 .social-link:hover {

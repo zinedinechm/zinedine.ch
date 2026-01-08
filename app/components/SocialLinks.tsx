@@ -41,10 +41,13 @@ export default function SocialLinks() {
   };
 
   return (
-    <div ref={containerRef} className="flex gap-2 -ml-3 relative items-center">
+    <div
+      ref={containerRef}
+      className="flex gap-4 md:gap-1.5 md:-ml-3 relative items-center"
+    >
       {/* The Blob */}
       <div
-        className="absolute bg-zinc-100/80 rounded-full transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-none"
+        className="hidden md:block absolute bg-zinc-100/80 rounded-full transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] pointer-events-none"
         style={{
           left: hoveredRect?.left ?? 0,
           width: hoveredRect?.width ?? 0,
@@ -60,13 +63,13 @@ export default function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="social-link text-[14px] md:text-[16px] cursor-pointer relative overflow-hidden"
+          className="social-link text-[14px] md:text-[16px] cursor-pointer relative"
           onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           {link.name === "Copy Email" ? (
-            <div className="relative h-[24px] flex items-center justify-center w-[85px]">
+            <div className="relative h-auto md:h-[24px] flex items-center justify-start md:justify-center w-auto md:w-[85px]">
               <AnimatePresence mode="wait">
                 {copied ? (
                   <motion.span
@@ -75,7 +78,7 @@ export default function SocialLinks() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.1 }}
-                    className="absolute inset-0 flex items-center justify-center"
+                    className="md:absolute md:inset-0 flex items-center justify-start md:justify-center"
                   >
                     Copied
                   </motion.span>
@@ -86,7 +89,7 @@ export default function SocialLinks() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                     transition={{ duration: 0.1 }}
-                    className="absolute inset-0 flex items-center justify-center whitespace-nowrap"
+                    className="md:absolute md:inset-0 flex items-center justify-start md:justify-center whitespace-nowrap"
                   >
                     Copy Email
                   </motion.span>

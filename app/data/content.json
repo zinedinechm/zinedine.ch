@@ -31,16 +31,24 @@
       "url": "https://github.com/zinedinechm"
     }
   ],
+  "slideshow": [
+    { "src": "/gallery/shot-16.png", "alt": "shot-16" },
+    { "src": "/gallery/shot-15.png", "alt": "shot-15" },
+    { "src": "/gallery/shot-14.png", "alt": "shot-14" },
+    { "src": "/gallery/shot-13.png", "alt": "shot-13" },
+    { "src": "/gallery/shot-12.png", "alt": "shot-12" },
+    { "src": "/gallery/frame-random.png", "alt": "frame-random" }
+  ],
   "gallery": [
-    { "src": "/gallery/shot-1.png", "alt": "Design Shot 1" },
-    { "src": "/gallery/shot-10.png", "alt": "Design Shot 2" },
-    { "src": "/gallery/shot-9.png", "alt": "Design Shot 3" },
-    { "src": "/gallery/shot-8.png", "alt": "Design Shot 4" },
-    { "src": "/gallery/shot-7.png", "alt": "Design Shot 5" },
-    { "src": "/gallery/shot-6.png", "alt": "Design Shot 6" },
-    { "src": "/gallery/shot-5.png", "alt": "Design Shot 7" },
-    { "src": "/gallery/shot-4.png", "alt": "Design Shot 8" },
-    { "src": "/gallery/shot-3.png", "alt": "Design Shot 9" },
-    { "src": "/gallery/shot-2.png", "alt": "Design Shot 10" }
+    { "src": "/gallery/shot-19.png", "alt": "shot-19" },
+    { "src": "/gallery/newyuhajbc-home.png", "alt": "newyuhajbc-home" },
+    { "src": "/gallery/shot-13.png", "alt": "shot-13" },
+    { "src": "/gallery/shot-17.png", "alt": "shot-17" },
+    { "src": "/gallery/contributor-view.png", "alt": "contributor-view" },
+    { "src": "/gallery/shot-12.png", "alt": "shot-12" },
+    { "src": "/gallery/shot-11.png", "alt": "shot-11" },
+    { "src": "/gallery/frame-random.png", "alt": "frame-random" },
+    { "src": "/gallery/shot-18.png", "alt": "shot-18" },
+    { "src": "/gallery/frame-457.png", "alt": "frame-457" }
   ]
 }
