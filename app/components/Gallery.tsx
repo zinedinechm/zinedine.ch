@@ -35,7 +35,7 @@ const Gallery = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setSlideshowIndex((prev) => (prev + 1) % slideshowImages.length);
-    }, 1800);
+    }, 2000);
     return () => clearInterval(timer);
   }, [slideshowImages.length]);
 
