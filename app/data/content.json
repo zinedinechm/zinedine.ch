@@ -1,0 +1,34 @@
+{
+  "greeting": "Hi, bonjour, こんにちは",
+  "name": "Zinedine Chami",
+  "bio": "is a product designer, born in London and based in Paris, previously with",
+  "companies": [
+    {
+      "name": "Châtaigne.ai",
+      "url": "https://chataigne.ai"
+    },
+    {
+      "name": "OpenSource Together",
+      "url": "https://opensourcetogether.com"
+    }
+  ],
+  "interests": "Interested in ideas surrounding artificial intelligence, web3 and online culture, building software interfaces and visual identities.",
+  "social": [
+    {
+      "name": "Email",
+      "url": "mailto:hello@zinedine.ch"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/zinedinechm"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://linkedin.com/in/zinedinechami"
+    },
+    {
+      "name": "Github",
+      "url": "https://github.com/zinedinechm"
+    }
+  ]
+}

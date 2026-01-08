@@ -13,8 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zinedine | Portfolio",
-  description: "Zinedine's personal portfolio website",
+  title: "Zinedine Chami · Product Designer",
+  description: "Product designer based in Paris, interested in AI, web3, and online culture. Building software interfaces and visual identities.",
+  openGraph: {
+    title: "Zinedine Chami · Product Designer",
+    description: "Product designer based in Paris, interested in AI, web3, and online culture.",
+    url: "https://zinedine.ch",
+    siteName: "Zinedine Chami",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zinedine Chami · Product Designer",
+    description: "Product designer based in Paris, interested in AI, web3, and online culture.",
+  },
 };
 
 export default function RootLayout({
