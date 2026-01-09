@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Zinedine Chami",
   description:
-    "Design engineer based in Paris, interested in AI, web3, and online culture. Building software interfaces and visual identities.",
+    "Zinedine Chami is a designer, born in London and based in Paris, previously with Châtaigne.ai and OpenSource Together.",
   openGraph: {
     title: "Zinedine Chami",
     description:
-      "Design engineer based in Paris, interested in AI, web3, and online culture.",
+      "Zinedine Chami is a designer, born in London and based in Paris, previously with Châtaigne.ai and OpenSource Together.",
     url: "https://zinedine.ch",
     siteName: "Zinedine Chami",
     locale: "en_US",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zinedine Chami",
     description:
-      "Design engineer based in Paris, interested in AI, web3, and online culture.",
+      "Zinedine Chami is a designer, born in London and based in Paris, previously with Châtaigne.ai and OpenSource Together.",
   },
 };
 
