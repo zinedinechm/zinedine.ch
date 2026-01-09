@@ -43,7 +43,7 @@ export default function SocialLinks() {
   return (
     <div
       ref={containerRef}
-      className="flex gap-4 md:gap-1 relative items-center md:-ml-2"
+      className="flex gap-4 md:gap-0 relative items-center md:-ml-3"
     >
       {/* The Blob */}
       <div

@@ -202,20 +202,30 @@ const Gallery = () => {
                         opacity: { duration: 0.2 },
                       }
                     : {
-                        duration: 0,
+                        duration: 0.25,
+                        ease: [0.23, 1, 0.32, 1],
                       }
                 }
                 className="relative w-full max-w-[1200px]"
               >
-                <Image
-                  src={galleryImages[selectedId].src}
-                  alt={galleryImages[selectedId].alt}
-                  width={1638}
-                  height={814}
-                  className="w-full h-auto rounded-[8px] block border-[0.5px] border-border"
-                  priority
-                  quality={100}
-                />
+                <motion.div
+                  initial={{ filter: "blur(10px)", opacity: 0 }}
+                  animate={{ filter: "blur(0px)", opacity: 1 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: [0.23, 1, 0.32, 1],
+                  }}
+                >
+                  <Image
+                    src={galleryImages[selectedId].src}
+                    alt={galleryImages[selectedId].alt}
+                    width={1638}
+                    height={814}
+                    className="w-full h-auto rounded-[8px] block border-[0.5px] border-border"
+                    priority
+                    quality={100}
+                  />
+                </motion.div>
               </motion.div>
             </AnimatePresence>
           </div>
