@@ -40,18 +40,20 @@ const Gallery = () => {
   }, [slideshowImages.length]);
 
   const handleNext = useCallback(() => {
-    if (selectedId !== null && selectedId < galleryImages.length - 1) {
+    if (selectedId !== null) {
       setDirection(1);
-      setSelectedId(selectedId + 1);
+      setSelectedId((selectedId + 1) % galleryImages.length);
     }
   }, [selectedId, galleryImages.length]);
 
   const handlePrev = useCallback(() => {
-    if (selectedId !== null && selectedId > 0) {
+    if (selectedId !== null) {
       setDirection(-1);
-      setSelectedId(selectedId - 1);
+      setSelectedId(
+        (selectedId - 1 + galleryImages.length) % galleryImages.length
+      );
     }
-  }, [selectedId]);
+  }, [selectedId, galleryImages.length]);
 
   const handleControlMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -220,7 +222,6 @@ const Gallery = () => {
                   onClick={handlePrev}
                   onMouseEnter={handleControlMouseEnter}
                   onMouseLeave={handleControlMouseLeave}
-                  disabled={selectedId === 0}
                   className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10 focus:outline-none"
                 >
                   <ChevronUpIcon className="w-5 h-5 text-zinc-900" />
@@ -229,7 +230,6 @@ const Gallery = () => {
                   onClick={handleNext}
                   onMouseEnter={handleControlMouseEnter}
                   onMouseLeave={handleControlMouseLeave}
-                  disabled={selectedId === galleryImages.length - 1}
                   className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10 focus:outline-none"
                 >
                   <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
