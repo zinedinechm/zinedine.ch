@@ -16,7 +16,7 @@ export default function SocialLinks() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const copyEmail = useCallback(() => {
-    const emailLink = socialLinks.find(link => link.name === "Copy Email");
+    const emailLink = socialLinks.find((link) => link.name === "Copy Email");
     if (emailLink) {
       const email = emailLink.url.replace("mailto:", "");
       navigator.clipboard.writeText(email);
@@ -25,12 +25,15 @@ export default function SocialLinks() {
     }
   }, []);
 
-  const handleEmailClick = useCallback((e: React.MouseEvent, url: string) => {
-    if (url.startsWith("mailto:")) {
-      e.preventDefault();
-      copyEmail();
-    }
-  }, [copyEmail]);
+  const handleEmailClick = useCallback(
+    (e: React.MouseEvent, url: string) => {
+      if (url.startsWith("mailto:")) {
+        e.preventDefault();
+        copyEmail();
+      }
+    },
+    [copyEmail]
+  );
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -44,18 +47,21 @@ export default function SocialLinks() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [copyEmail]);
 
-  const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const containerRect = containerRef.current?.getBoundingClientRect();
+  const handleMouseEnter = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const containerRect = containerRef.current?.getBoundingClientRect();
 
-    if (containerRect) {
-      setHoveredRect({
-        left: rect.left - containerRect.left,
-        width: rect.width,
-        opacity: 1,
-      });
-    }
-  }, []);
+      if (containerRect) {
+        setHoveredRect({
+          left: rect.left - containerRect.left,
+          width: rect.width,
+          opacity: 1,
+        });
+      }
+    },
+    []
+  );
 
   const handleMouseLeave = useCallback(() => {
     setHoveredRect((prev) => (prev ? { ...prev, opacity: 0 } : null));
@@ -93,46 +99,39 @@ export default function SocialLinks() {
           onMouseLeave={handleMouseLeave}
         >
           {link.name === "Copy Email" ? (
-            <div className="relative h-auto md:h-6 flex items-center justify-start w-auto gap-1">
+            <div className="relative h-auto md:h-6 flex items-center justify-start w-auto">
               <div className="relative w-auto md:w-[85px] h-full flex items-center justify-start md:justify-center">
                 <AnimatePresence mode="wait">
-                {copied ? (
-                  <motion.span
-                    key="copied"
-                    initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
-                    transition={{ 
-                      duration: 0.08,
-                      ease: "easeOut"
-                    }}
-                    className="md:absolute md:inset-0 flex items-center justify-start md:justify-center"
-                  >
-                    Copied :)
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="copy"
-                    initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
-                    transition={{ 
-                      duration: 0.08,
-                      ease: "easeOut"
-                    }}
-                    className="md:absolute md:inset-0 flex items-center justify-start md:justify-center whitespace-nowrap"
-                  >
-                    Copy Email
-                  </motion.span>
-                )}
+                  {copied ? (
+                    <motion.span
+                      key="copied"
+                      initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
+                      transition={{
+                        duration: 0.08,
+                        ease: "easeOut",
+                      }}
+                      className="md:absolute md:inset-0 flex items-center justify-start md:justify-center"
+                    >
+                      Copied :)
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="copy"
+                      initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
+                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
+                      transition={{
+                        duration: 0.08,
+                        ease: "easeOut",
+                      }}
+                      className="md:absolute md:inset-0 flex items-center justify-start md:justify-center whitespace-nowrap"
+                    >
+                      Copy Email
+                    </motion.span>
+                  )}
                 </AnimatePresence>
-              </div>
-              
-              {/* Shortcut indicator - desktop only */}
-              <div className="hidden md:flex items-center">
-                <span className="px-1.5 py-0.5 rounded-[4px] bg-zinc-50 text-zinc-400 text-[12px] font-medium">
-                  ⌘K
-                </span>
               </div>
             </div>
           ) : (
