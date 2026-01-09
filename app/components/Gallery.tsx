@@ -262,10 +262,10 @@ export default function Gallery() {
         <Slideshow images={slideshowImages} currentIndex={slideshowIndex} />
 
         {/* Separator */}
-        <div className="border-t-[0.5px] border-zinc-300 w-full !mt-10 md:!mt-20 !mb-10 md:!mb-20" />
+        <div className="border-t-[0.5px] border-zinc-300 w-full !mt-14 md:!mt-20 !mb-14 md:!mb-20" />
 
         {/* Gallery grid */}
-        <div className="space-y-4 md:space-y-7 pb-5">
+        <div className="space-y-6 md:space-y-7 pb-5">
           {galleryImages.map((image, index) => {
             const isContained = CONTAINED_IMAGES.includes(
               image.alt as (typeof CONTAINED_IMAGES)[number]
