@@ -175,7 +175,7 @@ export default function Gallery() {
                     alt={galleryImages[selectedId].alt}
                     width={1638}
                     height={814}
-                    className="w-full h-auto rounded-lg block border-[0.5px] border-zinc-300"
+                    className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-300"
                     priority
                     quality={100}
                   />
@@ -212,7 +212,10 @@ export default function Gallery() {
                   className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
                   aria-label="Previous image"
                 >
-                  <ChevronUpIcon className="w-5 h-5 text-zinc-500" />
+                  <ChevronUpIcon
+                    className="w-5 h-5 text-zinc-400"
+                    strokeWidth={2.5}
+                  />
                 </button>
                 <button
                   type="button"
@@ -222,7 +225,10 @@ export default function Gallery() {
                   className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
                   aria-label="Next image"
                 >
-                  <ChevronDownIcon className="w-5 h-5 text-zinc-500" />
+                  <ChevronDownIcon
+                    className="w-5 h-5 text-zinc-400"
+                    strokeWidth={2.5}
+                  />
                 </button>
               </div>
               <motion.button
@@ -233,7 +239,10 @@ export default function Gallery() {
                 whileHover="hover"
                 initial="initial"
               >
-                <XMarkIcon className="w-5 h-5 text-zinc-500 flex-shrink-0" />
+                <XMarkIcon
+                  className="w-5 h-5 text-zinc-400 flex-shrink-0"
+                  strokeWidth={2.5}
+                />
                 <motion.span
                   variants={{
                     initial: { width: 0, opacity: 0, marginLeft: 0 },
@@ -244,7 +253,7 @@ export default function Gallery() {
                     stiffness: 400,
                     damping: 30,
                   }}
-                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-zinc-500"
+                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-zinc-400"
                 >
                   Esc
                 </motion.span>
@@ -276,8 +285,8 @@ export default function Gallery() {
                 key={image.src}
                 onClick={() => handleImageClick(index)}
                 className={cn(
-                  "w-full border-[0.5px] border-zinc-300 rounded-lg overflow-hidden relative",
-                  "transition-transform duration-300 md:cursor-pointer md:hover:scale-[0.98]",
+                  "w-full border-[0.5px] border-zinc-300 rounded-[6px] overflow-hidden relative",
+                  "transition-transform duration-300 md:cursor-pointer md:hover:scale-[1.02]",
                   isContained ? "bg-zinc-50" : "bg-zinc-100/30"
                 )}
               >
