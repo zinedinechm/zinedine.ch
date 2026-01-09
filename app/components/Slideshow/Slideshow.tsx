@@ -1,22 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-interface ImageItem {
-  src: string;
-  alt: string;
-}
+import { EASING } from "@/app/lib/constants";
+import type { SlideshowProps } from "@/app/types";
 
-interface SlideshowProps {
-  images: ImageItem[];
-  currentIndex: number;
-}
-
-const Slideshow = ({ images, currentIndex }: SlideshowProps) => {
+export default function Slideshow({ images, currentIndex }: SlideshowProps) {
   return (
-    <div className="w-full border-[0.5px] border-border bg-zinc-50/50 rounded-[8px] overflow-hidden relative transition-all duration-300 cursor-default">
+    <div className="w-full border-[0.5px] border-border bg-zinc-50/50 rounded-lg overflow-hidden relative transition-all duration-300 cursor-default">
       <div className="relative w-full aspect-[16/10]">
         <AnimatePresence initial={false}>
           <motion.div
@@ -24,7 +16,7 @@ const Slideshow = ({ images, currentIndex }: SlideshowProps) => {
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(10px)" }}
-            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+            transition={{ duration: 0.7, ease: EASING.smooth }}
             className="absolute inset-0"
           >
             <Image
@@ -40,6 +32,4 @@ const Slideshow = ({ images, currentIndex }: SlideshowProps) => {
       </div>
     </div>
   );
-};
-
-export default Slideshow;
+}

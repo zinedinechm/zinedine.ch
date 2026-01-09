@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  useSyncExternalStore,
+} from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -9,33 +15,45 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { createPortal } from "react-dom";
-import content from "../data/content.json";
+
+import content from "@/app/data/content.json";
+import { cn } from "@/app/lib/utils";
+import {
+  BREAKPOINTS,
+  TIMING,
+  EASING,
+  SPRING_CONFIG,
+  galleryModalVariants,
+  CONTAINED_IMAGES,
+} from "@/app/lib/constants";
+import type { HoverRect, ImageItem } from "@/app/types";
 import Slideshow from "./Slideshow/Slideshow";
 
-const Gallery = () => {
+// SSR-safe check for client-side mounting
+const subscribe = () => () => {};
+const getSnapshot = () => true;
+const getServerSnapshot = () => false;
+
+export default function Gallery() {
+  const mounted = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [slideshowIndex, setSlideshowIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const [hoveredRect, setHoveredRect] = useState<{
-    left: number;
-    width: number;
-    opacity: number;
-  } | null>(null);
+  const [hoveredRect, setHoveredRect] = useState<HoverRect | null>(null);
   const controlsRef = useRef<HTMLDivElement>(null);
 
-  const slideshowImages = content.slideshow;
-  const galleryImages = content.gallery;
+  const slideshowImages = content.slideshow as ImageItem[];
+  const galleryImages = content.gallery as ImageItem[];
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Slideshow logic
+  // Slideshow auto-advance
   useEffect(() => {
     const timer = setInterval(() => {
       setSlideshowIndex((prev) => (prev + 1) % slideshowImages.length);
-    }, 2000);
+    }, TIMING.SLIDESHOW_INTERVAL);
     return () => clearInterval(timer);
   }, [slideshowImages.length]);
 
@@ -55,29 +73,34 @@ const Gallery = () => {
     }
   }, [selectedId, galleryImages.length]);
 
-  const handleControlMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const containerRect = controlsRef.current?.getBoundingClientRect();
+  const handleControlMouseEnter = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const containerRect = controlsRef.current?.getBoundingClientRect();
 
-    if (containerRect) {
-      setHoveredRect({
-        left: rect.left - containerRect.left,
-        width: rect.width,
-        opacity: 1,
-      });
-    }
-  };
+      if (containerRect) {
+        setHoveredRect({
+          left: rect.left - containerRect.left,
+          width: rect.width,
+          opacity: 1,
+        });
+      }
+    },
+    []
+  );
 
-  const handleControlMouseLeave = () => {
+  const handleControlMouseLeave = useCallback(() => {
     setHoveredRect((prev) => (prev ? { ...prev, opacity: 0 } : null));
-  };
+  }, []);
 
-  // Prevent scroll when modal is open and handle keyboard
+  const closeModal = useCallback(() => {
+    setSelectedId(null);
+  }, []);
+
+  // Prevent scroll when modal is open and handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSelectedId(null);
-      }
+      if (e.key === "Escape") closeModal();
       if (e.key === "ArrowUp") handlePrev();
       if (e.key === "ArrowDown") handleNext();
     };
@@ -88,29 +111,23 @@ const Gallery = () => {
     } else {
       document.body.style.overflow = "unset";
     }
+
     return () => {
       document.body.style.overflow = "unset";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedId, handleNext, handlePrev]);
+  }, [selectedId, handleNext, handlePrev, closeModal]);
 
-  const variants = {
-    enter: (direction: number) => ({
-      y: direction === 0 ? 10 : 0,
-      opacity: direction === 0 ? 0 : 1,
-      scale: direction === 0 ? 0.95 : 1,
-    }),
-    center: {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: (direction: number) => ({
-      y: 0,
-      opacity: direction === 0 ? 0 : 1,
-      scale: direction === 0 ? 0.95 : 1,
-    }),
-  };
+  const handleImageClick = useCallback((index: number) => {
+    if (window.innerWidth >= BREAKPOINTS.md) {
+      setDirection(0);
+      setSelectedId(index);
+    }
+  }, []);
+
+  const stopPropagation = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+  }, []);
 
   const modal = (
     <AnimatePresence initial={false}>
@@ -124,49 +141,33 @@ const Gallery = () => {
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
         >
           <div
-            onClick={() => setSelectedId(null)}
+            onClick={closeModal}
             className="w-full h-full flex items-center justify-center p-10 md:p-20 overflow-hidden"
           >
-            <AnimatePresence initial={true} custom={direction} mode="popLayout">
+            <AnimatePresence initial custom={direction} mode="popLayout">
               <motion.div
                 key={selectedId}
                 custom={direction}
-                variants={variants}
+                variants={galleryModalVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
                 transition={
                   direction === 0
                     ? {
-                        y: {
-                          type: "spring",
-                          damping: 25,
-                          stiffness: 400,
-                          mass: 0.8,
-                        },
-                        scale: {
-                          type: "spring",
-                          damping: 25,
-                          stiffness: 400,
-                          mass: 0.8,
-                        },
+                        y: { type: "spring", ...SPRING_CONFIG },
+                        scale: { type: "spring", ...SPRING_CONFIG },
                         opacity: { duration: 0.2 },
                       }
-                    : {
-                        duration: 0.25,
-                        ease: [0.23, 1, 0.32, 1],
-                      }
+                    : { duration: 0.25, ease: EASING.smooth }
                 }
                 className="relative w-full max-w-[1200px]"
-                onClick={(e) => e.stopPropagation()}
+                onClick={stopPropagation}
               >
                 <motion.div
                   initial={{ filter: "blur(10px)", opacity: 0 }}
                   animate={{ filter: "blur(0px)", opacity: 1 }}
-                  transition={{
-                    duration: 0.4,
-                    ease: [0.23, 1, 0.32, 1],
-                  }}
+                  transition={{ duration: 0.4, ease: EASING.smooth }}
                   className="cursor-default"
                 >
                   <Image
@@ -174,7 +175,7 @@ const Gallery = () => {
                     alt={galleryImages[selectedId].alt}
                     width={1638}
                     height={814}
-                    className="w-full h-auto rounded-[8px] block border-[0.5px] border-border"
+                    className="w-full h-auto rounded-lg block border-[0.5px] border-border"
                     priority
                     quality={100}
                   />
@@ -185,13 +186,13 @@ const Gallery = () => {
             {/* Controls */}
             <div
               className="absolute bottom-6 right-6 z-20 flex items-center gap-2"
-              onClick={(e) => e.stopPropagation()}
+              onClick={stopPropagation}
             >
               <div
                 ref={controlsRef}
                 className="flex bg-zinc-50 rounded-full p-1 relative"
               >
-                {/* The Blob */}
+                {/* Hover blob */}
                 <motion.div
                   className="absolute bg-zinc-100 rounded-full pointer-events-none"
                   animate={{
@@ -199,39 +200,36 @@ const Gallery = () => {
                     width: hoveredRect?.width ?? 0,
                     opacity: hoveredRect?.opacity ?? 0,
                   }}
-                  transition={{
-                    type: "spring",
-                    bounce: 0.15,
-                    duration: 0.4,
-                  }}
-                  style={{
-                    height: "calc(100% - 8px)",
-                    top: "4px",
-                  }}
+                  transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
+                  style={{ height: "calc(100% - 8px)", top: "4px" }}
                 />
 
                 <button
+                  type="button"
                   onClick={handlePrev}
                   onMouseEnter={handleControlMouseEnter}
                   onMouseLeave={handleControlMouseLeave}
-                  className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10 focus:outline-none"
+                  className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
+                  aria-label="Previous image"
                 >
                   <ChevronUpIcon className="w-5 h-5 text-zinc-900" />
                 </button>
                 <button
+                  type="button"
                   onClick={handleNext}
                   onMouseEnter={handleControlMouseEnter}
                   onMouseLeave={handleControlMouseLeave}
-                  className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10 focus:outline-none"
+                  className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
+                  aria-label="Next image"
                 >
                   <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
                 </button>
               </div>
               <button
-                onClick={() => {
-                  setSelectedId(null);
-                }}
+                type="button"
+                onClick={closeModal}
                 className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-200/80 transition-colors focus:outline-none"
+                aria-label="Close modal"
               >
                 <XMarkIcon className="w-5 h-5 text-zinc-900" />
               </button>
@@ -242,40 +240,30 @@ const Gallery = () => {
     </AnimatePresence>
   );
 
-  const handleImageClick = (index: number) => {
-    // Only open modal on desktop (md breakpoint and above)
-    if (window.innerWidth >= 768) {
-      setDirection(0);
-      setSelectedId(index);
-    }
-  };
-
   return (
     <>
       <div className="space-y-4 md:space-y-7 group/gallery">
-        {/* Slideshow at the top */}
         <Slideshow images={slideshowImages} currentIndex={slideshowIndex} />
 
-        {/* Separator with large gap */}
+        {/* Separator */}
         <div className="border-t-[0.5px] border-border w-full !mt-8 md:!mt-16 !mb-8 md:!mb-16" />
 
-        {/* Full Gallery starting from Shot 1 */}
-        <div className="space-y-4 md:space-y-7 pb-[20px]">
+        {/* Gallery grid */}
+        <div className="space-y-4 md:space-y-7 pb-5">
           {galleryImages.map((image, index) => {
-            const isContained = [
-              "shot-12",
-              "frame-random",
-              "contributor-view",
-              "frame-457",
-            ].includes(image.alt);
+            const isContained = CONTAINED_IMAGES.includes(
+              image.alt as (typeof CONTAINED_IMAGES)[number]
+            );
 
             return (
               <div
-                key={index}
+                key={image.src}
                 onClick={() => handleImageClick(index)}
-                className={`w-full border-[0.5px] border-border rounded-[8px] overflow-hidden relative transition-transform duration-300 md:cursor-pointer md:hover:scale-[0.98] ${
+                className={cn(
+                  "w-full border-[0.5px] border-border rounded-lg overflow-hidden relative",
+                  "transition-transform duration-300 md:cursor-pointer md:hover:scale-[0.98]",
                   isContained ? "bg-zinc-50" : "bg-zinc-100/30"
-                }`}
+                )}
               >
                 <Image
                   src={image.src}
@@ -294,6 +282,4 @@ const Gallery = () => {
       {mounted && createPortal(modal, document.body)}
     </>
   );
-};
-
-export default Gallery;
+}
