@@ -184,17 +184,9 @@ const Gallery = () => {
 
             {/* Controls */}
             <div
-              className="absolute bottom-[20px] left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"
+              className="absolute bottom-6 right-6 z-20 flex items-center gap-2"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => {
-                  setSelectedId(null);
-                }}
-                className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-200/80 transition-colors focus:outline-none"
-              >
-                <XMarkIcon className="w-5 h-5 text-zinc-900" />
-              </button>
               <div
                 ref={controlsRef}
                 className="flex bg-zinc-50 rounded-full p-1 relative"
@@ -235,6 +227,14 @@ const Gallery = () => {
                   <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
                 </button>
               </div>
+              <button
+                onClick={() => {
+                  setSelectedId(null);
+                }}
+                className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-200/80 transition-colors focus:outline-none"
+              >
+                <XMarkIcon className="w-5 h-5 text-zinc-900" />
+              </button>
             </div>
           </div>
         </motion.div>
