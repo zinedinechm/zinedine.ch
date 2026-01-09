@@ -8,7 +8,7 @@ import type { SlideshowProps } from "@/app/types";
 
 export default function Slideshow({ images, currentIndex }: SlideshowProps) {
   return (
-    <div className="w-full border-[0.5px] border-border bg-zinc-50/50 rounded-lg overflow-hidden relative transition-all duration-300 cursor-default">
+    <div className="w-full border-[0.5px] border-zinc-300 bg-zinc-50/50 rounded-lg overflow-hidden relative transition-all duration-300 cursor-default">
       <div className="relative w-full aspect-[16/10]">
         <AnimatePresence initial={false}>
           <motion.div

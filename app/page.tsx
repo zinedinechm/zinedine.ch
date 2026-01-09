@@ -26,7 +26,7 @@ export default function Home() {
 
           {/* Bio & Social */}
           <div className="space-y-4 w-full">
-            <p className="text-sm md:text-base leading-[1.85] md:leading-relaxed w-full">
+            <p className="text-sm md:text-base leading-[1.85] md:leading-[1.75] w-full">
               <span className="font-normal">{siteContent.name}</span>{" "}
               {siteContent.bio}{" "}
               {siteContent.companies.map((company, index) => (
@@ -44,7 +44,7 @@ export default function Home() {
               ))}
             </p>
 
-            <p className="text-sm md:text-base leading-[1.85] md:leading-relaxed w-full">
+            <p className="text-sm md:text-base leading-[1.85] md:leading-[1.75] w-full">
               {siteContent.interests}
             </p>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import content from "@/app/data/content.json";
@@ -15,15 +15,34 @@ export default function SocialLinks() {
   const [hoveredRect, setHoveredRect] = useState<HoverRect | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleEmailClick = useCallback((e: React.MouseEvent, url: string) => {
-    if (url.startsWith("mailto:")) {
-      e.preventDefault();
-      const email = url.replace("mailto:", "");
+  const copyEmail = useCallback(() => {
+    const emailLink = socialLinks.find(link => link.name === "Copy Email");
+    if (emailLink) {
+      const email = emailLink.url.replace("mailto:", "");
       navigator.clipboard.writeText(email);
       setCopied(true);
       setTimeout(() => setCopied(false), TIMING.COPY_FEEDBACK_DURATION);
     }
   }, []);
+
+  const handleEmailClick = useCallback((e: React.MouseEvent, url: string) => {
+    if (url.startsWith("mailto:")) {
+      e.preventDefault();
+      copyEmail();
+    }
+  }, [copyEmail]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        copyEmail();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [copyEmail]);
 
   const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -74,15 +93,19 @@ export default function SocialLinks() {
           onMouseLeave={handleMouseLeave}
         >
           {link.name === "Copy Email" ? (
-            <div className="relative h-auto md:h-6 flex items-center justify-start md:justify-center w-auto md:w-[85px]">
-              <AnimatePresence mode="wait">
+            <div className="relative h-auto md:h-6 flex items-center justify-start w-auto gap-1">
+              <div className="relative w-auto md:w-[85px] h-full flex items-center justify-start md:justify-center">
+                <AnimatePresence mode="wait">
                 {copied ? (
                   <motion.span
                     key="copied"
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.1 }}
+                    initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
+                    transition={{ 
+                      duration: 0.08,
+                      ease: "easeOut"
+                    }}
                     className="md:absolute md:inset-0 flex items-center justify-start md:justify-center"
                   >
                     Copied :)
@@ -90,16 +113,27 @@ export default function SocialLinks() {
                 ) : (
                   <motion.span
                     key="copy"
-                    initial={{ opacity: 0, y: 5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    transition={{ duration: 0.1 }}
+                    initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
+                    transition={{ 
+                      duration: 0.08,
+                      ease: "easeOut"
+                    }}
                     className="md:absolute md:inset-0 flex items-center justify-start md:justify-center whitespace-nowrap"
                   >
                     Copy Email
                   </motion.span>
                 )}
-              </AnimatePresence>
+                </AnimatePresence>
+              </div>
+              
+              {/* Shortcut indicator - desktop only */}
+              <div className="hidden md:flex items-center">
+                <span className="px-1.5 py-0.5 rounded-[4px] bg-zinc-50 text-zinc-400 text-[12px] font-medium">
+                  ⌘K
+                </span>
+              </div>
             </div>
           ) : (
             link.name

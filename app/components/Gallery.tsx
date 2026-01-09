@@ -175,7 +175,7 @@ export default function Gallery() {
                     alt={galleryImages[selectedId].alt}
                     width={1638}
                     height={814}
-                    className="w-full h-auto rounded-lg block border-[0.5px] border-border"
+                    className="w-full h-auto rounded-lg block border-[0.5px] border-zinc-300"
                     priority
                     quality={100}
                   />
@@ -212,7 +212,7 @@ export default function Gallery() {
                   className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
                   aria-label="Previous image"
                 >
-                  <ChevronUpIcon className="w-5 h-5 text-zinc-900" />
+                  <ChevronUpIcon className="w-5 h-5 text-zinc-500" />
                 </button>
                 <button
                   type="button"
@@ -222,17 +222,33 @@ export default function Gallery() {
                   className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
                   aria-label="Next image"
                 >
-                  <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
+                  <ChevronDownIcon className="w-5 h-5 text-zinc-500" />
                 </button>
               </div>
-              <button
+              <motion.button
                 type="button"
                 onClick={closeModal}
-                className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-200/80 transition-colors focus:outline-none"
+                className="h-11 flex items-center bg-zinc-50 hover:bg-zinc-200/80 transition-colors focus:outline-none rounded-full px-3 overflow-hidden"
                 aria-label="Close modal"
+                whileHover="hover"
+                initial="initial"
               >
-                <XMarkIcon className="w-5 h-5 text-zinc-900" />
-              </button>
+                <XMarkIcon className="w-5 h-5 text-zinc-500 flex-shrink-0" />
+                <motion.span
+                  variants={{
+                    initial: { width: 0, opacity: 0, marginLeft: 0 },
+                    hover: { width: "auto", opacity: 1, marginLeft: 8 },
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 30,
+                  }}
+                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-zinc-500"
+                >
+                  Esc
+                </motion.span>
+              </motion.button>
             </div>
           </div>
         </motion.div>
@@ -246,7 +262,7 @@ export default function Gallery() {
         <Slideshow images={slideshowImages} currentIndex={slideshowIndex} />
 
         {/* Separator */}
-        <div className="border-t-[0.5px] border-border w-full !mt-8 md:!mt-16 !mb-8 md:!mb-16" />
+        <div className="border-t-[0.5px] border-zinc-300 w-full !mt-10 md:!mt-20 !mb-10 md:!mb-20" />
 
         {/* Gallery grid */}
         <div className="space-y-4 md:space-y-7 pb-5">
@@ -260,7 +276,7 @@ export default function Gallery() {
                 key={image.src}
                 onClick={() => handleImageClick(index)}
                 className={cn(
-                  "w-full border-[0.5px] border-border rounded-lg overflow-hidden relative",
+                  "w-full border-[0.5px] border-zinc-300 rounded-lg overflow-hidden relative",
                   "transition-transform duration-300 md:cursor-pointer md:hover:scale-[0.98]",
                   isContained ? "bg-zinc-50" : "bg-zinc-100/30"
                 )}
