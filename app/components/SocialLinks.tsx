@@ -19,7 +19,7 @@ export default function SocialLinks() {
       const email = url.replace("mailto:", "");
       navigator.clipboard.writeText(email);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setTimeout(() => setCopied(false), 1000);
     }
   };
 
@@ -80,7 +80,7 @@ export default function SocialLinks() {
                     transition={{ duration: 0.1 }}
                     className="md:absolute md:inset-0 flex items-center justify-start md:justify-center"
                   >
-                    Copied
+                    Copied :)
                   </motion.span>
                 ) : (
                   <motion.span
