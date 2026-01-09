@@ -24,12 +24,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Zinedine Chami",
   description:
-    "Zinedine Chami is a designer, born in London and based in Paris, previously with Châtaigne.ai and OpenSource Together.",
+    "Zinedine Chami is a designer, born in London and based in Paris.",
   metadataBase: new URL("https://zinedine.ch"),
   openGraph: {
     title: "Zinedine Chami",
     description:
-      "Zinedine Chami is a designer, born in London and based in Paris, previously with Châtaigne.ai and OpenSource Together.",
+      "Zinedine Chami is a designer, born in London and based in Paris.",
     url: "https://zinedine.ch",
     siteName: "Zinedine Chami",
     locale: "en_US",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zinedine Chami",
     description:
-      "Zinedine Chami is a designer, born in London and based in Paris, previously with Châtaigne.ai and OpenSource Together.",
+      "Zinedine Chami is a designer, born in London and based in Paris.",
   },
   robots: {
     index: true,
