@@ -121,61 +121,10 @@ const Gallery = () => {
           transition={{ duration: 0.1 }}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
         >
-          {/* Controls */}
-          <div className="absolute top-6 right-6 z-20 flex items-center gap-2">
-            <div
-              ref={controlsRef}
-              className="flex bg-zinc-50 rounded-full p-1 relative"
-            >
-              {/* The Blob */}
-              <motion.div
-                className="absolute bg-zinc-100 rounded-full pointer-events-none"
-                animate={{
-                  left: hoveredRect?.left ?? 0,
-                  width: hoveredRect?.width ?? 0,
-                  opacity: hoveredRect?.opacity ?? 0,
-                }}
-                transition={{
-                  type: "spring",
-                  bounce: 0.15,
-                  duration: 0.4,
-                }}
-                style={{
-                  height: "calc(100% - 8px)",
-                  top: "4px",
-                }}
-              />
-
-              <button
-                onClick={handlePrev}
-                onMouseEnter={handleControlMouseEnter}
-                onMouseLeave={handleControlMouseLeave}
-                disabled={selectedId === 0}
-                className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10"
-              >
-                <ChevronUpIcon className="w-5 h-5 text-zinc-900" />
-              </button>
-              <button
-                onClick={handleNext}
-                onMouseEnter={handleControlMouseEnter}
-                onMouseLeave={handleControlMouseLeave}
-                disabled={selectedId === galleryImages.length - 1}
-                className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10"
-              >
-                <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
-              </button>
-            </div>
-            <button
-              onClick={() => {
-                setSelectedId(null);
-              }}
-              className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-200/80 transition-colors"
-            >
-              <XMarkIcon className="w-5 h-5 text-zinc-900" />
-            </button>
-          </div>
-
-          <div className="w-full h-full flex items-center justify-center p-10 md:p-20 overflow-hidden">
+          <div
+            onClick={() => setSelectedId(null)}
+            className="w-full h-full flex items-center justify-center p-10 md:p-20 overflow-hidden"
+          >
             <AnimatePresence initial={true} custom={direction} mode="popLayout">
               <motion.div
                 key={selectedId}
@@ -207,6 +156,7 @@ const Gallery = () => {
                       }
                 }
                 className="relative w-full max-w-[1200px]"
+                onClick={(e) => e.stopPropagation()}
               >
                 <motion.div
                   initial={{ filter: "blur(10px)", opacity: 0 }}
@@ -215,6 +165,7 @@ const Gallery = () => {
                     duration: 0.4,
                     ease: [0.23, 1, 0.32, 1],
                   }}
+                  className="cursor-default"
                 >
                   <Image
                     src={galleryImages[selectedId].src}
@@ -228,6 +179,63 @@ const Gallery = () => {
                 </motion.div>
               </motion.div>
             </AnimatePresence>
+
+            {/* Controls */}
+            <div
+              className="absolute bottom-[20px] left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => {
+                  setSelectedId(null);
+                }}
+                className="p-3 rounded-full bg-zinc-50 hover:bg-zinc-200/80 transition-colors focus:outline-none"
+              >
+                <XMarkIcon className="w-5 h-5 text-zinc-900" />
+              </button>
+              <div
+                ref={controlsRef}
+                className="flex bg-zinc-50 rounded-full p-1 relative"
+              >
+                {/* The Blob */}
+                <motion.div
+                  className="absolute bg-zinc-100 rounded-full pointer-events-none"
+                  animate={{
+                    left: hoveredRect?.left ?? 0,
+                    width: hoveredRect?.width ?? 0,
+                    opacity: hoveredRect?.opacity ?? 0,
+                  }}
+                  transition={{
+                    type: "spring",
+                    bounce: 0.15,
+                    duration: 0.4,
+                  }}
+                  style={{
+                    height: "calc(100% - 8px)",
+                    top: "4px",
+                  }}
+                />
+
+                <button
+                  onClick={handlePrev}
+                  onMouseEnter={handleControlMouseEnter}
+                  onMouseLeave={handleControlMouseLeave}
+                  disabled={selectedId === 0}
+                  className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10 focus:outline-none"
+                >
+                  <ChevronUpIcon className="w-5 h-5 text-zinc-900" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  onMouseEnter={handleControlMouseEnter}
+                  onMouseLeave={handleControlMouseLeave}
+                  disabled={selectedId === galleryImages.length - 1}
+                  className="p-2 rounded-full hover:bg-zinc-200/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors relative z-10 focus:outline-none"
+                >
+                  <ChevronDownIcon className="w-5 h-5 text-zinc-900" />
+                </button>
+              </div>
+            </div>
           </div>
         </motion.div>
       )}
