@@ -43,7 +43,7 @@ export default function Home() {
 
       {/* Gallery Section */}
       <motion.section
-        initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+        initial={{ opacity: 0, filter: "blur(10px)", y: 8 }}
         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
         transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
         className="pb-4 px-3 md:px-6 relative z-0"
