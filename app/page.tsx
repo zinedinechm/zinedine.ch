@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="pt-10 md:pt-[75px] pb-14 md:pb-[60px] px-6">
+      <section className="pt-10 md:pt-[75px] pb-24 md:pb-[60px] px-6">
         <motion.div
           initial={fadeInUp.initial}
           animate={fadeInUp.animate}
@@ -25,7 +25,7 @@ export default function Home() {
           </p>
 
           {/* Bio & Social */}
-          <div className="space-y-4 w-full">
+          <div className="space-y-5 w-full">
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
               I'm Zinedine, a 22 year-old design engineer,<br className="md:hidden" /> born in London and based in Paris, building software interfaces, visual identities and everything in between.
             </p>
@@ -34,7 +34,7 @@ export default function Home() {
               I enjoy building products around artificial intelligence, web3, and online culture from<br className="md:hidden" /> 0-to-1, currently available for one-off projects and long-term commitments.
             </p>
 
-            <div className="pt-2">
+            <div className="pt-3">
               <SocialLinks />
             </div>
           </div>
