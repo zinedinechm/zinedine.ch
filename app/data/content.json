@@ -1,7 +1,7 @@
 {
   "greeting": "Hi, bonjour, こんにちは",
   "name": "Zinedine Chami",
-  "bio": "is a 22 year-old design engineer, born in London and based in Paris, previously worked with the teams at",
+  "bio": "I'm Zinedine, a 22 year-old design engineer, born in London and based in Paris, building software interfaces, visual identities and everything in between.",
   "companies": [
     {
       "name": "Châtaigne.ai",
@@ -12,19 +12,19 @@
       "url": "https://opensource-together.com/"
     }
   ],
-  "interests": "Interested in ideas surrounding artificial intelligence, web3 and online culture, building software interfaces, visual identities and everything in between.",
+  "interests": "I enjoy building products around artificial intelligence, web3, and online culture from 0-to-1, currently available for one-off projects and long-term commitments.",
   "social": [
     {
       "name": "Copy Email",
       "url": "mailto:zinedine.chami@gmail.com"
     },
     {
-      "name": "Twitter",
-      "url": "https://twitter.com/zinedinechm"
-    },
-    {
       "name": "Linkedin",
       "url": "https://www.linkedin.com/in/zine-chm/"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/zinedinechm"
     },
     {
       "name": "Github",
@@ -37,7 +37,9 @@
     { "src": "/gallery/shot-14.png", "alt": "shot-14" },
     { "src": "/gallery/shot-13.png", "alt": "shot-13" },
     { "src": "/gallery/shot-12.png", "alt": "shot-12" },
-    { "src": "/gallery/frame-random.png", "alt": "frame-random" }
+    { "src": "/gallery/design_shot_s37.png", "alt": "design_shot_s37" },
+    { "src": "/gallery/frame-random.png", "alt": "frame-random" },
+    { "src": "/gallery/frame-457.png", "alt": "frame-457" }
   ],
   "gallery": [
     { "src": "/gallery/shot-19.png", "alt": "shot-19" },
@@ -49,6 +51,7 @@
     { "src": "/gallery/shot-11.png", "alt": "shot-11" },
     { "src": "/gallery/frame-random.png", "alt": "frame-random" },
     { "src": "/gallery/shot-18.png", "alt": "shot-18" },
+    { "src": "/gallery/design_shot_s37.png", "alt": "design_shot_s37" },
     { "src": "/gallery/frame-457.png", "alt": "frame-457" }
   ]
 }
