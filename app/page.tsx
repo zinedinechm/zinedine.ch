@@ -27,7 +27,7 @@ export default function Home() {
           {/* Bio & Social */}
           <div className="space-y-5 w-full">
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
-              I'm Zinedine, a 22 year-old design engineer,<br className="md:hidden" /> born in London and based in Paris, building software interfaces, visual identities and everything in between.
+              I'm Zinedine, a 22 year-old design engineer,<br className="md:hidden" /> born in London and based in Paris, creating software interfaces, visual identities and everything in between.
             </p>
 
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
