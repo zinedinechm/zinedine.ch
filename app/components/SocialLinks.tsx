@@ -114,7 +114,7 @@ export default function SocialLinks() {
                       }}
                       className="md:absolute md:inset-0 flex items-center justify-start md:justify-center"
                     >
-                      Copied :)
+                      Copied
                     </motion.span>
                   ) : (
                     <motion.span

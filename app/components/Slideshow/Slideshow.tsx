@@ -1,34 +1,37 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-
-import { EASING } from "@/app/lib/constants";
 import type { SlideshowProps } from "@/app/types";
 
 export default function Slideshow({ images, currentIndex }: SlideshowProps) {
   return (
-    <div className="w-full border-[0.5px] border-zinc-300 bg-zinc-50/50 rounded-[6px] overflow-hidden relative transition-all duration-300 cursor-default">
+    <div className="w-full border-[0.5px] border-zinc-300 bg-zinc-50/50 rounded-[6px] overflow-hidden relative cursor-default">
       <div className="relative w-full aspect-[16/10]">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, filter: "blur(10px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            exit={{ opacity: 0, filter: "blur(10px)" }}
-            transition={{ duration: 0.7, ease: EASING.smooth }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt}
-              fill
-              className="object-cover"
-              priority
-              quality={100}
-            />
-          </motion.div>
-        </AnimatePresence>
+        {/* Affichage de l'image actuelle */}
+        <Image
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
+          fill
+          className="object-cover"
+          priority
+          quality={100}
+        />
+        
+        {/* Préchargement invisible des autres images pour éviter le clignotement */}
+        <div className="hidden" aria-hidden="true">
+          {images.map((image, index) => (
+            index !== currentIndex && (
+              <Image
+                key={image.src}
+                src={image.src}
+                alt=""
+                width={10}
+                height={10}
+                priority
+              />
+            )
+          ))}
+        </div>
       </div>
     </div>
   );
