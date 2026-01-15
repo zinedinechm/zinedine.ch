@@ -1,51 +1,16 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useCallback } from "react";
 
 import content from "@/app/data/content.json";
 import { cn } from "@/app/lib/utils";
-import { TIMING } from "@/app/lib/constants";
 import type { HoverRect, SocialLink } from "@/app/types";
 
 const socialLinks = content.social as SocialLink[];
 
 export default function SocialLinks() {
-  const [copied, setCopied] = useState(false);
   const [hoveredRect, setHoveredRect] = useState<HoverRect | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const copyEmail = useCallback(() => {
-    const emailLink = socialLinks.find((link) => link.name === "Copy Email");
-    if (emailLink) {
-      const email = emailLink.url.replace("mailto:", "");
-      navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), TIMING.COPY_FEEDBACK_DURATION);
-    }
-  }, []);
-
-  const handleEmailClick = useCallback(
-    (e: React.MouseEvent, url: string) => {
-      if (url.startsWith("mailto:")) {
-        e.preventDefault();
-        copyEmail();
-      }
-    },
-    [copyEmail]
-  );
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        copyEmail();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [copyEmail]);
 
   const handleMouseEnter = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -91,52 +56,13 @@ export default function SocialLinks() {
         <a
           key={link.name}
           href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={link.url.startsWith("mailto:") ? undefined : "_blank"}
+          rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
           className="social-link text-zinc-500 text-sm md:text-base cursor-pointer relative"
-          onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {link.name === "Copy Email" ? (
-            <div className="relative h-auto md:h-6 flex items-center justify-start w-auto">
-              <div className="relative w-auto md:w-[85px] h-full flex items-center justify-start md:justify-center">
-                <AnimatePresence mode="wait">
-                  {copied ? (
-                    <motion.span
-                      key="copied"
-                      initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
-                      transition={{
-                        duration: 0.08,
-                        ease: "easeOut",
-                      }}
-                      className="md:absolute md:inset-0 flex items-center justify-start md:justify-center"
-                    >
-                      Copied
-                    </motion.span>
-                  ) : (
-                    <motion.span
-                      key="copy"
-                      initial={{ opacity: 0, y: 4, filter: "blur(4px)" }}
-                      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, y: -4, filter: "blur(4px)" }}
-                      transition={{
-                        duration: 0.08,
-                        ease: "easeOut",
-                      }}
-                      className="md:absolute md:inset-0 flex items-center justify-start md:justify-center whitespace-nowrap"
-                    >
-                      Copy Email
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </div>
-            </div>
-          ) : (
-            link.name
-          )}
+          {link.name === "Copy Email" ? "Email" : link.name}
         </a>
       ))}
     </div>

@@ -31,10 +31,12 @@ export default function Home() {
             </p>
 
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
-              I enjoy building products around artificial intelligence, web3, and online culture from<br className="md:hidden" /> 0-to-1, currently available for one-off projects and long-term commitments.
+              I enjoy building products around artificial intelligence, web3, and online culture from 0-to-1.
+              <br />
+              Feel free to reach out, I'm available for one-off projects and long-term commitments.
             </p>
 
-            <div className="pt-3">
+            <div className="pt-1.5">
               <SocialLinks />
             </div>
           </div>

@@ -27,7 +27,6 @@ import {
   CONTAINED_IMAGES,
 } from "@/app/lib/constants";
 import type { HoverRect, ImageItem } from "@/app/types";
-import Slideshow from "./Slideshow/Slideshow";
 
 // SSR-safe check for client-side mounting
 const subscribe = () => () => {};
@@ -41,21 +40,11 @@ export default function Gallery() {
     getServerSnapshot
   );
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [slideshowIndex, setSlideshowIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [hoveredRect, setHoveredRect] = useState<HoverRect | null>(null);
   const controlsRef = useRef<HTMLDivElement>(null);
 
-  const slideshowImages = content.slideshow as ImageItem[];
   const galleryImages = content.gallery as ImageItem[];
-
-  // Slideshow auto-advance
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSlideshowIndex((prev) => (prev + 1) % slideshowImages.length);
-    }, TIMING.SLIDESHOW_INTERVAL);
-    return () => clearInterval(timer);
-  }, [slideshowImages.length]);
 
   const handleNext = useCallback(() => {
     if (selectedId !== null) {
@@ -175,7 +164,8 @@ export default function Gallery() {
                     alt={galleryImages[selectedId].alt}
                     width={1638}
                     height={814}
-                    className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-300"
+                    className="w-full h-auto rounded-[12px] block"
+                    style={{ boxShadow: "0 4px 16px 0 rgba(0, 0, 0, 0.06)" }}
                     priority
                     quality={100}
                   />
@@ -185,12 +175,13 @@ export default function Gallery() {
 
             {/* Controls */}
             <div
-              className="absolute bottom-6 right-6 z-20 flex items-center gap-2"
+              className="absolute top-6 right-6 z-20 flex items-center gap-2"
               onClick={stopPropagation}
             >
               <div
                 ref={controlsRef}
-                className="flex bg-zinc-50 rounded-full p-1 relative"
+                className="flex bg-white rounded-full p-1 relative"
+                style={{ boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.08)" }}
               >
                 {/* Hover blob */}
                 <motion.div
@@ -213,8 +204,8 @@ export default function Gallery() {
                   aria-label="Previous image"
                 >
                   <ChevronUpIcon
-                    className="w-5 h-5 text-zinc-400"
-                    strokeWidth={2.5}
+                    className="w-5 h-5 text-black"
+                    strokeWidth={2.2}
                   />
                 </button>
                 <button
@@ -226,22 +217,23 @@ export default function Gallery() {
                   aria-label="Next image"
                 >
                   <ChevronDownIcon
-                    className="w-5 h-5 text-zinc-400"
-                    strokeWidth={2.5}
+                    className="w-5 h-5 text-black"
+                    strokeWidth={2.2}
                   />
                 </button>
               </div>
               <motion.button
                 type="button"
                 onClick={closeModal}
-                className="h-11 flex items-center bg-zinc-50 hover:bg-zinc-200/80 transition-colors focus:outline-none rounded-full px-3 overflow-hidden"
+                className="h-11 flex items-center bg-white hover:bg-zinc-200/80 transition-colors focus:outline-none rounded-full px-3 overflow-hidden"
+                style={{ boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.08)" }}
                 aria-label="Close modal"
                 whileHover="hover"
                 initial="initial"
               >
                 <XMarkIcon
-                  className="w-5 h-5 text-zinc-400 flex-shrink-0"
-                  strokeWidth={2.5}
+                  className="w-5 h-5 text-black flex-shrink-0"
+                  strokeWidth={2.2}
                 />
                 <motion.span
                   variants={{
@@ -253,7 +245,7 @@ export default function Gallery() {
                     stiffness: 400,
                     damping: 30,
                   }}
-                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-zinc-400"
+                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-black"
                 >
                   Esc
                 </motion.span>
@@ -268,11 +260,6 @@ export default function Gallery() {
   return (
     <>
       <div className="space-y-4 md:space-y-7 group/gallery">
-        <Slideshow images={slideshowImages} currentIndex={slideshowIndex} />
-
-        {/* Separator */}
-        <div className="border-t-[0.5px] border-zinc-300 w-full !mt-14 md:!mt-20 !mb-14 md:!mb-20" />
-
         {/* Gallery grid */}
         <div className="space-y-6 md:space-y-7 pb-5">
           {galleryImages.map((image, index) => {
@@ -285,7 +272,7 @@ export default function Gallery() {
                 key={image.src}
                 onClick={() => handleImageClick(index)}
                 className={cn(
-                  "w-full border-[0.5px] border-zinc-300 rounded-[6px] overflow-hidden relative",
+                  "w-full border-[0.5px] border-zinc-200 rounded-[6px] overflow-hidden relative",
                   "transition-transform duration-300 md:cursor-pointer md:hover:scale-[1.02]",
                   isContained ? "bg-zinc-50" : "bg-zinc-100/30"
                 )}
