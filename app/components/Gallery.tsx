@@ -168,7 +168,6 @@ export default function Gallery() {
                     style={{ boxShadow: "0 4px 16px 0 rgba(0, 0, 0, 0.06)" }}
                     priority
                     quality={100}
-                    unoptimized
                   />
                 </motion.div>
               </motion.div>
@@ -285,7 +284,6 @@ export default function Gallery() {
                   height={814}
                   className="w-full h-auto block"
                   quality={100}
-                  unoptimized
                 />
               </div>
             );
