@@ -17,7 +17,7 @@ export default function Home() {
           initial={fadeInUp.initial}
           animate={fadeInUp.animate}
           transition={fadeInUp.transition}
-          className="max-w-[670px] ml-0 mr-auto md:mx-auto w-80 md:w-full"
+          className="max-w-[670px] ml-0 mr-auto md:mx-auto w-[330px] md:w-full"
         >
           {/* Greeting */}
           <p className="text-zinc-500 text-sm md:text-base leading-relaxed mb-4">
