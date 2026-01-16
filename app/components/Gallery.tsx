@@ -200,7 +200,7 @@ export default function Gallery() {
                   onClick={handlePrev}
                   onMouseEnter={handleControlMouseEnter}
                   onMouseLeave={handleControlMouseLeave}
-                  className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
+                  className="p-2 rounded-full hover:bg-zinc-50 transition-colors relative z-10 focus:outline-none"
                   aria-label="Previous image"
                 >
                   <ChevronUpIcon
@@ -213,7 +213,7 @@ export default function Gallery() {
                   onClick={handleNext}
                   onMouseEnter={handleControlMouseEnter}
                   onMouseLeave={handleControlMouseLeave}
-                  className="p-2 rounded-full hover:bg-zinc-200/50 transition-colors relative z-10 focus:outline-none"
+                  className="p-2 rounded-full hover:bg-zinc-50 transition-colors relative z-10 focus:outline-none"
                   aria-label="Next image"
                 >
                   <ChevronDownIcon
@@ -225,7 +225,7 @@ export default function Gallery() {
               <motion.button
                 type="button"
                 onClick={closeModal}
-                className="h-11 flex items-center bg-white hover:bg-zinc-200/80 transition-colors focus:outline-none rounded-full px-3 overflow-hidden"
+                className="h-11 flex items-center bg-white hover:bg-zinc-50 transition-colors focus:outline-none rounded-full px-3 overflow-hidden"
                 style={{ boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.08)" }}
                 aria-label="Close modal"
                 whileHover="hover"
