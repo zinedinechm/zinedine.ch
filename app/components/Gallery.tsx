@@ -165,7 +165,7 @@ export default function Gallery() {
                     width={1638}
                     height={814}
                     className="w-full h-auto rounded-[12px] block"
-                    style={{ boxShadow: "0 4px 16px 0 rgba(0, 0, 0, 0.06)" }}
+                    style={{ boxShadow: "0 4px 18px 0 rgba(0, 0, 0, 0.05)" }}
                     priority
                     quality={100}
                   />
@@ -181,7 +181,7 @@ export default function Gallery() {
               <div
                 ref={controlsRef}
                 className="flex bg-white rounded-full p-1 relative"
-                style={{ boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.08)" }}
+                style={{ boxShadow: "0 2px 6px 0 rgba(0, 0, 0, 0.06)" }}
               >
                 {/* Hover blob */}
                 <motion.div
@@ -204,7 +204,7 @@ export default function Gallery() {
                   aria-label="Previous image"
                 >
                   <ChevronUpIcon
-                    className="w-5 h-5 text-black"
+                    className="w-5 h-5 text-zinc-900"
                     strokeWidth={2.2}
                   />
                 </button>
@@ -217,7 +217,7 @@ export default function Gallery() {
                   aria-label="Next image"
                 >
                   <ChevronDownIcon
-                    className="w-5 h-5 text-black"
+                    className="w-5 h-5 text-zinc-900"
                     strokeWidth={2.2}
                   />
                 </button>
@@ -226,13 +226,13 @@ export default function Gallery() {
                 type="button"
                 onClick={closeModal}
                 className="h-11 flex items-center bg-white hover:bg-zinc-50 transition-colors focus:outline-none rounded-full px-3 overflow-hidden"
-                style={{ boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.08)" }}
+                style={{ boxShadow: "0 2px 6px 0 rgba(0, 0, 0, 0.06)" }}
                 aria-label="Close modal"
                 whileHover="hover"
                 initial="initial"
               >
                 <XMarkIcon
-                  className="w-5 h-5 text-black flex-shrink-0"
+                  className="w-5 h-5 text-zinc-900 flex-shrink-0"
                   strokeWidth={2.2}
                 />
                 <motion.span
@@ -245,7 +245,7 @@ export default function Gallery() {
                     stiffness: 400,
                     damping: 30,
                   }}
-                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-black"
+                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-zinc-900"
                 >
                   Esc
                 </motion.span>
@@ -272,7 +272,7 @@ export default function Gallery() {
                 key={image.src}
                 onClick={() => handleImageClick(index)}
                 className={cn(
-                  "w-full border-[0.5px] border-zinc-200 rounded-[6px] overflow-hidden relative",
+                  "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative",
                   "transition-transform duration-300 md:cursor-pointer md:hover:scale-[1.02]",
                   isContained ? "bg-zinc-50" : "bg-zinc-100/30"
                 )}

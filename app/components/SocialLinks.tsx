@@ -40,7 +40,7 @@ export default function SocialLinks() {
       {/* Hover blob - desktop only */}
       <div
         className={cn(
-          "hidden md:block absolute bg-zinc-100/80 rounded-full pointer-events-none",
+          "hidden md:block absolute bg-zinc-50 rounded-full pointer-events-none",
           "transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]"
         )}
         style={{
