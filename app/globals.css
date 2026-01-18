@@ -88,5 +88,4 @@ body {
 
 .social-link:hover {
   color: var(--foreground);
-  background-color: rgb(250 250 250);
 }

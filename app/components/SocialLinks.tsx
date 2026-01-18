@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import content from "@/app/data/content.json";
 import { cn } from "@/app/lib/utils";
@@ -10,6 +11,7 @@ const socialLinks = content.social as SocialLink[];
 
 export default function SocialLinks() {
   const [hoveredRect, setHoveredRect] = useState<HoverRect | null>(null);
+  const [copied, setCopied] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMouseEnter = useCallback(
@@ -32,10 +34,20 @@ export default function SocialLinks() {
     setHoveredRect((prev) => (prev ? { ...prev, opacity: 0 } : null));
   }, []);
 
+  const handleEmailClick = useCallback((e: React.MouseEvent, url: string) => {
+    if (url.startsWith("mailto:")) {
+      e.preventDefault();
+      const email = url.replace("mailto:", "");
+      navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }, []);
+
   return (
     <div
       ref={containerRef}
-      className="flex gap-4 md:gap-0 relative items-center md:-ml-3"
+      className="flex gap-4 md:gap-0 relative items-center md:-ml-3.5"
     >
       {/* Hover blob - desktop only */}
       <div
@@ -58,11 +70,42 @@ export default function SocialLinks() {
           href={link.url}
           target={link.url.startsWith("mailto:") ? undefined : "_blank"}
           rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-          className="social-link text-zinc-500 text-sm md:text-base cursor-pointer relative"
+          className="social-link text-zinc-500/80 text-sm md:text-base cursor-pointer relative"
+          onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {link.name === "Copy Email" ? "Email" : link.name}
+          {link.name === "Copy Email" ? (
+            <div className="relative min-w-[75px] md:min-w-[85px] h-full flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                {copied ? (
+                  <motion.span
+                    key="copied"
+                    initial={{ opacity: 0, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, filter: "blur(4px)" }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    className="flex items-center justify-center w-full"
+                  >
+                    Copied
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="email"
+                    initial={{ opacity: 0, filter: "blur(4px)" }}
+                    animate={{ opacity: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, filter: "blur(4px)" }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    className="flex items-center justify-center w-full whitespace-nowrap"
+                  >
+                    Copy Email
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </div>
+          ) : (
+            link.name
+          )}
         </a>
       ))}
     </div>
