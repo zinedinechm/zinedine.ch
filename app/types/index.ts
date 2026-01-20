@@ -12,6 +12,7 @@ export interface SocialLink {
 export interface ImageItem {
   src: string;
   alt: string;
+  fullSrc?: string;
 }
 
 export interface SiteContent {

@@ -160,7 +160,7 @@ export default function Gallery() {
                   className="cursor-default"
                 >
                   <Image
-                    src={galleryImages[selectedId].src}
+                    src={galleryImages[selectedId].fullSrc || galleryImages[selectedId].src}
                     alt={galleryImages[selectedId].alt}
                     width={1638}
                     height={814}
