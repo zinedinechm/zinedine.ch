@@ -41,15 +41,15 @@
     { "src": "/gallery/frame-random.png", "alt": "frame-random" }
   ],
   "gallery": [
-    { "src": "/gallery/timecapsule_close.png", "alt": "shot-19", "fullSrc": "/gallery/shot-19.png" },
+    { "src": "/gallery/shot-19.png", "alt": "shot-19" },
     { "src": "/gallery/newyuhajbc-home.png", "alt": "newyuhajbc-home" },
     { "src": "/gallery/shot-13.png", "alt": "shot-13" },
-    { "src": "/gallery/wallet-close.png", "alt": "shot-17", "fullSrc": "/gallery/shot-17.png" },
+    { "src": "/gallery/shot-17.png", "alt": "shot-17" },
     { "src": "/gallery/contributor-view.png", "alt": "contributor-view" },
     { "src": "/gallery/shot-12.png", "alt": "shot-12" },
     { "src": "/gallery/shot-11.png", "alt": "shot-11" },
     { "src": "/gallery/frame-random.png", "alt": "frame-random" },
-    { "src": "/gallery/card-close.png", "alt": "shot-18", "fullSrc": "/gallery/shot-18.png" },
+    { "src": "/gallery/shot-18.png", "alt": "shot-18" },
     { "src": "/gallery/desktop-9.png", "alt": "desktop-9" },
     { "src": "/gallery/frame-457.png", "alt": "frame-457" }
   ]

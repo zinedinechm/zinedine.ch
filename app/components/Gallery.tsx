@@ -164,93 +164,13 @@ export default function Gallery() {
                     alt={galleryImages[selectedId].alt}
                     width={1638}
                     height={814}
-                    className="w-full h-auto rounded-[12px] block"
-                    style={{ boxShadow: "0 4px 18px 0 rgba(0, 0, 0, 0.05)" }}
+                    className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-200/70"
                     priority
                     quality={100}
                   />
                 </motion.div>
               </motion.div>
             </AnimatePresence>
-
-            {/* Controls */}
-            <div
-              className="absolute top-6 right-6 z-20 flex items-center gap-2"
-              onClick={stopPropagation}
-            >
-              <div
-                ref={controlsRef}
-                className="flex bg-white rounded-full p-1 relative"
-                style={{ boxShadow: "0 2px 6px 0 rgba(0, 0, 0, 0.06)" }}
-              >
-                {/* Hover blob */}
-                <motion.div
-                  className="absolute bg-zinc-100 rounded-full pointer-events-none"
-                  animate={{
-                    left: hoveredRect?.left ?? 0,
-                    width: hoveredRect?.width ?? 0,
-                    opacity: hoveredRect?.opacity ?? 0,
-                  }}
-                  transition={{ type: "spring", bounce: 0.15, duration: 0.4 }}
-                  style={{ height: "calc(100% - 8px)", top: "4px" }}
-                />
-
-                <button
-                  type="button"
-                  onClick={handlePrev}
-                  onMouseEnter={handleControlMouseEnter}
-                  onMouseLeave={handleControlMouseLeave}
-                  className="p-2 rounded-full hover:bg-zinc-50 transition-colors relative z-10 focus:outline-none"
-                  aria-label="Previous image"
-                >
-                  <ChevronUpIcon
-                    className="w-5 h-5 text-zinc-900"
-                    strokeWidth={2.2}
-                  />
-                </button>
-                <button
-                  type="button"
-                  onClick={handleNext}
-                  onMouseEnter={handleControlMouseEnter}
-                  onMouseLeave={handleControlMouseLeave}
-                  className="p-2 rounded-full hover:bg-zinc-50 transition-colors relative z-10 focus:outline-none"
-                  aria-label="Next image"
-                >
-                  <ChevronDownIcon
-                    className="w-5 h-5 text-zinc-900"
-                    strokeWidth={2.2}
-                  />
-                </button>
-              </div>
-              <motion.button
-                type="button"
-                onClick={closeModal}
-                className="h-11 flex items-center bg-white hover:bg-zinc-50 transition-colors focus:outline-none rounded-full px-3 overflow-hidden"
-                style={{ boxShadow: "0 2px 6px 0 rgba(0, 0, 0, 0.06)" }}
-                aria-label="Close modal"
-                whileHover="hover"
-                initial="initial"
-              >
-                <XMarkIcon
-                  className="w-5 h-5 text-zinc-900 flex-shrink-0"
-                  strokeWidth={2.2}
-                />
-                <motion.span
-                  variants={{
-                    initial: { width: 0, opacity: 0, marginLeft: 0 },
-                    hover: { width: "auto", opacity: 1, marginLeft: 8 },
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 30,
-                  }}
-                  className="overflow-hidden whitespace-nowrap text-sm font-medium text-zinc-900"
-                >
-                  Esc
-                </motion.span>
-              </motion.button>
-            </div>
           </div>
         </motion.div>
       )}
