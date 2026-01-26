@@ -55,15 +55,9 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Top blur gradient - desktop only */}
+        {/* Top gradient fade - desktop only */}
         <div
-          className="hidden md:block fixed top-0 left-0 right-0 h-20 z-[100] pointer-events-none"
-          style={{
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            maskImage: "linear-gradient(to bottom, black 0%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 100%)",
-          }}
+          className="hidden md:block fixed top-0 left-0 right-0 h-6 z-[100] pointer-events-none bg-gradient-to-b from-white to-transparent"
           aria-hidden="true"
         />
         {children}
