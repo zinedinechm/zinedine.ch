@@ -70,7 +70,7 @@ export default function SocialLinks() {
           href={link.url}
           target={link.url.startsWith("mailto:") ? undefined : "_blank"}
           rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-          className="social-link text-zinc-500/80 text-sm md:text-base cursor-pointer relative"
+          className="social-link text-zinc-500 text-sm md:text-base cursor-pointer relative"
           onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}

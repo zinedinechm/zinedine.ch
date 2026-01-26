@@ -193,7 +193,7 @@ export default function Gallery() {
                 onClick={() => handleImageClick(index)}
                 className={cn(
                   "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative",
-                  "transition-transform duration-300 md:cursor-pointer md:hover:scale-[1.02]",
+                  "transition-transform duration-300 md:hover:scale-[1.02]",
                   isContained ? "bg-zinc-50" : "bg-zinc-100/30"
                 )}
               >

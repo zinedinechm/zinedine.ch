@@ -20,7 +20,7 @@ export default function Home() {
           className="max-w-[670px] ml-0 mr-auto md:mx-auto w-[330px] md:w-full"
         >
           {/* Greeting */}
-          <p className="text-zinc-500/80 text-sm md:text-base leading-relaxed mb-4">
+          <p className="text-zinc-500 text-sm md:text-base leading-relaxed mb-4">
             {siteContent.greeting}
           </p>
 
@@ -56,9 +56,9 @@ export default function Home() {
           {/* Footer Text */}
           <div className="mt-14 md:mt-20 pb-1 text-zinc-500 text-[10px] md:text-xs leading-[1.95] md:leading-[1.75]">
             <p>
-              This portfolio was built in Next.js using Cursor, featuring explorations, concepts, and production work, all entirely made by me. For deeper case studies and more info, explore{" "}
+              This portfolio was built in Next.js using Cursor, featuring explorations, concepts, and production work, all entirely made by me. For deeper case studies and more info, explore my{" "}
               <span className="underline cursor-not-allowed">
-                my private portfolio
+                private portfolio
               </span>
               .
             </p>
