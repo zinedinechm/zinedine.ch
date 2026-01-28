@@ -27,13 +27,18 @@ export default function Home() {
           {/* Bio & Social */}
           <div className="space-y-5 w-full">
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
-              I'm Zinedine, a 22 year-old design engineer,<br className="md:hidden" /> born in London and based in Paris, creating software interfaces, visual identities and everything in between.
+              I'm Zinedine, a 22 year-old design engineer,
+              <br className="md:hidden" /> born in London and based in Paris,
+              creating software interfaces, visual identities and everything in
+              between.
             </p>
 
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
-              I enjoy building products around artificial intelligence, web3, and online culture from 0-to-1.
+              I enjoy building products around artificial intelligence, web3,
+              and online culture from 0-to-1.
               <br />
-              Feel free to reach out, I'm available for one-off projects and long-term commitments.
+              Feel free to reach out, I'm available for one-off projects and
+              long-term commitments.
             </p>
 
             <div className="pt-1.5">
@@ -52,15 +57,20 @@ export default function Home() {
       >
         <div className="max-w-[670px] mx-auto">
           <Gallery />
-          
+
           {/* Footer Text */}
           <div className="mt-14 md:mt-20 pb-1 text-zinc-500 text-[10px] md:text-xs leading-[1.95] md:leading-[1.75]">
             <p>
-              This portfolio was built in Next.js using Cursor, featuring explorations, concepts, and production work, all entirely made by me. For deeper case studies and more info, explore my{" "}
-              <span className="underline cursor-not-allowed">
-                private portfolio
-              </span>
-              .
+              This portfolio was built in Next.js using Cursor, featuring
+              explorations, concepts, and production work, all entirely made by
+              me. For deeper case studies and more info, feel free to{" "}
+              <a
+                href="mailto:contact@zinedine.ch"
+                className="underline underline-offset-2 hover:text-zinc-400 transition-colors"
+              >
+                contact me
+              </a>{" "}
+              for my private portfolio.
             </p>
           </div>
         </div>
