@@ -165,7 +165,7 @@ export default function Gallery() {
                     width={1638}
                     height={814}
                     className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-200/70"
-                    priority
+                    priority={true}
                     quality={100}
                   />
                 </motion.div>
@@ -204,6 +204,7 @@ export default function Gallery() {
                   height={814}
                   className="w-full h-auto block"
                   quality={100}
+                  priority={true}
                 />
               </div>
             );
