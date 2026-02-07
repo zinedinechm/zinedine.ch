@@ -37,7 +37,7 @@ export default function Gallery() {
   const mounted = useSyncExternalStore(
     subscribe,
     getSnapshot,
-    getServerSnapshot
+    getServerSnapshot,
   );
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [direction, setDirection] = useState(0);
@@ -57,7 +57,7 @@ export default function Gallery() {
     if (selectedId !== null) {
       setDirection(-1);
       setSelectedId(
-        (selectedId - 1 + galleryImages.length) % galleryImages.length
+        (selectedId - 1 + galleryImages.length) % galleryImages.length,
       );
     }
   }, [selectedId, galleryImages.length]);
@@ -75,7 +75,7 @@ export default function Gallery() {
         });
       }
     },
-    []
+    [],
   );
 
   const handleControlMouseLeave = useCallback(() => {
@@ -155,11 +155,18 @@ export default function Gallery() {
                   initial={{ filter: "blur(20px)", opacity: 0 }}
                   animate={{ filter: "blur(0px)", opacity: 1 }}
                   exit={{ filter: "blur(20px)", opacity: 0 }}
-                  transition={{ duration: 0.5, ease: EASING.smooth }}
+                  transition={{
+                    duration: 0.7,
+                    ease: EASING.smooth,
+                    exit: { duration: 0.2 },
+                  }}
                   className="cursor-default"
                 >
                   <Image
-                    src={galleryImages[selectedId].fullSrc || galleryImages[selectedId].src}
+                    src={
+                      galleryImages[selectedId].fullSrc ||
+                      galleryImages[selectedId].src
+                    }
                     alt={galleryImages[selectedId].alt}
                     width={1638}
                     height={814}
@@ -183,7 +190,7 @@ export default function Gallery() {
         <div className="space-y-4 md:space-y-5 pb-5">
           {galleryImages.map((image, index) => {
             const isContained = CONTAINED_IMAGES.includes(
-              image.alt as (typeof CONTAINED_IMAGES)[number]
+              image.alt as (typeof CONTAINED_IMAGES)[number],
             );
 
             return (
@@ -194,7 +201,7 @@ export default function Gallery() {
                   "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative cursor-pointer",
                   "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
                   "md:hover:translate-y-[-2px] md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
-                  isContained ? "bg-zinc-50" : "bg-zinc-100/30"
+                  isContained ? "bg-zinc-50" : "bg-zinc-100/30",
                 )}
               >
                 <Image
