@@ -27,7 +27,7 @@ export default function SocialLinks() {
         });
       }
     },
-    []
+    [],
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -47,13 +47,13 @@ export default function SocialLinks() {
   return (
     <div
       ref={containerRef}
-      className="flex gap-4 md:gap-0 relative items-center md:-ml-3.5"
+      className="flex gap-[14px] md:gap-0 relative items-center md:-ml-3.5 social-links-container"
     >
       {/* Hover blob - desktop only */}
       <div
         className={cn(
           "hidden md:block absolute bg-zinc-50 rounded-full pointer-events-none",
-          "transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]"
+          "transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
         )}
         style={{
           left: hoveredRect?.left ?? 0,
@@ -69,14 +69,16 @@ export default function SocialLinks() {
           key={link.name}
           href={link.url}
           target={link.url.startsWith("mailto:") ? undefined : "_blank"}
-          rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-          className="social-link text-zinc-500 text-sm md:text-base cursor-pointer relative"
+          rel={
+            link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"
+          }
+          className="social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative"
           onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           {link.name === "Copy Email" ? (
-            <div className="relative min-w-[75px] md:min-w-[85px] h-full flex items-center justify-center">
+            <div className="relative min-w-[65px] md:min-w-[75px] h-full flex items-center justify-center">
               <AnimatePresence mode="wait">
                 {copied ? (
                   <motion.span

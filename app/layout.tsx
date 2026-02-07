@@ -43,6 +43,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 interface RootLayoutProps {
@@ -55,11 +58,6 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Top gradient fade - desktop only */}
-        <div
-          className="hidden md:block fixed top-0 left-0 right-0 h-6 z-[100] pointer-events-none bg-gradient-to-b from-white to-transparent"
-          aria-hidden="true"
-        />
         {children}
       </body>
     </html>

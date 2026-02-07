@@ -17,7 +17,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #fcfcfc;
   --foreground: #18181b;
   --muted: #71717a;
   --accent: #18181b;
@@ -46,14 +46,23 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-sans),
+    system-ui,
+    -apple-system,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: var(--foreground);
-  color: var(--background);
+  background: #fef9c3 !important; /* tailwind yellow-100 */
+  color: #ca8a04 !important; /* tailwind yellow-600 */
+}
+
+::-moz-selection {
+  background: #fef9c3 !important;
+  color: #ca8a04 !important;
 }
 
 /* Link hover animation */
@@ -82,7 +91,7 @@ body {
 
 @media (min-width: 768px) {
   .social-link {
-    padding: 6px 12px;
+    padding: 6px 12px !important;
   }
 }
 

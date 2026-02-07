@@ -23,10 +23,6 @@
       "url": "https://www.linkedin.com/in/zine-chm/"
     },
     {
-      "name": "Twitter",
-      "url": "https://twitter.com/zinedinechm"
-    },
-    {
       "name": "Github",
       "url": "https://github.com/zinedinechm"
     }
@@ -41,16 +37,16 @@
     { "src": "/gallery/frame-random.png", "alt": "frame-random" }
   ],
   "gallery": [
-    { "src": "/gallery/shot-19.png", "alt": "shot-19" },
+    { "src": "/gallery/Update Capsule.png", "alt": "Update Capsule", "fullSrc": "/gallery/Update Capsule.png" },
     { "src": "/gallery/newyuhajbc-home.png", "alt": "newyuhajbc-home" },
     { "src": "/gallery/shot-13.png", "alt": "shot-13" },
-    { "src": "/gallery/shot-17.png", "alt": "shot-17" },
+    { "src": "/gallery/Update Pump.png", "alt": "Update Pump", "fullSrc": "/gallery/Update Pump.png" },
     { "src": "/gallery/contributor-view.png", "alt": "contributor-view" },
     { "src": "/gallery/shot-12.png", "alt": "shot-12" },
     { "src": "/gallery/shot-11.png", "alt": "shot-11" },
     { "src": "/gallery/frame-random.png", "alt": "frame-random" },
-    { "src": "/gallery/shot-18.png", "alt": "shot-18" },
-    { "src": "/gallery/desktop-9.png", "alt": "desktop-9" },
+    { "src": "/gallery/Update Wallet.png", "alt": "Update Wallet", "fullSrc": "/gallery/Update Wallet.png" },
+    { "src": "/gallery/Update S37.png", "alt": "Update S37", "fullSrc": "/gallery/Update S37.png" },
     { "src": "/gallery/frame-457.png", "alt": "frame-457" }
   ]
 }

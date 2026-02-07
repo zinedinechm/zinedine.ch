@@ -5,19 +5,21 @@ import { fadeInUp } from "@/app/lib/constants";
 import type { SiteContent } from "@/app/types";
 import SocialLinks from "@/app/components/SocialLinks";
 import Gallery from "@/app/components/Gallery";
+import Header from "@/app/components/Header";
 
 const siteContent = content as SiteContent;
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#FCFCFC] relative">
+      <Header />
       {/* Hero Section */}
-      <section className="pt-10 md:pt-[120px] pb-20 md:pb-[60px] px-6">
+      <section className="pt-28 md:pt-[130px] pb-28 md:pb-[80px] px-6">
         <motion.div
           initial={fadeInUp.initial}
           animate={fadeInUp.animate}
           transition={fadeInUp.transition}
-          className="max-w-[670px] ml-0 mr-auto md:mx-auto w-[330px] md:w-full"
+          className="max-w-[620px] ml-0 mr-auto md:mx-auto w-[330px] md:w-full"
         >
           {/* Greeting */}
           <p className="text-zinc-500 text-sm md:text-base leading-relaxed mb-4">
@@ -25,25 +27,36 @@ export default function Home() {
           </p>
 
           {/* Bio & Social */}
-          <div className="space-y-5 w-full">
-            <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
-              I'm Zinedine, a 22 year-old design engineer,
-              <br className="md:hidden" /> born in London and based in Paris,
-              creating software interfaces, visual identities and everything in
+          <div className="space-y-3 md:space-y-3 w-full">
+            <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600">
+              I'm a 22 year-old Design Engineer, born in
+              <br className="md:hidden" /> London and based in Paris, designing
+              and <br className="md:hidden" /> building software interfaces,
+              visual identities <br className="md:hidden" /> and everything in
               between.
             </p>
 
-            <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full">
-              I enjoy building products around artificial intelligence, web3,
-              and online culture from 0-to-1.
+            <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600 mt-5 md:mt-0">
+              I care deeply about craft and solving problems through design from
+              0-to-1.
               <br />
-              Feel free to reach out, I'm available for one-off projects and
-              long-term commitments.
+              Feel free to reach out for more information at{" "}
+              <a
+                href="https://x.com/zinedinechm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-400 underline decoration-zinc-200 decoration-[0.5px] underline-offset-4 hover:text-zinc-500 hover:decoration-zinc-400 transition-colors"
+              >
+                @zinedinechm
+              </a>{" "}
+              or{" "}
+              <a
+                href="mailto:contact@zinedine.ch"
+                className="text-zinc-400 underline decoration-zinc-200 decoration-[0.5px] underline-offset-4 hover:text-zinc-500 hover:decoration-zinc-400 transition-colors"
+              >
+                contact@zinedine.ch
+              </a>
             </p>
-
-            <div className="pt-1.5">
-              <SocialLinks />
-            </div>
           </div>
         </motion.div>
       </section>
@@ -55,24 +68,11 @@ export default function Home() {
         transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
         className="pb-4 px-3 md:px-6 relative z-0"
       >
-        <div className="max-w-[670px] mx-auto">
+        <div className="max-w-[620px] mx-auto">
           <Gallery />
 
           {/* Footer Text */}
-          <div className="mt-14 md:mt-20 pb-1 text-zinc-500 text-[10px] md:text-xs leading-[1.95] md:leading-[1.75]">
-            <p>
-              This portfolio was built in Next.js using Cursor, featuring
-              explorations, concepts, and production work, all entirely made by
-              me. For deeper case studies and more info, feel free to{" "}
-              <a
-                href="mailto:contact@zinedine.ch"
-                className="underline underline-offset-2 hover:text-zinc-400 transition-colors"
-              >
-                contact me
-              </a>{" "}
-              for my private portfolio.
-            </p>
-          </div>
+          <div className="mt-14 md:mt-20 pb-1 text-zinc-500 text-[10px] md:text-xs leading-[1.95] md:leading-[1.75]"></div>
         </div>
       </motion.section>
     </main>
