@@ -90,8 +90,6 @@ export default function Gallery() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowUp") handlePrev();
-      if (e.key === "ArrowDown") handleNext();
     };
 
     if (selectedId !== null) {
@@ -127,7 +125,7 @@ export default function Gallery() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.1 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#FCFCFC]"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#FCFCFC]/90 backdrop-blur-sm"
         >
           <div
             onClick={closeModal}
@@ -192,7 +190,7 @@ export default function Gallery() {
                 key={image.src}
                 onClick={() => handleImageClick(index)}
                 className={cn(
-                  "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative",
+                  "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative cursor-pointer",
                   "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
                   "md:hover:translate-y-[-2px] md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
                   isContained ? "bg-zinc-50" : "bg-zinc-100/30"
