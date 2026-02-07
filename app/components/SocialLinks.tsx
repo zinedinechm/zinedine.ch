@@ -50,7 +50,7 @@ export default function SocialLinks() {
       className="flex gap-[14px] md:gap-0 relative items-center md:-ml-3.5 social-links-container"
     >
       {/* Hover blob - desktop only */}
-      <div
+      {/* <div
         className={cn(
           "hidden md:block absolute bg-zinc-50 rounded-full pointer-events-none",
           "transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
@@ -62,7 +62,7 @@ export default function SocialLinks() {
           height: "100%",
           top: "0",
         }}
-      />
+      /> */}
 
       {socialLinks.map((link) => (
         <a

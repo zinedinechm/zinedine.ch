@@ -41,16 +41,32 @@
     { "src": "/gallery/frame-random.png", "alt": "frame-random" }
   ],
   "gallery": [
-    { "src": "/gallery/Update Capsule.png", "alt": "Update Capsule", "fullSrc": "/gallery/Update Capsule.png" },
+    {
+      "src": "/gallery/Update Capsule.png",
+      "alt": "Update Capsule",
+      "fullSrc": "/gallery/Update Capsule.png"
+    },
     { "src": "/gallery/newyuhajbc-home.png", "alt": "newyuhajbc-home" },
     { "src": "/gallery/shot-13.png", "alt": "shot-13" },
-    { "src": "/gallery/Update Pump.png", "alt": "Update Pump", "fullSrc": "/gallery/Update Pump.png" },
+    {
+      "src": "/gallery/Update Pump.png",
+      "alt": "Update Pump",
+      "fullSrc": "/gallery/Update Pump.png"
+    },
     { "src": "/gallery/contributor-view.png", "alt": "contributor-view" },
     { "src": "/gallery/shot-12.png", "alt": "shot-12" },
     { "src": "/gallery/ecomflow_new.png", "alt": "ecomflow_new" },
     { "src": "/gallery/frame-random.png", "alt": "frame-random" },
-    { "src": "/gallery/Update Wallet.png", "alt": "Update Wallet", "fullSrc": "/gallery/Update Wallet.png" },
-    { "src": "/gallery/Update S37.png", "alt": "Update S37", "fullSrc": "/gallery/Update S37.png" },
+    {
+      "src": "/gallery/Update Wallet.png",
+      "alt": "Update Wallet",
+      "fullSrc": "/gallery/Update Wallet.png"
+    },
+    {
+      "src": "/gallery/Update S37.png",
+      "alt": "Update S37",
+      "fullSrc": "/gallery/Update S37.png"
+    },
     { "src": "/gallery/frame-457.png", "alt": "frame-457" }
   ]
 }
