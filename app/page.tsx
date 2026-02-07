@@ -14,7 +14,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#FCFCFC] relative">
       <Header />
       {/* Hero Section */}
-      <section className="pt-26 md:pt-[120px] pb-22 md:pb-[90px] px-6">
+      <section className="pt-22 md:pt-[120px] pb-22 md:pb-[90px] px-6">
         <motion.div
           initial={fadeInUp.initial}
           animate={fadeInUp.animate}
