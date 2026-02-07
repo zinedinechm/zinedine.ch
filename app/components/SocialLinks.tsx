@@ -72,7 +72,10 @@ export default function SocialLinks() {
           rel={
             link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"
           }
-          className="social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative"
+          className={cn(
+            "social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative",
+            (link.name === "Twitter" || link.name === "Github") && "hidden md:block"
+          )}
           onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
