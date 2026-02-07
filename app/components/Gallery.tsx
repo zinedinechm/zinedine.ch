@@ -158,7 +158,6 @@ export default function Gallery() {
                   transition={{
                     duration: 0.7,
                     ease: EASING.smooth,
-                    exit: { duration: 0.2 },
                   }}
                   className="cursor-default"
                 >
