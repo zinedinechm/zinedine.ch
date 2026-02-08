@@ -38,7 +38,7 @@ export default function Home() {
 
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600 mt-5 md:mt-0">
               I care deeply about craft and solving problems through design from
-              0-to-1.
+              0 → 1.
               <br />
               Feel free to reach out for more information at{" "}
               <a
