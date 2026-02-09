@@ -129,7 +129,7 @@ export default function Gallery() {
         >
           <div
             onClick={closeModal}
-            className="w-full h-full flex items-center justify-center p-10 md:p-20 overflow-hidden"
+            className="w-full h-full flex items-center justify-center p-10 md:p-20 overflow-hidden cursor-pointer"
           >
             <AnimatePresence initial custom={direction} mode="popLayout">
               <motion.div
@@ -148,7 +148,7 @@ export default function Gallery() {
                       }
                     : { duration: 0.25, ease: EASING.smooth }
                 }
-                className="relative w-full max-w-[1200px]"
+                className="relative w-full max-w-[1320px]"
                 onClick={stopPropagation}
               >
                 <motion.div
