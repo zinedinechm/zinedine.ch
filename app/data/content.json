@@ -42,30 +42,30 @@
   ],
   "gallery": [
     {
-      "src": "/gallery/Update Capsule.png",
-      "alt": "Update Capsule",
-      "fullSrc": "/gallery/Update Capsule.png"
+      "src": "/gallery/new-cap.png",
+      "alt": "New Cap",
+      "fullSrc": "/gallery/new-cap.png"
     },
     { "src": "/gallery/ost-home.png", "alt": "OST Home" },
     { "src": "/gallery/shot-13.png", "alt": "shot-13" },
     {
-      "src": "/gallery/Update Pump.png",
-      "alt": "Update Pump",
-      "fullSrc": "/gallery/Update Pump.png"
+      "src": "/gallery/new-pump.png",
+      "alt": "New Pump",
+      "fullSrc": "/gallery/new-pump.png"
     },
     { "src": "/gallery/contributor-view.png", "alt": "contributor-view" },
     { "src": "/gallery/vz-illu.png", "alt": "vz-illu" },
     { "src": "/gallery/ecomflow_new.png", "alt": "ecomflow_new" },
     { "src": "/gallery/ost-illu.png", "alt": "OST Illu" },
     {
-      "src": "/gallery/Update Wallet.png",
-      "alt": "Update Wallet",
-      "fullSrc": "/gallery/Update Wallet.png"
+      "src": "/gallery/new-wallet.png",
+      "alt": "New Wallet",
+      "fullSrc": "/gallery/new-wallet.png"
     },
     {
-      "src": "/gallery/Update S37.png",
-      "alt": "Update S37",
-      "fullSrc": "/gallery/Update S37.png"
+      "src": "/gallery/new-s37.png",
+      "alt": "New S37",
+      "fullSrc": "/gallery/new-s37.png"
     },
     { "src": "/gallery/frame-457.png", "alt": "frame-457" }
   ]
