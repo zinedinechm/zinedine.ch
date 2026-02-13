@@ -86,21 +86,21 @@ export default function SocialLinks() {
                 {copied ? (
                   <motion.span
                     key="copied"
-                    initial={{ opacity: 0, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, filter: "blur(4px)" }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="flex items-center justify-center w-full"
+                    initial={{ opacity: 0, filter: "blur(8px)", y: -8 }}
+                    animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                    exit={{ opacity: 0, filter: "blur(8px)", y: 8 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="flex items-center justify-center w-full whitespace-nowrap"
                   >
                     Copied
                   </motion.span>
                 ) : (
                   <motion.span
                     key="email"
-                    initial={{ opacity: 0, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, filter: "blur(4px)" }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    initial={{ opacity: 0, filter: "blur(8px)", y: -8 }}
+                    animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+                    exit={{ opacity: 0, filter: "blur(8px)", y: 8 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
                     className="flex items-center justify-center w-full whitespace-nowrap"
                   >
                     Copy Email
