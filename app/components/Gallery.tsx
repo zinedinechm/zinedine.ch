@@ -125,7 +125,7 @@ export default function Gallery() {
           animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
           exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#FCFCFC]/90"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/70"
         >
           <div
             onClick={closeModal}

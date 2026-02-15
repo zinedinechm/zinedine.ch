@@ -11,7 +11,7 @@ const siteContent = content as SiteContent;
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#FCFCFC] relative">
+    <main className="min-h-screen bg-white relative">
       <Header />
       {/* Hero Section */}
       <section className="pt-26 md:pt-[120px] pb-16 md:pb-[78px] px-6">
@@ -45,14 +45,14 @@ export default function Home() {
                 href="https://x.com/zinedinechm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 underline decoration-zinc-200 decoration-[0.5px] underline-offset-4 hover:text-zinc-500 transition-colors"
+                className="text-zinc-400 hover:text-zinc-500 transition-colors"
               >
                 @zinedinechm
               </a>{" "}
               or{" "}
               <a
                 href="mailto:contact@zinedine.ch"
-                className="text-zinc-400 underline decoration-zinc-200 decoration-[0.5px] underline-offset-4 hover:text-zinc-500 transition-colors"
+                className="text-zinc-400 hover:text-zinc-500 transition-colors"
               >
                 contact@zinedine.ch
               </a>

@@ -5,7 +5,7 @@ import SocialLinks from "./SocialLinks";
 export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pt-6 px-6 h-[120px] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FCFCFC] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent pointer-events-none" />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

@@ -1,10 +1,10 @@
 {
-  "greeting": "Hi, bonjour, こんにちは",
+  "greeting": "Hi, bonjour, \u3053\u3093\u306b\u3061\u306f",
   "name": "Zinedine Chami",
   "bio": "I'm Zinedine, a 22 year-old design engineer, born in London and based in Paris, building software interfaces, visual identities and everything in between.",
   "companies": [
     {
-      "name": "Châtaigne.ai",
+      "name": "Ch\u00e2taigne.ai",
       "url": "https://chataigne.ai/"
     },
     {
@@ -28,13 +28,34 @@
     }
   ],
   "slideshow": [
-    { "src": "/gallery/shot-16.png", "alt": "shot-16" },
-    { "src": "/gallery/shot-15.png", "alt": "shot-15" },
-    { "src": "/gallery/shot-14.png", "alt": "shot-14" },
-    { "src": "/gallery/shot-13.png", "alt": "shot-13" },
-    { "src": "/gallery/vz-illu.png", "alt": "vz-illu" },
-    { "src": "/gallery/design_shot_s37.png", "alt": "design_shot_s37" },
-    { "src": "/gallery/frame-random.png", "alt": "frame-random" }
+    {
+      "src": "/gallery/shot-16.png",
+      "alt": "shot-16"
+    },
+    {
+      "src": "/gallery/shot-15.png",
+      "alt": "shot-15"
+    },
+    {
+      "src": "/gallery/shot-14.png",
+      "alt": "shot-14"
+    },
+    {
+      "src": "/gallery/shot-13.png",
+      "alt": "shot-13"
+    },
+    {
+      "src": "/gallery/vz-illu.png",
+      "alt": "vz-illu"
+    },
+    {
+      "src": "/gallery/design_shot_s37.png",
+      "alt": "design_shot_s37"
+    },
+    {
+      "src": "/gallery/frame-random.png",
+      "alt": "frame-random"
+    }
   ],
   "gallery": [
     {
@@ -42,17 +63,36 @@
       "alt": "New Cap",
       "fullSrc": "/gallery/new-cap.png"
     },
-    { "src": "/gallery/ost-home.png", "alt": "OST Home" },
-    { "src": "/gallery/shot-13.png", "alt": "shot-13" },
+    {
+      "src": "/gallery/ost-home.png",
+      "alt": "OST Home"
+    },
+    {
+      "src": "/gallery/cluely-new.png",
+      "alt": "Cluely",
+      "fullSrc": "/gallery/cluely-new.png"
+    },
     {
       "src": "/gallery/new-pump-2.png",
       "alt": "New Pump",
       "fullSrc": "/gallery/new-pump-2.png"
     },
-    { "src": "/gallery/contributor-view.png", "alt": "contributor-view" },
-    { "src": "/gallery/vz-illu.png", "alt": "vz-illu" },
-    { "src": "/gallery/ecomflow_new.png", "alt": "ecomflow_new" },
-    { "src": "/gallery/ost-illu.png", "alt": "OST Illu" },
+    {
+      "src": "/gallery/contributor-view.png",
+      "alt": "contributor-view"
+    },
+    {
+      "src": "/gallery/vz-illu.png",
+      "alt": "vz-illu"
+    },
+    {
+      "src": "/gallery/ecomflow_new.png",
+      "alt": "ecomflow_new"
+    },
+    {
+      "src": "/gallery/ost-illu.png",
+      "alt": "OST Illu"
+    },
     {
       "src": "/gallery/new-wallet-2.png",
       "alt": "New Wallet",
@@ -63,6 +103,9 @@
       "alt": "New S37",
       "fullSrc": "/gallery/new-s37.png"
     },
-    { "src": "/gallery/frame-457.png", "alt": "frame-457" }
+    {
+      "src": "/gallery/frame-457.png",
+      "alt": "frame-457"
+    }
   ]
 }
