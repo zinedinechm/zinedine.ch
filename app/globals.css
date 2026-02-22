@@ -56,13 +56,13 @@ body {
 }
 
 ::selection {
-  background: #dbeafe !important; /* tailwind blue-100 */
-  color: #2563eb !important; /* tailwind blue-600 */
+  background: #fefce8 !important; /* yellow-50 */
+  color: #eab308 !important; /* yellow-500 */
 }
 
 ::-moz-selection {
-  background: #dbeafe !important;
-  color: #2563eb !important;
+  background: #fefce8 !important;
+  color: #eab308 !important;
 }
 
 /* Link hover animation */
