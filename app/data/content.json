@@ -45,7 +45,7 @@
       "alt": "shot-13"
     },
     {
-      "src": "/gallery/vz-illu.png",
+      "src": "/gallery/design-shot-6.png",
       "alt": "vz-illu"
     },
     {
@@ -59,53 +59,61 @@
   ],
   "gallery": [
     {
-      "src": "/gallery/new-cap.png",
-      "alt": "New Cap",
-      "fullSrc": "/gallery/new-cap.png"
+      "src": "/gallery/design-shot-1.png",
+      "alt": "Design Shot 1",
+      "fullSrc": "/gallery/design-shot-1.png"
     },
     {
-      "src": "/gallery/ost-home.png",
-      "alt": "OST Home"
+      "src": "/gallery/design-shot-2.png",
+      "alt": "Design Shot 2"
     },
     {
-      "src": "/gallery/cluely-new.png",
-      "alt": "Cluely",
-      "fullSrc": "/gallery/cluely-new.png"
+      "src": "/gallery/design-shot-3.png",
+      "alt": "Design Shot 3",
+      "fullSrc": "/gallery/design-shot-3.png"
     },
     {
-      "src": "/gallery/new-pump-2.png",
-      "alt": "New Pump",
-      "fullSrc": "/gallery/new-pump-2.png"
+      "src": "/gallery/design-shot-4.png",
+      "alt": "Design Shot 4",
+      "fullSrc": "/gallery/design-shot-4.png"
     },
     {
-      "src": "/gallery/contributor-view.png",
-      "alt": "contributor-view"
+      "src": "/gallery/design-shot-5.png",
+      "alt": "Design Shot 5"
     },
     {
-      "src": "/gallery/vz-illu.png",
-      "alt": "vz-illu"
+      "src": "/gallery/design-shot-6.png",
+      "alt": "Design Shot 6"
     },
     {
-      "src": "/gallery/ecomflow_new.png",
-      "alt": "ecomflow_new"
+      "src": "/gallery/design-shot-7.png",
+      "alt": "Design Shot 7"
     },
     {
-      "src": "/gallery/ost-illu.png",
-      "alt": "OST Illu"
+      "src": "/gallery/design-shot-8.png",
+      "alt": "Design Shot 8"
     },
     {
-      "src": "/gallery/new-wallet-2.png",
-      "alt": "New Wallet",
-      "fullSrc": "/gallery/new-wallet-2.png"
+      "src": "/gallery/design-shot-9.png",
+      "alt": "Design Shot 9",
+      "fullSrc": "/gallery/design-shot-9.png"
     },
     {
-      "src": "/gallery/new-s37.png",
-      "alt": "New S37",
-      "fullSrc": "/gallery/new-s37.png"
+      "src": "/gallery/design-shot-10.png",
+      "alt": "Design Shot 10",
+      "fullSrc": "/gallery/design-shot-10.png"
     },
     {
-      "src": "/gallery/frame-457.png",
-      "alt": "frame-457"
+      "src": "/gallery/design-shot-11.png",
+      "alt": "Design Shot 11"
+    },
+    {
+      "src": "/gallery/final_mobilemeth.png",
+      "alt": "Design Shot 12"
+    },
+    {
+      "src": "/gallery/Final_desmethod.png",
+      "alt": "Design Shot 13"
     }
   ]
 }
