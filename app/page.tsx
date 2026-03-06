@@ -43,14 +43,14 @@ export default function Home() {
                 href="https://x.com/zinedinechm"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-zinc-400 hover:text-zinc-500 transition-colors"
+                className="text-zinc-500 hover:text-zinc-600 transition-colors"
               >
                 @zinedinechm
               </a>{" "}
               or{" "}
               <a
                 href="mailto:contact@zinedine.ch"
-                className="text-zinc-400 hover:text-zinc-500 transition-colors"
+                className="text-zinc-500 hover:text-zinc-600 transition-colors"
               >
                 contact@zinedine.ch
               </a>
