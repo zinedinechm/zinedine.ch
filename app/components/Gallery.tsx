@@ -40,6 +40,7 @@ export default function Gallery() {
     getServerSnapshot,
   );
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [isClosing, setIsClosing] = useState(false);
   const [direction, setDirection] = useState(0);
   const [hoveredRect, setHoveredRect] = useState<HoverRect | null>(null);
   const controlsRef = useRef<HTMLDivElement>(null);
@@ -83,8 +84,15 @@ export default function Gallery() {
   }, []);
 
   const closeModal = useCallback(() => {
-    setSelectedId(null);
+    setIsClosing(true);
   }, []);
+
+  const handleImageExitComplete = useCallback(() => {
+    if (isClosing) {
+      setSelectedId(null);
+      setIsClosing(false);
+    }
+  }, [isClosing]);
 
   // Prevent scroll when modal is open and handle keyboard navigation
   useEffect(() => {
@@ -122,59 +130,79 @@ export default function Gallery() {
         <motion.div
           key="modal"
           initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-          animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
-          exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          animate={{
+            opacity: isClosing ? 0 : 1,
+            backdropFilter: isClosing ? "blur(0px)" : "blur(4px)",
+            transition: { duration: isClosing ? 0.4 : 0.3, ease: "easeInOut" },
+          }}
+          exit={{
+            opacity: 0,
+            backdropFilter: "blur(0px)",
+            transition: { duration: 0.1, ease: "easeOut" },
+          }}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/70"
         >
           <div
             onClick={closeModal}
             className="w-full h-full flex items-center justify-center p-10 md:p-20 overflow-hidden cursor-pointer"
           >
-            <AnimatePresence initial custom={direction} mode="popLayout">
-              <motion.div
-                key={selectedId}
-                custom={direction}
-                variants={galleryModalVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={
-                  direction === 0
-                    ? {
-                        y: { type: "spring", ...SPRING_CONFIG },
-                        scale: { type: "spring", ...SPRING_CONFIG },
-                        opacity: { duration: 0.2 },
-                      }
-                    : { duration: 0.25, ease: EASING.smooth }
-                }
-                className="relative w-full max-w-[1320px]"
-                onClick={stopPropagation}
-              >
+            <AnimatePresence
+              initial
+              custom={direction}
+              mode="popLayout"
+              onExitComplete={handleImageExitComplete}
+            >
+              {!isClosing && (
                 <motion.div
-                  initial={{ filter: "blur(20px)", opacity: 0 }}
-                  animate={{ filter: "blur(0px)", opacity: 1 }}
-                  exit={{ filter: "blur(20px)", opacity: 0 }}
-                  transition={{
-                    duration: 0.7,
-                    ease: EASING.smooth,
-                  }}
-                  className="cursor-default"
+                  key={selectedId}
+                  custom={direction}
+                  variants={galleryModalVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={
+                    direction === 0
+                      ? {
+                          y: { type: "spring", ...SPRING_CONFIG },
+                          scale: { type: "spring", ...SPRING_CONFIG },
+                          opacity: { duration: 0.2 },
+                        }
+                      : { duration: 0.25, ease: EASING.smooth }
+                  }
+                  className="relative w-full max-w-[1320px]"
+                  onClick={stopPropagation}
                 >
-                  <Image
-                    src={
-                      galleryImages[selectedId].fullSrc ||
-                      galleryImages[selectedId].src
-                    }
-                    alt={galleryImages[selectedId].alt}
-                    width={1638}
-                    height={814}
-                    className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-200/70"
-                    priority={true}
-                    quality={100}
-                  />
+                  <motion.div
+                    initial={{ filter: "blur(20px)", opacity: 0, y: 12 }}
+                    animate={{
+                      filter: "blur(0px)",
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5, ease: EASING.smooth, delay: 0.15 },
+                    }}
+                    exit={{
+                      filter: "blur(20px)",
+                      opacity: 0,
+                      y: 12,
+                      transition: { duration: 0.55, ease: EASING.smooth, delay: 0 },
+                    }}
+                    className="cursor-default"
+                  >
+                    <Image
+                      src={
+                        galleryImages[selectedId].fullSrc ||
+                        galleryImages[selectedId].src
+                      }
+                      alt={galleryImages[selectedId].alt}
+                      width={1638}
+                      height={814}
+                      className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-200/70"
+                      priority={true}
+                      quality={100}
+                    />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
+              )}
             </AnimatePresence>
           </div>
         </motion.div>
