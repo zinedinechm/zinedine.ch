@@ -55,6 +55,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.root {
+  isolation: isolate;
+}
+
 ::selection {
   background: #fefce8 !important; /* yellow-50 */
   color: #eab308 !important; /* yellow-500 */

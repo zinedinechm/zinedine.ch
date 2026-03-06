@@ -29,11 +29,9 @@ export default function Home() {
           {/* Bio & Social */}
           <div className="space-y-3 md:space-y-3 w-full">
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600">
-              I'm a 22 year-old Design Engineer, born in
-              <br className="md:hidden" /> London and based in Paris, designing
-              and <br className="md:hidden" /> building software interfaces,
-              visual identities <br className="md:hidden" /> and everything in
-              between.
+              I'm a 22 year-old Design Engineer, born in London and based in
+              Paris, working across software products bridging the gap between
+              the design <br className="md:hidden" /> and engineering process.
             </p>
 
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600 mt-5 md:mt-0">
