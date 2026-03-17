@@ -59,16 +59,6 @@ body {
   isolation: isolate;
 }
 
-::selection {
-  background: #fefce8 !important; /* yellow-50 */
-  color: #eab308 !important; /* yellow-500 */
-}
-
-::-moz-selection {
-  background: #fefce8 !important;
-  color: #eab308 !important;
-}
-
 /* Link hover animation */
 .link-underline,
 .link-underline * {
@@ -101,4 +91,17 @@ body {
 
 .social-link:hover {
   color: var(--foreground);
+}
+
+/* Text selection - blue (override any defaults) */
+::selection,
+*::selection {
+  background-color: #eff6ff !important;
+  color: #3b82f6 !important;
+}
+
+::-moz-selection,
+*::-moz-selection {
+  background-color: #eff6ff !important;
+  color: #3b82f6 !important;
 }

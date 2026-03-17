@@ -30,7 +30,7 @@ export default function Home() {
           <div className="space-y-3 md:space-y-3 w-full">
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600">
               I'm a 22 year-old Design Engineer, born in London and based in
-              Paris, working across software products bridging the gap between
+              France, working on software products bridging the gap between
               the design <br className="md:hidden" /> and engineering process.
             </p>
 

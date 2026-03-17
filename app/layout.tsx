@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/Globe_Fav.png",
+    icon: "/macos-folder-blue.png",
   },
 };
 
