@@ -29,31 +29,25 @@ export default function Home() {
           {/* Bio & Social */}
           <div className="space-y-3 md:space-y-3 w-full">
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600">
-              I'm a 22 year-old Design Engineer, born in London and based in
-              France, working on software products bridging the gap between
+              I'm a 22 year-old Design Engineer, born in{" "}
+              <br className="md:hidden" />
+              London and based in France, working on software products bridging
+              the gap between
               the design <br className="md:hidden" /> and engineering process.
             </p>
 
             <p className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600 mt-5 md:mt-0">
-              I care deeply about craft and solving problems through design from
-              0 → 1.
+              I care deeply about craft and solving{" "}
+              <br className="md:hidden" />
+              problems through design from 0 → 1.
               <br />
-              Feel free to reach out for more information at{" "}
-              <a
-                href="https://x.com/zinedinechm"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-500 hover:text-zinc-600 transition-colors"
-              >
-                @zinedinechm
-              </a>{" "}
-              or{" "}
+              Feel free to reach out for more information and case studies at{" "}
               <a
                 href="mailto:contact@zinedine.ch"
-                className="text-zinc-500 hover:text-zinc-600 transition-colors"
+                className="text-zinc-500 hover:text-foreground transition-colors duration-200 ease-in-out underline decoration-zinc-200 decoration-1 underline-offset-[3px]"
               >
                 contact@zinedine.ch
-              </a>
+              </a>.
             </p>
           </div>
         </motion.div>
