@@ -9,24 +9,17 @@ import {
 } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  XMarkIcon,
-  ChevronUpIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/24/outline";
 import { createPortal } from "react-dom";
 
 import content from "@/app/data/content.json";
 import { cn } from "@/app/lib/utils";
 import {
-  BREAKPOINTS,
-  TIMING,
   EASING,
   SPRING_CONFIG,
   galleryModalVariants,
   CONTAINED_IMAGES,
 } from "@/app/lib/constants";
-import type { HoverRect, ImageItem } from "@/app/types";
+import type { ImageItem } from "@/app/types";
 
 // SSR-safe check for client-side mounting
 const subscribe = () => () => {};
@@ -42,8 +35,7 @@ export default function Gallery() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const [direction, setDirection] = useState(0);
-  const [hoveredRect, setHoveredRect] = useState<HoverRect | null>(null);
-  const controlsRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const galleryImages = content.gallery as ImageItem[];
 
@@ -63,26 +55,6 @@ export default function Gallery() {
     }
   }, [selectedId, galleryImages.length]);
 
-  const handleControlMouseEnter = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const containerRect = controlsRef.current?.getBoundingClientRect();
-
-      if (containerRect) {
-        setHoveredRect({
-          left: rect.left - containerRect.left,
-          width: rect.width,
-          opacity: 1,
-        });
-      }
-    },
-    [],
-  );
-
-  const handleControlMouseLeave = useCallback(() => {
-    setHoveredRect((prev) => (prev ? { ...prev, opacity: 0 } : null));
-  }, []);
-
   const closeModal = useCallback(() => {
     setIsClosing(true);
   }, []);
@@ -98,6 +70,8 @@ export default function Gallery() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
     };
 
     if (selectedId !== null) {
@@ -114,11 +88,36 @@ export default function Gallery() {
   }, [selectedId, handleNext, handlePrev, closeModal]);
 
   const handleImageClick = useCallback((index: number) => {
-    if (window.innerWidth >= BREAKPOINTS.md) {
-      setDirection(0);
-      setSelectedId(index);
-    }
+    setDirection(0);
+    setSelectedId(index);
   }, []);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (!touchStartRef.current) return;
+      const touch = e.changedTouches[0];
+      const dx = touch.clientX - touchStartRef.current.x;
+      const dy = touch.clientY - touchStartRef.current.y;
+      touchStartRef.current = null;
+
+      // Swipe down to close (must be more vertical than horizontal)
+      if (dy > 60 && Math.abs(dy) > Math.abs(dx)) {
+        closeModal();
+        return;
+      }
+      // Swipe left/right to navigate
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) handleNext();
+        else handlePrev();
+      }
+    },
+    [closeModal, handleNext, handlePrev],
+  );
 
   const stopPropagation = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -144,7 +143,9 @@ export default function Gallery() {
         >
           <div
             onClick={closeModal}
-            className="w-full h-full flex items-center justify-center p-10 md:p-20 overflow-hidden cursor-pointer"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            className="w-full h-full flex items-center justify-center p-6 md:p-20 overflow-hidden cursor-pointer"
           >
             <AnimatePresence
               initial

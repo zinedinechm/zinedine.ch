@@ -74,7 +74,7 @@ export default function SocialLinks() {
           }
           className={cn(
             "social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative",
-            link.name === "Copy Email" && "hidden md:flex",
+            link.name === "Copy Email" && "flex",
           )}
           onClick={(e) => handleEmailClick(e, link.url)}
           onMouseEnter={handleMouseEnter}
