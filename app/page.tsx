@@ -37,7 +37,7 @@ export default function Home() {
             >
               I'm a 22 year-old Design Engineer, born in{" "}
               <br className="md:hidden" />
-              London and based in France, working on software products bridging
+              London and based in Paris, working on software products bridging
               the gap between
               the design <br className="md:hidden" /> and engineering process.
             </motion.p>

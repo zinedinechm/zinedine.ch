@@ -28,14 +28,15 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="mt-1.5 md:mt-[30px] mb-1 h-[54px] flex items-center justify-end">
+    <footer className="mt-[14px] md:mt-[30px] mb-1 min-h-[52px] flex items-center justify-between gap-4 text-[11px] md:text-xs text-zinc-500">
+      <span className="leading-snug">Designed by Zinedine in Paris</span>
       <svg
         width="201"
         height="90"
         viewBox="0 0 201 90"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-[54px] w-auto text-zinc-500/50"
+        className="h-[52px] w-auto shrink-0 text-zinc-500/50"
         aria-label="Zinedine Chami signature"
       >
         <path
