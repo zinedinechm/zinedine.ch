@@ -2,9 +2,9 @@ import * as motion from "framer-motion/client";
 
 import content from "@/app/data/content.json";
 import type { SiteContent } from "@/app/types";
-import SocialLinks from "@/app/components/SocialLinks";
 import Gallery from "@/app/components/Gallery";
 import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 const blurIn = (delay: number) => ({
   initial: { opacity: 0, filter: "blur(8px)", y: 6 },
@@ -73,8 +73,7 @@ export default function Home() {
         <div className="max-w-[620px] mx-auto">
           <Gallery />
 
-          {/* Footer Text */}
-          <div className="mt-14 md:mt-20 pb-1 text-zinc-500 text-[10px] md:text-xs leading-[1.95] md:leading-[1.75]"></div>
+          <Footer />
         </div>
       </motion.section>
     </main>
