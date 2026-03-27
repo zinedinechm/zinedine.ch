@@ -4,32 +4,61 @@ import { useEffect, useRef } from "react";
 
 export default function Footer() {
   const pathRef = useRef<SVGPathElement>(null);
+  const spanRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const path = pathRef.current;
-    if (!path) return;
+    const span = spanRef.current;
+    if (!path || !span) return;
 
     const length = path.getTotalLength();
-    path.style.strokeDasharray = `${length}`;
-    path.style.strokeDashoffset = `${length}`;
+
+    const resetPath = () => {
+      path.style.transition = "none";
+      path.style.strokeDasharray = `${length}`;
+      path.style.strokeDashoffset = `${length}`;
+    };
+
+    const resetSpan = () => {
+      span.style.transition = "none";
+      span.style.opacity = "0";
+      span.style.filter = "blur(6px)";
+    };
+
+    resetPath();
+    resetSpan();
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          path.style.transition = "stroke-dashoffset 2s cubic-bezier(0.37, 0, 0.63, 1)";
-          path.style.strokeDashoffset = "0";
-          observer.disconnect();
+          // Animate path draw
+          requestAnimationFrame(() => {
+            path.style.transition = "stroke-dashoffset 2s cubic-bezier(0.37, 0, 0.63, 1)";
+            path.style.strokeDashoffset = "0";
+          });
+          // Animate span blur-in
+          requestAnimationFrame(() => {
+            span.style.transition = "opacity 0.7s ease, filter 0.7s ease";
+            span.style.opacity = "1";
+            span.style.filter = "blur(0px)";
+          });
+        } else {
+          resetPath();
+          resetSpan();
         }
       },
       { threshold: 0.3 },
     );
-    observer.observe(path.closest("svg") ?? path);
+
+    const svg = path.closest("svg") ?? path;
+    observer.observe(svg);
+
     return () => observer.disconnect();
   }, []);
 
   return (
     <footer className="mt-[14px] md:mt-[30px] mb-1 min-h-[52px] flex items-center justify-between gap-4 text-[11px] md:text-xs text-zinc-500">
-      <span className="leading-snug">Designed by Zinedine in Paris</span>
+      <span ref={spanRef} className="leading-snug" style={{ opacity: 0, filter: "blur(6px)" }}>Designed by Zinedine in Paris</span>
       <svg
         width="201"
         height="90"
