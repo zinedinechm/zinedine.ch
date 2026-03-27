@@ -145,7 +145,7 @@ export default function Gallery() {
             onClick={closeModal}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            className="w-full h-full flex items-center justify-center p-6 md:p-20 overflow-hidden cursor-pointer"
+            className="w-full h-full flex items-center justify-center px-2 py-6 md:p-20 overflow-hidden cursor-pointer"
           >
             <AnimatePresence
               initial
@@ -170,7 +170,7 @@ export default function Gallery() {
                         }
                       : { duration: 0.25, ease: EASING.smooth }
                   }
-                  className="relative w-full max-w-[1320px]"
+                  className="relative w-[98%] md:w-full max-w-[1320px]"
                   onClick={stopPropagation}
                 >
                   <motion.div
