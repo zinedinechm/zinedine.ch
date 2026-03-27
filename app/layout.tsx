@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
+import SmoothScroll from "@/app/components/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/macos-folder-blue.png",
+    icon: "/Globe_Fav.png",
   },
 };
 
@@ -58,7 +59,9 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="root">{children}</div>
+        <SmoothScroll>
+          <div className="root">{children}</div>
+        </SmoothScroll>
       </body>
     </html>
   );

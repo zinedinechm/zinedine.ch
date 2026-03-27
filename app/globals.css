@@ -93,15 +93,15 @@ body {
   color: var(--foreground);
 }
 
-/* Text selection - blue (override any defaults) */
+/* Text selection - pink (override any defaults) */
 ::selection,
 *::selection {
-  background-color: #eff6ff !important;
-  color: #3b82f6 !important;
+  background-color: rgba(253, 242, 248, 0.5) !important;
+  color: #ec4899 !important;
 }
 
 ::-moz-selection,
 *::-moz-selection {
-  background-color: #eff6ff !important;
-  color: #3b82f6 !important;
+  background-color: rgba(253, 242, 248, 0.5) !important;
+  color: #ec4899 !important;
 }
