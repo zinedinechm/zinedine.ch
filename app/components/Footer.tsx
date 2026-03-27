@@ -1,40 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import {
-  SunIcon,
-  MoonIcon,
-  CloudIcon,
-  BoltIcon,
-  SparklesIcon,
-} from "@heroicons/react/24/solid";
-
-
-function WeatherIcon({
-  code,
-  isDay,
-}: {
-  code: number;
-  isDay: boolean;
-}) {
-  const cls = "w-[13px] h-[13px]";
-
-  if (code === 0) return isDay ? <SunIcon className={cls} /> : <MoonIcon className={cls} />;
-  if (code <= 3) return <CloudIcon className={cls} />;
-  if (code <= 48) return <CloudIcon className={cls} />;
-  if (code <= 67) return <CloudIcon className={cls} />;
-  if (code <= 77) return <SparklesIcon className={cls} />;
-  return <BoltIcon className={cls} />;
-}
-
-interface WeatherData {
-  temp: number;
-  code: number;
-  isDay: boolean;
-}
+import { useEffect, useRef } from "react";
 
 export default function Footer() {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
   const pathRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
@@ -59,49 +27,22 @@ export default function Footer() {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    fetch(
-      "https://api.open-meteo.com/v1/forecast?latitude=48.8566&longitude=2.3522&current=temperature_2m,weather_code,is_day&temperature_unit=celsius",
-    )
-      .then((r) => r.json())
-      .then((data) =>
-        setWeather({
-          temp: Math.round(data.current.temperature_2m),
-          code: data.current.weather_code,
-          isDay: data.current.is_day === 1,
-        }),
-      )
-      .catch(() => {});
-  }, []);
-
   return (
-    <footer className="mt-6 md:mt-12 mb-1 h-[56px] flex items-center justify-between text-zinc-500 text-[11px] md:text-xs">
-      <span className="flex items-center gap-1.5 text-[13px] md:text-[14px]">
-        {weather !== null && (
-          <span className="flex items-center gap-1.5">
-            <WeatherIcon code={weather.code} isDay={weather.isDay} />
-            <span className="flex items-center gap-1">
-              <span className="font-medium">{weather.temp}°C</span>
-              <span className="opacity-30">·</span>
-              <span className="font-medium">Paris, France</span>
-            </span>
-          </span>
-        )}
-      </span>
+    <footer className="mt-1.5 md:mt-[30px] mb-1 h-[54px] flex items-center justify-end">
       <svg
         width="201"
         height="90"
         viewBox="0 0 201 90"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-[56px] w-auto text-zinc-500/60"
+        className="h-[54px] w-auto text-zinc-500/50"
         aria-label="Zinedine Chami signature"
       >
         <path
           ref={pathRef}
           d="M92.2996 1C75.4111 23.2858 58.5225 45.5716 64.8786 58.3067C71.2348 71.0418 101.347 73.5508 121.401 71.6701C141.454 69.7895 150.536 63.4432 157.365 57.9601C164.194 52.477 168.496 48.0493 171.589 44.1449C174.681 40.2406 176.434 36.9936 176.858 34.4354C177.283 31.8772 176.327 30.1062 172.011 29.3414C167.695 28.5766 160.047 28.8718 148.938 30.7211C137.828 32.5704 123.489 35.965 99.9304 43.8386C76.3719 51.7122 44.0286 63.962 25.3754 71.3056C6.72212 78.6493 2.73896 80.7155 1.404 81.8537C0.0690416 82.9919 1.50298 83.1395 14.0318 80.2638C26.5607 77.3881 50.141 71.4845 56.0746 68.4433C62.0083 65.4021 49.5809 65.4021 39.1957 66.14C28.8105 66.878 20.8442 68.3539 16.9794 69.188C13.1145 70.0221 13.5925 70.1696 21.9643 70.0243C30.3362 69.8789 46.5875 69.4362 62.607 67.8798C78.6266 66.3234 93.9219 63.6668 101.403 63.0362C108.884 62.4056 108.087 63.8815 106.96 67.5198C104.074 76.8329 102.921 84.763 103.957 87.5962C104.993 88.5108 107.064 88.3632 122.869 81.7933C138.673 75.2234 168.149 62.2357 199 49.3016"
           stroke="currentColor"
-          strokeWidth="1.2"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="bevel"
         />
