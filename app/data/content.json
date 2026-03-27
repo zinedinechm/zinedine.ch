@@ -20,7 +20,7 @@
     },
     {
       "name": "Twitter",
-      "url": "https://x.com/zinedinechm"
+      "url": "https://x.com/intent/follow?screen_name=zinedinechm"
     },
     {
       "name": "Linkedin",
@@ -99,16 +99,16 @@
       "fullSrc": "/gallery/New_S379999.png"
     },
     {
-      "src": "/gallery/design-shot-11.png",
-      "alt": "Design Shot 11"
+      "src": "/gallery/New_Dash777.png",
+      "alt": "Design Shot 12"
     },
     {
       "src": "/gallery/design-shot-9.png",
       "alt": "Design Shot 9"
     },
     {
-      "src": "/gallery/New_Dash777.png",
-      "alt": "Design Shot 12"
+      "src": "/gallery/design-shot-11.png",
+      "alt": "Design Shot 11"
     }
   ]
 }
