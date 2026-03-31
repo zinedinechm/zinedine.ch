@@ -19,12 +19,12 @@
       "url": "mailto:contact@zinedine.ch"
     },
     {
-      "name": "Twitter",
-      "url": "https://x.com/intent/follow?screen_name=zinedinechm"
-    },
-    {
       "name": "Linkedin",
       "url": "https://www.linkedin.com/in/zine-chm/"
+    },
+    {
+      "name": "Twitter",
+      "url": "https://x.com/intent/follow?screen_name=zinedinechm"
     }
   ],
   "slideshow": [
