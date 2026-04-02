@@ -58,7 +58,12 @@ export default function Footer() {
 
   return (
     <footer className="mt-[14px] md:mt-[30px] mb-1 min-h-[52px] flex items-center justify-between gap-4 text-[11px] md:text-xs text-zinc-500">
-      <span ref={spanRef} className="leading-snug" style={{ opacity: 0, filter: "blur(6px)" }}>Designed by Zinedine in Paris</span>
+      <span ref={spanRef} className="leading-snug flex-1 min-w-0 mr-0 md:mr-[122px]" style={{ opacity: 0, filter: "blur(6px)" }}>
+        All featured designs were created by Zinedine Chami,
+        <span className="md:hidden"> </span>
+        <br className="hidden md:block" />
+        including production, conceptual, and exploratory work.
+      </span>
       <svg
         width="201"
         height="90"
