@@ -19,7 +19,7 @@ export default function Home() {
     <main className="min-h-screen bg-white relative">
       <Header />
       {/* Hero Section */}
-      <section className="pt-26 md:pt-[120px] pb-16 md:pb-[78px] px-6">
+      <section className="pt-26 md:pt-[120px] pb-16 md:pb-[74px] px-6">
         <div className="max-w-[620px] ml-0 mr-auto md:mx-auto w-[330px] md:w-full">
           {/* Greeting */}
           <motion.p
