@@ -70,8 +70,8 @@ export default function Gallery() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowRight") handleNext();
-      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowDown") handleNext();
+      if (e.key === "ArrowUp") handlePrev();
     };
 
     if (selectedId !== null) {
