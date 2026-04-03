@@ -34,26 +34,9 @@ export default function Gallery() {
   );
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
-  const [direction, setDirection] = useState(0);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const galleryImages = content.gallery as ImageItem[];
-
-  const handleNext = useCallback(() => {
-    if (selectedId !== null) {
-      setDirection(1);
-      setSelectedId((selectedId + 1) % galleryImages.length);
-    }
-  }, [selectedId, galleryImages.length]);
-
-  const handlePrev = useCallback(() => {
-    if (selectedId !== null) {
-      setDirection(-1);
-      setSelectedId(
-        (selectedId - 1 + galleryImages.length) % galleryImages.length,
-      );
-    }
-  }, [selectedId, galleryImages.length]);
 
   const closeModal = useCallback(() => {
     setIsClosing(true);
@@ -66,12 +49,10 @@ export default function Gallery() {
     }
   }, [isClosing]);
 
-  // Prevent scroll when modal is open and handle keyboard navigation
+  // Prevent scroll when modal is open; Escape closes
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowDown") handleNext();
-      if (e.key === "ArrowUp") handlePrev();
     };
 
     if (selectedId !== null) {
@@ -85,12 +66,11 @@ export default function Gallery() {
       document.body.style.overflow = "unset";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedId, handleNext, handlePrev, closeModal]);
+  }, [selectedId, closeModal]);
 
   const handleImageClick = useCallback((index: number) => {
     if (typeof window === "undefined") return;
     if (!window.matchMedia("(min-width: 768px)").matches) return;
-    setDirection(0);
     setSelectedId(index);
   }, []);
 
@@ -110,15 +90,9 @@ export default function Gallery() {
       // Swipe down to close (must be more vertical than horizontal)
       if (dy > 60 && Math.abs(dy) > Math.abs(dx)) {
         closeModal();
-        return;
-      }
-      // Swipe left/right to navigate
-      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-        if (dx < 0) handleNext();
-        else handlePrev();
       }
     },
-    [closeModal, handleNext, handlePrev],
+    [closeModal],
   );
 
   const stopPropagation = useCallback((e: React.MouseEvent) => {
@@ -151,27 +125,23 @@ export default function Gallery() {
           >
             <AnimatePresence
               initial
-              custom={direction}
+              custom={0}
               mode="popLayout"
               onExitComplete={handleImageExitComplete}
             >
               {!isClosing && (
                 <motion.div
                   key={selectedId}
-                  custom={direction}
+                  custom={0}
                   variants={galleryModalVariants}
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  transition={
-                    direction === 0
-                      ? {
-                          y: { type: "spring", ...SPRING_CONFIG },
-                          scale: { type: "spring", ...SPRING_CONFIG },
-                          opacity: { duration: 0.2 },
-                        }
-                      : { duration: 0.25, ease: EASING.smooth }
-                  }
+                  transition={{
+                    y: { type: "spring", ...SPRING_CONFIG },
+                    scale: { type: "spring", ...SPRING_CONFIG },
+                    opacity: { duration: 0.2 },
+                  }}
                   className="relative w-[98%] md:w-full max-w-[1320px]"
                   onClick={stopPropagation}
                 >
