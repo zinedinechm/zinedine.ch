@@ -2,14 +2,19 @@
 
 import { useEffect, useRef } from "react";
 
+const lineBlurStyle = { opacity: 0, filter: "blur(6px)" } as const;
+
 export default function Footer() {
   const pathRef = useRef<SVGPathElement>(null);
-  const spanRef = useRef<HTMLSpanElement>(null);
+  const linesContainerRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const path = pathRef.current;
-    const span = spanRef.current;
-    if (!path || !span) return;
+    const container = linesContainerRef.current;
+    if (!path || !container) return;
+
+    const lines = container.querySelectorAll<HTMLSpanElement>("[data-blur-line]");
+    if (lines.length === 0) return;
 
     const length = path.getTotalLength();
 
@@ -19,14 +24,18 @@ export default function Footer() {
       path.style.strokeDashoffset = `${length}`;
     };
 
-    const resetSpan = () => {
-      span.style.transition = "none";
-      span.style.opacity = "0";
-      span.style.filter = "blur(6px)";
+    const resetLines = () => {
+      lines.forEach((line) => {
+        line.style.transition = "none";
+        line.style.opacity = "0";
+        line.style.filter = "blur(6px)";
+      });
     };
 
     resetPath();
-    resetSpan();
+    resetLines();
+
+    const staggerMs = 140;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,15 +45,18 @@ export default function Footer() {
             path.style.transition = "stroke-dashoffset 2s cubic-bezier(0.37, 0, 0.63, 1)";
             path.style.strokeDashoffset = "0";
           });
-          // Animate span blur-in
+          // Blur in each line sequentially
           requestAnimationFrame(() => {
-            span.style.transition = "opacity 0.7s ease, filter 0.7s ease";
-            span.style.opacity = "1";
-            span.style.filter = "blur(0px)";
+            lines.forEach((line, index) => {
+              const delay = `${index * staggerMs}ms`;
+              line.style.transition = `opacity 0.7s ease ${delay}, filter 0.7s ease ${delay}`;
+              line.style.opacity = "1";
+              line.style.filter = "blur(0px)";
+            });
           });
         } else {
           resetPath();
-          resetSpan();
+          resetLines();
         }
       },
       { threshold: 0.3 },
@@ -57,12 +69,16 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="mt-[14px] md:mt-[30px] mb-1 min-h-[52px] flex items-center justify-between gap-4 text-[11px] md:text-xs text-zinc-500">
-      <span ref={spanRef} className="leading-snug flex-1 min-w-0 mr-0 md:mr-[122px]" style={{ opacity: 0, filter: "blur(6px)" }}>
-        All featured designs were created by Zinedine Chami,
+    <footer className="mt-[14px] md:mt-[30px] mb-1 min-h-[52px] flex items-center justify-between gap-4 py-[4px] md:py-0 text-[11px] md:text-xs text-zinc-500">
+      <span ref={linesContainerRef} className="leading-snug flex-1 min-w-0 mr-0 md:mr-[122px]">
+        <span data-blur-line style={lineBlurStyle}>
+          All featured designs were created by Zinedine Chami,
+        </span>
         <span className="md:hidden"> </span>
         <br className="hidden md:block" />
-        including production, conceptual, and exploratory work.
+        <span data-blur-line style={lineBlurStyle}>
+          including production, conceptual, and exploratory work.
+        </span>
       </span>
       <svg
         width="201"
