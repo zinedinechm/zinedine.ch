@@ -59,56 +59,19 @@
   ],
   "gallery": [
     {
-      "src": "/gallery/design-shot-1.png",
-      "alt": "Design Shot 1",
-      "fullSrc": "/gallery/design-shot-1.png"
-    },
-    {
       "src": "/gallery/design-shot-2.png",
-      "alt": "Design Shot 2"
-    },
-    {
-      "src": "/gallery/design-shot-3.png",
-      "alt": "Design Shot 3",
-      "fullSrc": "/gallery/design-shot-3.png"
-    },
-    {
-      "src": "/gallery/design-shot-4.png",
-      "alt": "Design Shot 4",
-      "fullSrc": "/gallery/design-shot-4.png"
-    },
-    {
-      "src": "/gallery/design-shot-5.png",
-      "alt": "Design Shot 5"
-    },
-    {
-      "src": "/gallery/design-shot-6.png",
-      "alt": "Design Shot 6"
-    },
-    {
-      "src": "/gallery/design-shot-7.png",
-      "alt": "Design Shot 7"
-    },
-    {
-      "src": "/gallery/design-shot-8.png",
-      "alt": "Design Shot 8"
+      "alt": "OpenSource Together platform",
+      "fullSrc": "/gallery/design-shot-2.png"
     },
     {
       "src": "/gallery/New_S379999.png",
-      "alt": "Design Shot 10",
+      "alt": "S37 Studio marketing website",
       "fullSrc": "/gallery/New_S379999.png"
     },
     {
       "src": "/gallery/Final_DashDash.png",
-      "alt": "Design Shot 12"
-    },
-    {
-      "src": "/gallery/design-shot-9.png",
-      "alt": "Design Shot 9"
-    },
-    {
-      "src": "/gallery/design-shot-11.png",
-      "alt": "Design Shot 11"
+      "alt": "Creator dashboard",
+      "fullSrc": "/gallery/Final_DashDash.png"
     }
   ]
 }
