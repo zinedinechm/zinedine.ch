@@ -69,8 +69,8 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="mt-[14px] md:mt-[30px] mb-1 min-h-[52px] flex items-center justify-between gap-4 py-[4px] md:py-0 text-[11px] md:text-xs text-zinc-500">
-      <span ref={linesContainerRef} className="leading-snug flex-1 min-w-0 mr-0 md:mr-[122px]">
+    <footer className="mt-[18px] md:mt-[34px] mb-4 md:mb-1 min-h-[52px] flex items-center justify-between gap-4 py-[4px] md:py-0 text-[11px] md:text-xs text-zinc-500">
+      <span ref={linesContainerRef} className="leading-normal flex-1 min-w-0 mr-0 md:mr-[122px]">
         <span data-blur-line style={lineBlurStyle}>
           All featured designs were created by Zinedine Chami,
         </span>

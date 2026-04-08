@@ -70,7 +70,7 @@ export default function Home() {
         transition={{ duration: 0.6, delay: 0.85, ease: "easeOut" }}
         className="pb-4 px-3 md:px-6 relative z-0"
       >
-        <div className="max-w-[620px] mx-auto">
+        <div className="max-w-[620px] mx-auto pb-[22px]">
           <Gallery />
 
           <Footer />

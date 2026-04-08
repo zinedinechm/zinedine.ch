@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
         <SmoothScroll>
           <div className="root">{children}</div>
         </SmoothScroll>
+        <Analytics />
       </body>
     </html>
   );
