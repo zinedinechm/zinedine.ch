@@ -22,6 +22,9 @@
   --muted: #71717a;
   --accent: #18181b;
   --border: #e4e4e7;
+  --selection-bg: rgba(253, 242, 248, 0.5);
+  --selection-fg: #ec4899;
+  --focus-ring: #fdf2f8;
 }
 
 @theme inline {
@@ -96,13 +99,19 @@ body {
 /* Text selection - pink (override any defaults) */
 ::selection,
 *::selection {
-  background-color: rgba(253, 242, 248, 0.5) !important;
-  color: #ec4899 !important;
+  background-color: var(--selection-bg) !important;
+  color: var(--selection-fg) !important;
 }
 
 ::-moz-selection,
 *::-moz-selection {
-  background-color: rgba(253, 242, 248, 0.5) !important;
-  color: #ec4899 !important;
+  background-color: var(--selection-bg) !important;
+  color: var(--selection-fg) !important;
+}
+
+/* Focus rings — project-wide */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
