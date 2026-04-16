@@ -16,7 +16,7 @@ const entrance = {
 };
 
 const baseBtn =
-  "inline-flex cursor-pointer items-center justify-center rounded-full px-3 py-[6px] md:py-[7px] text-xs md:text-sm font-medium transition-colors duration-200 ease-out w-auto shrink-0";
+  "inline-flex cursor-pointer items-center justify-center rounded-full px-3 py-[5px] md:py-[6px] text-xs md:text-sm font-medium transition-colors duration-200 ease-out w-auto shrink-0";
 
 const copyBtnOutline = "border-[0.5px] border-zinc-200/70";
 
