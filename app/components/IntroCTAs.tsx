@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import * as motion from "framer-motion/client";
 
 import { TIMING } from "@/app/lib/constants";
+import { cn } from "@/app/lib/utils";
 
 const CONTACT_EMAIL = "contact@zinedine.ch";
 const CAL_BOOKING_URL = "https://cal.com/zinedinechm";
@@ -16,9 +17,7 @@ const entrance = {
 };
 
 const baseBtn =
-  "inline-flex cursor-pointer items-center justify-center rounded-full px-3 py-[5px] md:py-[6px] text-xs md:text-sm font-medium transition-colors duration-200 ease-out w-auto shrink-0";
-
-const copyBtnOutline = "border-[0.5px] border-zinc-200/70";
+  "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-50 px-3 py-[5px] md:py-[6px] text-xs md:text-sm font-medium text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 w-auto shrink-0";
 
 const copyLabelRoll = {
   initial: { opacity: 0, filter: "blur(8px)", y: -8 },
@@ -46,7 +45,7 @@ export default function IntroCTAs() {
         href={CAL_BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${baseBtn} bg-zinc-900 text-white hover:bg-zinc-800`}
+        className={cn(baseBtn, "bg-zinc-800 text-white hover:bg-zinc-700")}
       >
         Get in touch
       </a>
@@ -54,7 +53,7 @@ export default function IntroCTAs() {
         type="button"
         onClick={copyEmail}
         aria-label={copied ? "Email copied" : `Copy ${CONTACT_EMAIL} to clipboard`}
-        className={`${baseBtn} ${copyBtnOutline} bg-white text-zinc-800 hover:bg-zinc-50 overflow-hidden`}
+        className={`${baseBtn} overflow-hidden`}
       >
         <span className="relative grid min-h-[1.25rem] w-max place-items-center">
           <AnimatePresence mode="wait" initial={false}>
