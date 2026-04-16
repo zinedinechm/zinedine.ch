@@ -61,7 +61,7 @@ export default function Header() {
                 transition={{ duration: 0.26, ease: "easeOut" }}
                 className="block"
               >
-                Recent Work
+                Selected Work
               </motion.span>
             ) : (
               <span className="block">Zinedine Chami</span>
