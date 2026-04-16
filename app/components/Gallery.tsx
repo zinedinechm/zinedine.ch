@@ -187,7 +187,7 @@ export default function Gallery() {
     <>
       <div className="space-y-4 md:space-y-7 group/gallery">
         {/* Gallery grid */}
-        <div className="space-y-[18px] md:space-y-[22px] pb-4">
+        <div className="space-y-[18px] md:space-y-[22px] pb-[52px]">
           {galleryImages.map((image, index) => {
             const isContained = CONTAINED_IMAGES.includes(
               image.alt as (typeof CONTAINED_IMAGES)[number],

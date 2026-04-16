@@ -4,7 +4,7 @@ import content from "@/app/data/content.json";
 import type { SiteContent } from "@/app/types";
 import Gallery from "@/app/components/Gallery";
 import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
+import IntroCTAs from "@/app/components/IntroCTAs";
 
 const blurIn = (delay: number) => ({
   initial: { opacity: 0, filter: "blur(8px)", y: 6 },
@@ -35,9 +35,9 @@ export default function Home() {
               {...blurIn(0.15)}
               className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600"
             >
-              I'm a 22 year-old Design Engineer, born in{" "}
+              I{"'"}m a 22 year-old Design Engineer, born in{" "}
               <br className="md:hidden" />
-              London and based in Paris, working on software products bridging
+              London and based in Paris, working on software products, bridging
               the gap between
               the design <br className="md:hidden" /> and engineering process.
             </motion.p>
@@ -50,15 +50,12 @@ export default function Home() {
               <br className="md:hidden" />
               problems through design from 0 → 1.
               <br />
-              Feel free to reach out for more information and case studies at{" "}
-              <a
-                href="mailto:contact@zinedine.ch"
-                className="text-zinc-500 hover:text-foreground transition-colors duration-200 ease-in-out underline decoration-zinc-200 decoration-1 underline-offset-[3px]"
-              >
-                contact@zinedine.ch
-              </a>.
+              Feel free to inquire, I{"'"}m available for long-term
+              commitments and one-off projects.
             </motion.p>
           </div>
+
+          <IntroCTAs />
         </div>
       </section>
 
@@ -68,12 +65,12 @@ export default function Home() {
         initial={{ opacity: 0, filter: "blur(10px)", y: 8 }}
         animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
         transition={{ duration: 0.6, delay: 0.85, ease: "easeOut" }}
-        className="pb-4 px-3 md:px-6 relative z-0"
+        className="pb-0 relative z-0"
       >
-        <div className="max-w-[620px] mx-auto pb-[22px]">
-          <Gallery />
-
-          <Footer />
+        <div className="px-3 md:px-6">
+          <div className="max-w-[620px] mx-auto pb-0">
+            <Gallery />
+          </div>
         </div>
       </motion.section>
     </main>

@@ -15,16 +15,16 @@
   "interests": "I enjoy building products around artificial intelligence, web3, and online culture from 0-to-1, currently available for one-off projects and long-term commitments.",
   "social": [
     {
-      "name": "Copy Email",
-      "url": "mailto:contact@zinedine.ch"
-    },
-    {
       "name": "Linkedin",
       "url": "https://www.linkedin.com/in/zine-chm/"
     },
     {
       "name": "Twitter",
       "url": "https://x.com/intent/follow?screen_name=zinedinechm"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/zinedinechm"
     }
   ],
   "slideshow": [
