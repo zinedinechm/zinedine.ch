@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { AnimatePresence } from "framer-motion";
 import * as motion from "framer-motion/client";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import { TIMING } from "@/app/lib/constants";
 import { cn } from "@/app/lib/utils";
@@ -26,8 +27,14 @@ const copyLabelRoll = {
   transition: { duration: 0.2, ease: "easeOut" as const },
 };
 
+const ICON_HOVER_TRANSITION = {
+  duration: 0.28,
+  ease: [0.25, 0.1, 0.25, 1] as const,
+};
+
 export default function IntroCTAs() {
   const [copied, setCopied] = useState(false);
+  const [calHover, setCalHover] = useState(false);
 
   const copyEmail = useCallback(() => {
     void navigator.clipboard.writeText(CONTACT_EMAIL).then(() => {
@@ -45,15 +52,34 @@ export default function IntroCTAs() {
         href={CAL_BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className={cn(baseBtn, "bg-zinc-800 text-white hover:bg-zinc-700")}
+        onPointerEnter={() => setCalHover(true)}
+        onPointerLeave={() => setCalHover(false)}
+        className={cn(baseBtn, "bg-zinc-800 text-white hover:bg-zinc-800")}
       >
-        Get in touch
+        <span className="inline-flex items-center">
+          <span className="shrink-0">Get in touch</span>
+          <motion.span
+            aria-hidden
+            className="inline-flex shrink-0 items-center justify-end overflow-hidden text-white"
+            initial={false}
+            animate={{
+              width: calHover ? 18 : 0,
+              marginLeft: calHover ? 4 : 0,
+              opacity: calHover ? 1 : 0,
+              filter: calHover ? "blur(0px)" : "blur(8px)",
+              x: calHover ? 0 : -10,
+            }}
+            transition={ICON_HOVER_TRANSITION}
+          >
+            <ArrowRightIcon className="h-3 w-3 min-h-3 min-w-3 md:h-3.5 md:w-3.5 md:min-h-3.5 md:min-w-3.5" />
+          </motion.span>
+        </span>
       </a>
       <button
         type="button"
         onClick={copyEmail}
         aria-label={copied ? "Email copied" : `Copy ${CONTACT_EMAIL} to clipboard`}
-        className={`${baseBtn} overflow-hidden`}
+        className={baseBtn}
       >
         <span className="relative grid min-h-[1.25rem] w-max place-items-center">
           <AnimatePresence mode="wait" initial={false}>

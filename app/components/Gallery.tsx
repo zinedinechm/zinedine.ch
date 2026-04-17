@@ -21,6 +21,33 @@ import {
 } from "@/app/lib/constants";
 import type { ImageItem } from "@/app/types";
 
+const galleryListVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+const galleryItemVariants = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(12px)",
+    y: 14,
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
+  },
+};
+
 // SSR-safe check for client-side mounting
 const subscribe = () => () => {};
 const getSnapshot = () => true;
@@ -186,16 +213,23 @@ export default function Gallery() {
   return (
     <>
       <div className="space-y-4 md:space-y-7 group/gallery">
-        {/* Gallery grid */}
-        <div className="space-y-[18px] md:space-y-[22px] pb-[52px]">
+        {/* Gallery grid — staggered blur-in per shot */}
+        <motion.div
+          className="space-y-[18px] md:space-y-[22px] pb-[52px]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08, margin: "0px 0px -6% 0px" }}
+          variants={galleryListVariants}
+        >
           {galleryImages.map((image, index) => {
             const isContained = CONTAINED_IMAGES.includes(
               image.alt as (typeof CONTAINED_IMAGES)[number],
             );
 
             return (
-              <div
+              <motion.div
                 key={image.src}
+                variants={galleryItemVariants}
                 onClick={() => handleImageClick(index)}
                 className={cn(
                   "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative md:cursor-pointer",
@@ -213,10 +247,10 @@ export default function Gallery() {
                   quality={100}
                   priority={true}
                 />
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
 
       {mounted && createPortal(modal, document.body)}

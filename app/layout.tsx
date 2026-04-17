@@ -24,12 +24,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Zinedine Chami",
   description:
-    "I'm a 22 year-old Design Engineer, born in London and based in Paris, working on software products, bridging the gap between the design and engineering process.",
+    "I'm a 22-year-old Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
   metadataBase: new URL("https://zinedine.ch"),
   openGraph: {
     title: "Zinedine Chami",
     description:
-      "I'm a 22 year-old Design Engineer, born in London and based in Paris, working on software products, bridging the gap between the design and engineering process.",
+      "I'm a 22-year-old Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
     url: "https://zinedine.ch",
     siteName: "Zinedine Chami",
     locale: "en_US",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zinedine Chami",
     description:
-      "I'm a 22 year-old Design Engineer, born in London and based in Paris, working on software products, bridging the gap between the design and engineering process.",
+      "I'm a 22-year-old Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
   },
   robots: {
     index: true,
