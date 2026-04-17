@@ -37,10 +37,13 @@ export default function Home() {
             >
               I{"'"}m a 22-year-old Design Engineer, born in{" "}
               <br className="md:hidden" />
-              London and based in Paris,{" "}
+              London and based in Paris,
+              {"\u00A0"}
+              working across{" "}
               <br className="md:hidden" />
-              working across refined software interfaces and websites, from prototyping to
-              building in production.
+              refined software interfaces and websites, from{" "}
+              <br className="md:hidden" />
+              prototyping to building in production.
             </motion.p>
 
             <motion.p
