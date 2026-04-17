@@ -51,12 +51,15 @@ const galleryItemVariants = {
 
 const MD_UP_QUERY = "(min-width: 768px)";
 
-/** Whole stack blurs in at once (matches former gallery section motion). */
+/** Whole stack blurs in at once on mount (not scroll), after hero-style timing. */
 const mobileGalleryStackAppear = {
   initial: { opacity: 0, filter: "blur(10px)", y: 8 },
-  whileInView: { opacity: 1, filter: "blur(0px)", y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" as const },
-  viewport: { once: true, amount: 0.08, margin: "0px 0px -6% 0px" },
+  animate: { opacity: 1, filter: "blur(0px)", y: 0 },
+  transition: {
+    duration: 0.6,
+    delay: 0.85,
+    ease: "easeOut" as const,
+  },
 } as const;
 
 // SSR-safe check for client-side mounting
@@ -293,17 +296,18 @@ export default function Gallery() {
           >
             {galleryCards}
           </motion.div>
-        ) : (
+        ) : mdUp === false ? (
           <motion.div
             key="gallery-entrance-mobile"
             className={listClassName}
             initial={mobileGalleryStackAppear.initial}
-            whileInView={mobileGalleryStackAppear.whileInView}
+            animate={mobileGalleryStackAppear.animate}
             transition={mobileGalleryStackAppear.transition}
-            viewport={mobileGalleryStackAppear.viewport}
           >
             {galleryCards}
           </motion.div>
+        ) : (
+          <div className={listClassName}>{galleryCards}</div>
         )}
       </div>
 
