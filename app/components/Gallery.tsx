@@ -3,6 +3,7 @@
 import {
   useState,
   useEffect,
+  useLayoutEffect,
   useCallback,
   useRef,
   useSyncExternalStore,
@@ -48,6 +49,16 @@ const galleryItemVariants = {
   },
 };
 
+const MD_UP_QUERY = "(min-width: 768px)";
+
+/** Whole stack blurs in at once (matches former gallery section motion). */
+const mobileGalleryStackAppear = {
+  initial: { opacity: 0, filter: "blur(10px)", y: 8 },
+  whileInView: { opacity: 1, filter: "blur(0px)", y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" as const },
+  viewport: { once: true, amount: 0.08, margin: "0px 0px -6% 0px" },
+} as const;
+
 // SSR-safe check for client-side mounting
 const subscribe = () => () => {};
 const getSnapshot = () => true;
@@ -61,9 +72,19 @@ export default function Gallery() {
   );
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
+  const [mdUp, setMdUp] = useState<boolean | null>(null);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const galleryImages = content.gallery as ImageItem[];
+  const useGalleryEntrance = mdUp === true;
+
+  useLayoutEffect(() => {
+    const mq = window.matchMedia(MD_UP_QUERY);
+    const sync = () => setMdUp(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   const closeModal = useCallback(() => {
     setIsClosing(true);
@@ -210,47 +231,80 @@ export default function Gallery() {
     </AnimatePresence>
   );
 
+  const listClassName = "space-y-[18px] md:space-y-[22px] pb-[52px]";
+
+  const galleryCards = galleryImages.map((image, index) => {
+    const isContained = CONTAINED_IMAGES.includes(
+      image.alt as (typeof CONTAINED_IMAGES)[number],
+    );
+    const cardClassName = cn(
+      "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative md:cursor-pointer",
+      "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
+      "md:hover:translate-y-[-2px] md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
+      isContained ? "bg-zinc-50" : "bg-zinc-100/30",
+    );
+    const img = (
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={1638}
+        height={814}
+        className="w-full h-auto block"
+        quality={100}
+        priority={true}
+      />
+    );
+
+    if (useGalleryEntrance) {
+      return (
+        <motion.div
+          key={image.src}
+          variants={galleryItemVariants}
+          onClick={() => handleImageClick(index)}
+          className={cardClassName}
+        >
+          {img}
+        </motion.div>
+      );
+    }
+
+    return (
+      <div
+        key={image.src}
+        onClick={() => handleImageClick(index)}
+        className={cardClassName}
+      >
+        {img}
+      </div>
+    );
+  });
+
   return (
     <>
       <div className="space-y-4 md:space-y-7 group/gallery">
-        {/* Gallery grid — staggered blur-in per shot */}
-        <motion.div
-          className="space-y-[18px] md:space-y-[22px] pb-[52px]"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.08, margin: "0px 0px -6% 0px" }}
-          variants={galleryListVariants}
-        >
-          {galleryImages.map((image, index) => {
-            const isContained = CONTAINED_IMAGES.includes(
-              image.alt as (typeof CONTAINED_IMAGES)[number],
-            );
-
-            return (
-              <motion.div
-                key={image.src}
-                variants={galleryItemVariants}
-                onClick={() => handleImageClick(index)}
-                className={cn(
-                  "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative md:cursor-pointer",
-                  "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
-                  "md:hover:translate-y-[-2px] md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
-                  isContained ? "bg-zinc-50" : "bg-zinc-100/30",
-                )}
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={1638}
-                  height={814}
-                  className="w-full h-auto block"
-                  quality={100}
-                  priority={true}
-                />
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        {useGalleryEntrance ? (
+          <motion.div
+            key="gallery-entrance-desktop"
+            className={listClassName}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.08, margin: "0px 0px -6% 0px" }}
+            variants={galleryListVariants}
+          >
+            {galleryCards}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="gallery-entrance-mobile"
+            className={listClassName}
+            initial={mobileGalleryStackAppear.initial}
+            whileInView={mobileGalleryStackAppear.whileInView}
+            transition={mobileGalleryStackAppear.transition}
+            viewport={mobileGalleryStackAppear.viewport}
+          >
+            {galleryCards}
+          </motion.div>
+        )}
       </div>
 
       {mounted && createPortal(modal, document.body)}
