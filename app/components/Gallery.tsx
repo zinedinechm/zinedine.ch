@@ -234,7 +234,7 @@ export default function Gallery() {
     </AnimatePresence>
   );
 
-  const listClassName = "space-y-[18px] md:space-y-[22px] pb-[52px]";
+  const listClassName = "space-y-[20px] md:space-y-[24px] pb-[84px]";
 
   const galleryCards = galleryImages.map((image, index) => {
     const isContained = CONTAINED_IMAGES.includes(

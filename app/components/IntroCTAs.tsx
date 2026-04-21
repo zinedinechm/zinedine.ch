@@ -57,7 +57,7 @@ export default function IntroCTAs() {
         className={cn(baseBtn, "bg-zinc-800 text-white hover:bg-zinc-800")}
       >
         <span className="inline-flex items-center">
-          <span className="shrink-0">Get in touch</span>
+          <span className="shrink-0">Quick Chat</span>
           <motion.span
             aria-hidden
             className="inline-flex shrink-0 items-center justify-end overflow-hidden text-white"
@@ -97,7 +97,7 @@ export default function IntroCTAs() {
                 {...copyLabelRoll}
                 className="col-start-1 row-start-1 whitespace-nowrap"
               >
-                Copy email
+                Copy Email
               </motion.span>
             )}
           </AnimatePresence>
