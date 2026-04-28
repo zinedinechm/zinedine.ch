@@ -243,7 +243,7 @@ export default function Gallery() {
     const cardClassName = cn(
       "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative md:cursor-pointer",
       "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
-      "md:hover:translate-y-[-2px] md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
+      "md:hover:translate-y-[-1px] md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
       isContained ? "bg-zinc-50" : "bg-zinc-100/30",
     );
     const img = (

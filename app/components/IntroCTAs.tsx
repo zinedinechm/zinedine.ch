@@ -57,7 +57,7 @@ export default function IntroCTAs() {
         className={cn(baseBtn, "bg-zinc-800 text-white hover:bg-zinc-800")}
       >
         <span className="inline-flex items-center">
-          <span className="shrink-0">Quick Chat</span>
+          <span className="shrink-0">Book Chat</span>
           <motion.span
             aria-hidden
             className="inline-flex shrink-0 items-center justify-end overflow-hidden text-white"
