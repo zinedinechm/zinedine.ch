@@ -8,7 +8,7 @@ export const BREAKPOINTS = {
 // Timing constants
 export const TIMING = {
   SLIDESHOW_INTERVAL: 2000,
-  COPY_FEEDBACK_DURATION: 1000,
+  COPY_FEEDBACK_DURATION: 1500,
 } as const;
 
 // Animation easing
