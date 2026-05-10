@@ -94,14 +94,9 @@
       "alt": "Design Shot 8"
     },
     {
-      "src": "/gallery/New_S379999.png",
-      "alt": "Design Shot 10",
-      "fullSrc": "/gallery/New_S379999.png"
-    },
-    {
-      "src": "/gallery/details_dash.png",
-      "alt": "Design Shot 12",
-      "fullSrc": "/gallery/details_dash.png"
+      "src": "/gallery/newest_meth.png",
+      "alt": "Design Shot method",
+      "fullSrc": "/gallery/newest_meth.png"
     },
     {
       "src": "/gallery/design-shot-9.png",
@@ -110,6 +105,11 @@
     {
       "src": "/gallery/design-shot-11.png",
       "alt": "Design Shot 11"
+    },
+    {
+      "src": "/gallery/New_S379999.png",
+      "alt": "Design Shot 10",
+      "fullSrc": "/gallery/New_S379999.png"
     }
   ]
 }
