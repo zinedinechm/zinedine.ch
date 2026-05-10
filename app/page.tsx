@@ -35,7 +35,7 @@ export default function Home() {
               {...blurIn(0.15)}
               className="text-sm md:text-base leading-[1.95] md:leading-[1.75] w-full text-zinc-600"
             >
-              I{"'"}m a 22-year-old Design Engineer, born in{" "}
+              I{"'"}m a self-taught Design Engineer, born in{" "}
               <br className="md:hidden" />
               London and based in Paris,
               {"\u00A0"}
