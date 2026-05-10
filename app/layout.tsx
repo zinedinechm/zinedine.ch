@@ -22,12 +22,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Zinedine Chami",
+  title: "Zinedine · Design Engineer",
   description:
     "I'm a 22-year-old Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
   metadataBase: new URL("https://zinedine.ch"),
   openGraph: {
-    title: "Zinedine Chami",
+    title: "Zinedine · Design Engineer",
     description:
       "I'm a 22-year-old Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
     url: "https://zinedine.ch",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zinedine Chami",
+    title: "Zinedine · Design Engineer",
     description:
       "I'm a 22-year-old Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
   },

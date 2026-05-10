@@ -94,9 +94,9 @@
       "alt": "Design Shot 8"
     },
     {
-      "src": "/gallery/newest_meth.png",
+      "src": "/gallery/meth_zoomed.png",
       "alt": "Design Shot method",
-      "fullSrc": "/gallery/newest_meth.png"
+      "fullSrc": "/gallery/meth_zoomed.png"
     },
     {
       "src": "/gallery/design-shot-9.png",
@@ -107,9 +107,9 @@
       "alt": "Design Shot 11"
     },
     {
-      "src": "/gallery/gosleep.png",
-      "alt": "Design Shot gosleep",
-      "fullSrc": "/gallery/gosleep.png"
+      "src": "/gallery/s37_zoomed.png",
+      "alt": "Design Shot s37 zoomed",
+      "fullSrc": "/gallery/s37_zoomed.png"
     }
   ]
 }

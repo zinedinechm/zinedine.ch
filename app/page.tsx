@@ -20,7 +20,7 @@ export default function Home() {
       <Header />
       {/* Hero Section */}
       <section className="pt-26 md:pt-[120px] pb-16 md:pb-[74px] px-6">
-        <div className="max-w-[620px] ml-0 mr-auto md:mx-auto w-[330px] md:w-full">
+        <div className="max-w-[620px] ml-0 mr-auto md:mx-auto w-[330px] md:w-full mt-[2px] md:mt-0">
           {/* Greeting */}
           <motion.p
             {...blurIn(0)}

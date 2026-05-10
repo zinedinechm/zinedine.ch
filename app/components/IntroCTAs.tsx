@@ -54,10 +54,17 @@ export default function IntroCTAs() {
         href={CAL_BOOKING_URL}
         target="_blank"
         rel="noopener noreferrer"
-        onPointerEnter={() => setCalHover(true)}
-        onPointerLeave={() => setCalHover(false)}
+        onPointerEnter={() => {
+          if (window.matchMedia("(min-width: 768px)").matches) setCalHover(true);
+        }}
+        onPointerLeave={() => {
+          setCalHover(false);
+        }}
         onClick={() => playMinimal("success")}
-        className={cn(baseBtn, "bg-zinc-800 text-white hover:bg-zinc-800")}
+        className={cn(
+          baseBtn,
+          "bg-zinc-800 text-white md:hover:bg-zinc-800 max-md:transition-none max-md:hover:bg-zinc-800",
+        )}
       >
         <span className="inline-flex items-center">
           <span className="shrink-0">Book Chat</span>
