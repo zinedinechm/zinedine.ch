@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react";
 
 import content from "@/app/data/content.json";
 import type { HoverRect, SocialLink } from "@/app/types";
+import { playMinimal } from "@/app/lib/ui-sounds";
 
 const socialLinks = content.social as SocialLink[];
 
@@ -57,6 +58,7 @@ export default function SocialLinks() {
           className="social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          onClick={() => playMinimal("tap")}
         >
           {link.name}
         </a>

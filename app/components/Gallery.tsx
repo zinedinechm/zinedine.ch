@@ -20,6 +20,7 @@ import {
   galleryModalVariants,
   CONTAINED_IMAGES,
 } from "@/app/lib/constants";
+import { playMinimal } from "@/app/lib/ui-sounds";
 import type { ImageItem } from "@/app/types";
 
 const galleryListVariants = {
@@ -93,7 +94,11 @@ export default function Gallery() {
   }, []);
 
   const closeModal = useCallback(() => {
-    setIsClosing(true);
+    setIsClosing((prev) => {
+      if (prev) return prev;
+      playMinimal("page-exit");
+      return true;
+    });
   }, []);
 
   const handleImageExitComplete = useCallback(() => {
@@ -146,11 +151,20 @@ export default function Gallery() {
     setModalHoverOutsideShot(false);
   }, []);
 
-  const handleImageClick = useCallback((index: number) => {
-    if (typeof window === "undefined") return;
-    if (!window.matchMedia("(min-width: 768px)").matches) return;
-    setSelectedId(index);
-  }, []);
+  const handleImageClick = useCallback(
+    (index: number) => {
+      if (typeof window === "undefined") return;
+      if (!window.matchMedia("(min-width: 768px)").matches) return;
+      const item = galleryImages[index];
+      if (item.alt === "Design Shot 1") {
+        playMinimal("page-enter");
+      } else {
+        playMinimal("tap");
+      }
+      setSelectedId(index);
+    },
+    [galleryImages],
+  );
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     const touch = e.touches[0];

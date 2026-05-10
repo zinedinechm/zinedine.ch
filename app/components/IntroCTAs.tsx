@@ -6,6 +6,7 @@ import * as motion from "framer-motion/client";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import { TIMING } from "@/app/lib/constants";
+import { playMinimal } from "@/app/lib/ui-sounds";
 import { cn } from "@/app/lib/utils";
 
 const CONTACT_EMAIL = "contact@zinedine.ch";
@@ -37,6 +38,7 @@ export default function IntroCTAs() {
   const [calHover, setCalHover] = useState(false);
 
   const copyEmail = useCallback(() => {
+    playMinimal("copy");
     void navigator.clipboard.writeText(CONTACT_EMAIL).then(() => {
       setCopied(true);
       window.setTimeout(() => setCopied(false), TIMING.COPY_FEEDBACK_DURATION);
@@ -54,6 +56,7 @@ export default function IntroCTAs() {
         rel="noopener noreferrer"
         onPointerEnter={() => setCalHover(true)}
         onPointerLeave={() => setCalHover(false)}
+        onClick={() => playMinimal("success")}
         className={cn(baseBtn, "bg-zinc-800 text-white hover:bg-zinc-800")}
       >
         <span className="inline-flex items-center">
