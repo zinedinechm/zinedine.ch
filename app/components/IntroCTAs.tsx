@@ -19,7 +19,7 @@ const entrance = {
 };
 
 const baseBtn =
-  "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-50 px-3 py-[4px] md:py-[6px] text-xs md:text-sm font-medium text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 w-auto shrink-0";
+  "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-50 px-3 py-[6px] text-sm font-medium text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 w-auto shrink-0";
 
 const copyLabelRoll = {
   initial: { opacity: 0, filter: "blur(4px)", x: -8 },
@@ -81,7 +81,7 @@ export default function IntroCTAs() {
             }}
             transition={ICON_HOVER_TRANSITION}
           >
-            <ArrowRightIcon className="h-3 w-3 min-h-3 min-w-3 md:h-3.5 md:w-3.5 md:min-h-3.5 md:min-w-3.5" />
+            <ArrowRightIcon className="h-3.5 w-3.5 min-h-3.5 min-w-3.5" />
           </motion.span>
         </span>
       </a>
