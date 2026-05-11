@@ -54,8 +54,9 @@ export default function Home() {
               <br className="md:hidden" />
               problems through design from 0 → 1.
               <br />
-              Feel free to inquire, I{"'"}m available for long-term
-              commitments and one-off projects.
+              Feel free to inquire, I{"'"}m available for{" "}
+              <br className="md:hidden" />
+              long-term commitments and one-off projects.
             </motion.p>
           </div>
 
