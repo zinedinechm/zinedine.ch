@@ -50,7 +50,7 @@ export default function Header() {
         }}
       />
       <div className="relative max-w-[609px] mx-auto w-full flex justify-between items-center">
-        <h1 className="text-base font-medium text-zinc-900">
+        <h1 className="text-[14px] md:text-base font-medium text-zinc-900">
           <AnimatePresence mode="wait" initial={false}>
             {inGallery ? (
               <motion.span

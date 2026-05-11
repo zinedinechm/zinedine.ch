@@ -19,7 +19,7 @@ const entrance = {
 };
 
 const baseBtn =
-  "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-50 px-3 py-[6px] text-sm font-medium text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 w-auto shrink-0";
+  "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-50 px-3 py-[6px] text-[12px] md:text-sm font-medium text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 w-auto shrink-0";
 
 const copyLabelRoll = {
   initial: { opacity: 0, filter: "blur(4px)", x: -8 },

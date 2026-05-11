@@ -24,7 +24,7 @@ export default function Home() {
           {/* Greeting */}
           <motion.p
             {...blurIn(0)}
-            className="text-zinc-500 text-base leading-relaxed mb-4"
+            className="text-zinc-500 text-[14px] md:text-base leading-relaxed mb-4"
           >
             {siteContent.greeting}
           </motion.p>
@@ -33,14 +33,14 @@ export default function Home() {
           <div className="space-y-3 md:space-y-3 w-full">
             <motion.p
               {...blurIn(0.15)}
-              className="text-base leading-[1.75] w-full text-zinc-600"
+              className="text-[14px] md:text-base leading-[1.75] w-full text-zinc-600"
             >
               {`I'm a self-taught Design Engineer, born in London and based in Paris, working on refined software interfaces and websites, across agentic coding and canvas tools.`}
             </motion.p>
 
             <motion.p
               {...blurIn(0.3)}
-              className="text-base leading-[1.75] w-full text-zinc-600 mt-5 md:mt-0"
+              className="text-[14px] md:text-base leading-[1.75] w-full text-zinc-600 mt-5 md:mt-0"
             >
               {`I care deeply about visual craft and solving problems through design from 0 → 1. Feel free to inquire, I'm available for long-term commitments and one-off projects.`}
             </motion.p>
