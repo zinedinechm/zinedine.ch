@@ -49,7 +49,7 @@ export default function Header() {
           maskImage: "linear-gradient(to bottom, black, transparent)",
         }}
       />
-      <div className="relative max-w-[620px] mx-auto w-full flex justify-between items-center">
+      <div className="relative max-w-[605px] mx-auto w-full flex justify-between items-center">
         <h1 className="text-sm md:text-base font-medium text-zinc-900">
           <AnimatePresence mode="wait" initial={false}>
             {inGallery ? (
@@ -72,7 +72,6 @@ export default function Header() {
           initial={fadeInUp.initial}
           animate={fadeInUp.animate}
           transition={fadeInUp.transition}
-          className="md:-mr-3.5"
         >
           <SocialLinks />
         </motion.div>

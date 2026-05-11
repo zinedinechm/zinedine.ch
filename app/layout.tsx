@@ -24,12 +24,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Zinedine · Design Engineer",
   description:
-    "I'm a self-taught Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
+    "I'm a self-taught Design Engineer, born in London and based in Paris, working on refined software interfaces and websites, across agentic coding and canvas tools.",
   metadataBase: new URL("https://zinedine.ch"),
   openGraph: {
     title: "Zinedine · Design Engineer",
     description:
-      "I'm a self-taught Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
+      "I'm a self-taught Design Engineer, born in London and based in Paris, working on refined software interfaces and websites, across agentic coding and canvas tools.",
     url: "https://zinedine.ch",
     siteName: "Zinedine Chami",
     locale: "en_US",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Zinedine · Design Engineer",
     description:
-      "I'm a self-taught Design Engineer, born in London and based in Paris, working across refined software interfaces and websites, from prototyping to building in production.",
+      "I'm a self-taught Design Engineer, born in London and based in Paris, working on refined software interfaces and websites, across agentic coding and canvas tools.",
   },
   robots: {
     index: true,
