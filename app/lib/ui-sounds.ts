@@ -18,7 +18,8 @@ export type MinimalUiSound =
   | "copy"
   | "page-exit"
   | "success"
-  | "page-enter";
+  | "page-enter"
+  | "notification";
 
 /** Fire-and-forget synthesized UI tone from the Minimal patch. */
 export function playMinimal(sound: MinimalUiSound): void {

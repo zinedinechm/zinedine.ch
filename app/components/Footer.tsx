@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import { playMinimal } from "@/app/lib/ui-sounds";
+
 const lineBlurStyle = { opacity: 0, filter: "blur(6px)" } as const;
 
 export default function Footer() {
@@ -74,6 +76,7 @@ export default function Footer() {
             href="#"
             onClick={(e) => {
               e.preventDefault();
+              playMinimal("notification");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="group cursor-pointer text-inherit no-underline transition-[color_0.2s_ease] hover:text-foreground"
