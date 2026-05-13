@@ -2,6 +2,7 @@ import * as motion from "framer-motion/client";
 
 import content from "@/app/data/content.json";
 import type { SiteContent } from "@/app/types";
+import Footer from "@/app/components/Footer";
 import Gallery from "@/app/components/Gallery";
 import Header from "@/app/components/Header";
 import IntroCTAs from "@/app/components/IntroCTAs";
@@ -55,6 +56,7 @@ export default function Home() {
         <div className="px-3 md:px-6">
           <div className="max-w-[609px] md:max-w-[652px] mx-auto pb-0">
             <Gallery />
+            <Footer />
           </div>
         </div>
       </section>
