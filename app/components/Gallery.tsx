@@ -154,15 +154,10 @@ export default function Gallery() {
     (index: number) => {
       if (typeof window === "undefined") return;
       if (!window.matchMedia("(min-width: 768px)").matches) return;
-      const item = galleryImages[index];
-      if (item.alt === "Design Shot 1") {
-        playMinimal("page-enter");
-      } else {
-        playMinimal("tap");
-      }
+      playMinimal("page-enter");
       setSelectedId(index);
     },
-    [galleryImages],
+    [],
   );
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
