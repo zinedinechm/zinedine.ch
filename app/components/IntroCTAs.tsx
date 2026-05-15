@@ -67,7 +67,7 @@ export default function IntroCTAs() {
         )}
       >
         <span className="inline-flex items-center">
-          <span className="shrink-0">Book Chat</span>
+          <span className="shrink-0">Book Intro</span>
           <motion.span
             aria-hidden
             className="inline-flex shrink-0 items-center justify-end overflow-hidden text-white"
