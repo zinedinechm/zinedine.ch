@@ -35,7 +35,7 @@ export default function Home() {
               {...blurIn(0.15)}
               className="text-[14px] md:text-base leading-[1.75] w-full text-zinc-600"
             >
-              {`I'm a self-taught Design Engineer, born in London and based in Paris, working on refined software interfaces and websites, across agentic coding and canvas tools.`}
+              {`I'm a self-taught Design Engineer, born in London and living in Paris, working with talented teams across refined software interfaces, websites and visual identities.`}
             </motion.p>
 
             <motion.p
