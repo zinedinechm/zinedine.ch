@@ -49,7 +49,7 @@ export default function Header() {
           maskImage: "linear-gradient(to bottom, black, transparent)",
         }}
       />
-      <div className="relative max-w-[609px] mx-auto w-full flex justify-between items-center">
+      <div className="relative max-w-[603px] mx-auto w-full flex justify-between items-center">
         <h1 className="text-[14px] md:text-base font-medium text-zinc-900">
           <AnimatePresence mode="wait" initial={false}>
             {inGallery ? (
