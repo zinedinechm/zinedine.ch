@@ -89,10 +89,7 @@ export default function IntroCTAs() {
         type="button"
         onClick={copyEmail}
         aria-label={copied ? "Email copied" : `Copy ${CONTACT_EMAIL} to clipboard`}
-        className={cn(
-          baseBtn,
-          "rounded-full border-[0.5px] border-zinc-200/70 bg-white hover:bg-zinc-50",
-        )}
+        className={baseBtn}
       >
         <span className="relative grid min-h-[1.25rem] w-max place-items-center">
           <AnimatePresence mode="wait" initial={false}>
@@ -110,7 +107,7 @@ export default function IntroCTAs() {
                 {...copyLabelRoll}
                 className="col-start-1 row-start-1 whitespace-nowrap"
               >
-                Copy Email
+                Copy Mail
               </motion.span>
             )}
           </AnimatePresence>
