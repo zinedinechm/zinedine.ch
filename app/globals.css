@@ -109,7 +109,7 @@ body {
   color: var(--selection-fg) !important;
 }
 
-/* Focus rings — project-wide */
+/* Focus rings - project-wide */
 :focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
