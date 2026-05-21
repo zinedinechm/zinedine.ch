@@ -2,7 +2,6 @@ import * as motion from "framer-motion/client";
 
 import content from "@/app/data/content.json";
 import type { SiteContent } from "@/app/types";
-import Footer from "@/app/components/Footer";
 import Gallery from "@/app/components/Gallery";
 import Header from "@/app/components/Header";
 import IntroCTAs from "@/app/components/IntroCTAs";
@@ -52,11 +51,10 @@ export default function Home() {
       </section>
 
       {/* Gallery Section — per-shot entrance lives in Gallery */}
-      <section id="gallery-section" className="pb-0 relative z-0">
+      <section id="gallery-section" className="relative z-0">
         <div className="px-3 md:px-6">
-          <div className="max-w-[601px] md:max-w-[684px] mx-auto pb-0">
+          <div className="max-w-[601px] md:max-w-[684px] mx-auto pb-[94px] md:pb-[142px]">
             <Gallery />
-            <Footer />
           </div>
         </div>
       </section>
