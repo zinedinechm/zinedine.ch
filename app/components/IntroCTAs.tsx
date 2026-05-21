@@ -48,7 +48,7 @@ export default function IntroCTAs() {
   return (
     <motion.div
       {...entrance}
-      className="mt-6 md:mt-7 flex flex-row flex-wrap gap-3 w-full"
+      className="mt-7 md:mt-8 flex flex-row flex-wrap gap-3 w-full"
     >
       <a
         href={CAL_BOOKING_URL}
@@ -89,7 +89,10 @@ export default function IntroCTAs() {
         type="button"
         onClick={copyEmail}
         aria-label={copied ? "Email copied" : `Copy ${CONTACT_EMAIL} to clipboard`}
-        className={baseBtn}
+        className={cn(
+          baseBtn,
+          "rounded-full border-[0.5px] border-zinc-200/70 bg-white hover:bg-zinc-50",
+        )}
       >
         <span className="relative grid min-h-[1.25rem] w-max place-items-center">
           <AnimatePresence mode="wait" initial={false}>

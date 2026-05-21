@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "/Globe_Fav.png",
+    icon: "/zinedine_favikonnn.png",
   },
 };
 

@@ -26,6 +26,7 @@ const galleryListVariants = {
   hidden: {},
   visible: {
     transition: {
+      delay: 0.85,
       staggerChildren: 0.1,
       delayChildren: 0.12,
     },
@@ -276,7 +277,7 @@ export default function Gallery() {
     </AnimatePresence>
   );
 
-  const listClassName = "space-y-[20px] md:space-y-[24px]";
+  const listClassName = "space-y-[24px] md:space-y-[28px]";
 
   const galleryCards = galleryImages.map((image, index) => {
     const cardClassName = cn(
@@ -329,8 +330,7 @@ export default function Gallery() {
             key="gallery-entrance-desktop"
             className={listClassName}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.08, margin: "0px 0px -6% 0px" }}
+            animate="visible"
             variants={galleryListVariants}
           >
             {galleryCards}

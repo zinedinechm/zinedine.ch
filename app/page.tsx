@@ -54,7 +54,7 @@ export default function Home() {
       {/* Gallery Section — per-shot entrance lives in Gallery */}
       <section id="gallery-section" className="pb-0 relative z-0">
         <div className="px-3 md:px-6">
-          <div className="max-w-[609px] md:max-w-[652px] mx-auto pb-0">
+          <div className="max-w-[609px] md:max-w-[692px] mx-auto pb-0">
             <Gallery />
             <Footer />
           </div>
