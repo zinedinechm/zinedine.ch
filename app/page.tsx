@@ -33,14 +33,14 @@ export default function Home() {
           <div className="space-y-3 md:space-y-3 w-full">
             <motion.p
               {...blurIn(0.15)}
-              className="text-[14px] md:text-base leading-[22.5px] md:leading-[26px] w-full text-zinc-600"
+              className="text-[14px] md:text-base leading-[1.75] md:leading-[26px] w-full text-zinc-600"
             >
               {`I'm a self-taught Design Engineer, born in London and living in Paris, working with talented teams across refined software interfaces, websites and visual identities.`}
             </motion.p>
 
             <motion.p
               {...blurIn(0.3)}
-              className="text-[14px] md:text-base leading-[22.5px] md:leading-[26px] w-full text-zinc-600 mt-5 md:mt-0"
+              className="text-[14px] md:text-base leading-[1.75] md:leading-[26px] w-full text-zinc-600 mt-5 md:mt-0"
             >
               {`I care deeply about visual craft and solving problems through design from 0 → 1. Feel free to reach out whether to talk about my work, a project or just to say hello.`}
             </motion.p>
