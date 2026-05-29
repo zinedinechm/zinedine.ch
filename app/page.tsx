@@ -35,7 +35,7 @@ export default function Home() {
               {...blurIn(0.15)}
               className="text-[14px] md:text-base leading-[1.75] md:leading-[26px] w-full text-zinc-600"
             >
-              {`I'm a self-taught Design Engineer, born in London and living in Paris, working with talented teams across refined software interfaces, websites and visual identities.`}
+              {`I'm a self-taught Design Engineer, born in London and based in Paris, working with talented teams across refined software interfaces, websites and visual identities.`}
             </motion.p>
 
             <motion.p
@@ -53,7 +53,7 @@ export default function Home() {
       {/* Gallery Section: per-shot entrance lives in Gallery */}
       <section id="gallery-section" className="relative z-0">
         <div className="px-3 md:px-6">
-          <div className="max-w-[595px] md:max-w-[678px] mx-auto pb-[94px] md:pb-[142px]">
+          <div className="max-w-[595px] md:max-w-[603px] mx-auto pb-[94px] md:pb-[142px]">
             <Gallery />
           </div>
         </div>
