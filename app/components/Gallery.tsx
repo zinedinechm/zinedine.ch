@@ -22,6 +22,10 @@ import {
 import { playMinimal } from "@/app/lib/ui-sounds";
 import type { ImageItem } from "@/app/types";
 
+/** Matches gallery column width so Next/Image does not over-fetch (e.g. 3840w). */
+const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 643px";
+const GALLERY_PRIORITY_COUNT = 2;
+
 const galleryListVariants = {
   hidden: {},
   visible: {
@@ -263,9 +267,9 @@ export default function Gallery() {
                       alt={galleryImages[selectedId].alt}
                       width={1638}
                       height={814}
+                      sizes="(max-width: 768px) 98vw, 1320px"
                       className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-200/70"
-                      priority={true}
-                      quality={100}
+                      quality={90}
                     />
                   </motion.div>
                 </motion.div>
@@ -292,9 +296,10 @@ export default function Gallery() {
         alt={image.alt}
         width={1638}
         height={814}
+        sizes={GALLERY_IMAGE_SIZES}
         className="w-full h-auto block"
-        quality={100}
-        priority={true}
+        quality={75}
+        priority={index < GALLERY_PRIORITY_COUNT}
       />
     );
 
