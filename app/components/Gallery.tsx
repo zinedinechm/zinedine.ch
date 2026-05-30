@@ -269,7 +269,7 @@ export default function Gallery() {
                       height={814}
                       sizes="(max-width: 768px) 98vw, 1320px"
                       className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-200/70"
-                      quality={90}
+                      quality={100}
                     />
                   </motion.div>
                 </motion.div>
@@ -298,7 +298,7 @@ export default function Gallery() {
         height={814}
         sizes={GALLERY_IMAGE_SIZES}
         className="w-full h-auto block"
-        quality={75}
+        quality={88}
         priority={index < GALLERY_PRIORITY_COUNT}
       />
     );
