@@ -23,7 +23,7 @@ import { playMinimal } from "@/app/lib/ui-sounds";
 import type { ImageItem } from "@/app/types";
 
 /** Matches gallery column width so Next/Image does not over-fetch (e.g. 3840w). */
-const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 643px";
+const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 603px";
 const GALLERY_PRIORITY_COUNT = 2;
 
 const galleryListVariants = {
@@ -281,7 +281,7 @@ export default function Gallery() {
     </AnimatePresence>
   );
 
-  const listClassName = "space-y-[24px] md:space-y-[28px]";
+  const listClassName = "space-y-[30px] md:space-y-[34px]";
 
   const galleryCards = galleryImages.map((image, index) => {
     const cardClassName = cn(

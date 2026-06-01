@@ -22,8 +22,8 @@
   --muted: #71717a;
   --accent: #18181b;
   --border: #e4e4e7;
-  --selection-bg: rgba(253, 242, 248, 0.5);
-  --selection-fg: #ec4899;
+  --selection-bg: #fafafa; /* zinc-50 */
+  --selection-fg: #000000;
   --focus-ring: #fdf2f8;
 }
 
@@ -96,7 +96,7 @@ body {
   color: var(--foreground);
 }
 
-/* Text selection - pink (override any defaults) */
+/* Text selection */
 ::selection,
 *::selection {
   background-color: var(--selection-bg) !important;
