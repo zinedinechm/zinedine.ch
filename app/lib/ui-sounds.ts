@@ -16,6 +16,9 @@ function primeSounds() {
 export type MinimalUiSound =
   | "tap"
   | "copy"
+  | "toggle-on"
+  | "toggle-off"
+  | "slide"
   | "page-exit"
   | "success"
   | "page-enter"

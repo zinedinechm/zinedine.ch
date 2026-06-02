@@ -56,6 +56,16 @@ const galleryItemVariants = {
 
 const MD_UP_QUERY = "(min-width: 768px)";
 
+/** Grid card hide/show while modal is open (whole card, layout-stable). */
+const slotHidden = { opacity: 0, filter: "blur(14px)", y: 6 };
+const slotVisible = { opacity: 1, filter: "blur(0px)", y: 0 };
+
+function slotCardTransition(hidden: boolean) {
+  return hidden
+    ? { duration: 0.22, ease: EASING.smooth }
+    : { duration: 0.52, ease: EASING.smooth };
+}
+
 /** Whole stack blurs in at once on mount (not scroll), after hero-style timing. */
 const mobileGalleryStackAppear = {
   initial: { opacity: 0, filter: "blur(10px)", y: 8 },
@@ -100,7 +110,7 @@ export default function Gallery() {
   const closeModal = useCallback(() => {
     setIsClosing((prev) => {
       if (prev) return prev;
-      playMinimal("page-exit");
+      playMinimal("slide");
       return true;
     });
   }, []);
@@ -158,8 +168,8 @@ export default function Gallery() {
   const handleImageClick = useCallback(
     (index: number) => {
       if (typeof window === "undefined") return;
-      if (!window.matchMedia("(min-width: 768px)").matches) return;
-      playMinimal("page-enter");
+      if (!window.matchMedia(MD_UP_QUERY).matches) return;
+      playMinimal("toggle-on");
       setSelectedId(index);
     },
     [],
@@ -284,11 +294,15 @@ export default function Gallery() {
   const listClassName = "space-y-[30px] md:space-y-[34px]";
 
   const galleryCards = galleryImages.map((image, index) => {
+    /** Hidden while modal is open; reveals when close starts (not after exit). */
+    const isSlotHidden = selectedId === index && !isClosing;
     const cardClassName = cn(
       "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative md:cursor-pointer",
-      "transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
-      "md:hover:translate-y-[-1px] md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
+      "transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
+      !isSlotHidden &&
+        "md:hover:border-zinc-200/90 md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
       "bg-white",
+      isSlotHidden && "md:pointer-events-none",
     );
     const img = (
       <Image
@@ -305,25 +319,33 @@ export default function Gallery() {
 
     if (useGalleryEntrance) {
       return (
-        <motion.div
-          key={image.src}
-          variants={galleryItemVariants}
-          onClick={() => handleImageClick(index)}
-          className={cardClassName}
-        >
-          {img}
+        <motion.div key={image.src} variants={galleryItemVariants} className="w-full">
+          <motion.div
+            initial={false}
+            animate={isSlotHidden ? slotHidden : slotVisible}
+            transition={slotCardTransition(isSlotHidden)}
+            onClick={() => handleImageClick(index)}
+            className={cardClassName}
+            aria-hidden={isSlotHidden}
+          >
+            {img}
+          </motion.div>
         </motion.div>
       );
     }
 
     return (
-      <div
+      <motion.div
         key={image.src}
+        initial={false}
+        animate={isSlotHidden ? slotHidden : slotVisible}
+        transition={slotCardTransition(isSlotHidden)}
         onClick={() => handleImageClick(index)}
         className={cardClassName}
+        aria-hidden={isSlotHidden}
       >
         {img}
-      </div>
+      </motion.div>
     );
   });
 
