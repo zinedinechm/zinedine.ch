@@ -291,7 +291,7 @@ export default function Gallery() {
     </AnimatePresence>
   );
 
-  const listClassName = "space-y-[30px] md:space-y-[34px]";
+  const listClassName = "space-y-[24px] md:space-y-[34px]";
 
   const galleryCards = galleryImages.map((image, index) => {
     /** Hidden while modal is open; reveals when close starts (not after exit). */
