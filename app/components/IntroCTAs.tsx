@@ -91,7 +91,7 @@ export default function IntroCTAs() {
         aria-label={copied ? "Email copied" : `Copy ${CONTACT_EMAIL} to clipboard`}
         className={cn(
           baseBtn,
-          "border-[0.5px] border-zinc-200/70 bg-white hover:bg-zinc-50",
+          "border-[0.5px] border-zinc-300/80 bg-white hover:bg-zinc-50",
         )}
       >
         <span className="relative grid min-h-[1.25rem] w-max place-items-center">

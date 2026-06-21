@@ -59,9 +59,9 @@
   ],
   "gallery": [
     {
-      "src": "/gallery/design-shot-1.png",
-      "alt": "Design Shot 1",
-      "fullSrc": "/gallery/design-shot-1.png"
+      "src": "/gallery/design-shot-4.png",
+      "alt": "Design Shot 4",
+      "fullSrc": "/gallery/design-shot-4.png"
     },
     {
       "src": "/gallery/design-shot-2.png",
@@ -73,9 +73,9 @@
       "fullSrc": "/gallery/design-shot-3.png"
     },
     {
-      "src": "/gallery/design-shot-4.png",
-      "alt": "Design Shot 4",
-      "fullSrc": "/gallery/design-shot-4.png"
+      "src": "/gallery/design-shot-1.png",
+      "alt": "Design Shot 1",
+      "fullSrc": "/gallery/design-shot-1.png"
     },
     {
       "src": "/gallery/design-shot-5.png",
@@ -99,12 +99,12 @@
       "alt": "Design Shot 6"
     },
     {
-      "src": "/gallery/design-shot-9.png",
-      "alt": "Design Shot 9"
-    },
-    {
       "src": "/gallery/design-shot-11.png",
       "alt": "Design Shot 11"
+    },
+    {
+      "src": "/gallery/design-shot-9.png",
+      "alt": "Design Shot 9"
     }
   ]
 }
