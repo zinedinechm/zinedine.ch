@@ -63,7 +63,7 @@ export default function IntroCTAs() {
         onClick={() => playMinimal("success")}
         className={cn(
           baseBtn,
-          "bg-zinc-800 text-white md:hover:bg-zinc-800 max-md:transition-none max-md:hover:bg-zinc-800",
+          "bg-zinc-900 text-white md:hover:bg-zinc-900 max-md:transition-none max-md:hover:bg-zinc-900",
         )}
       >
         <span className="inline-flex items-center">

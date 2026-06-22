@@ -59,12 +59,12 @@ export default function Header() {
                 animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                 exit={{ opacity: 0, filter: "blur(6px)", y: -6 }}
                 transition={{ duration: 0.26, ease: "easeOut" }}
-                className="block"
+                className="block text-zinc-900"
               >
                 Selected Work
               </motion.span>
             ) : (
-              <span className="block">Zinedine Chami</span>
+              <span className="block text-zinc-900">Zinedine Chami</span>
             )}
           </AnimatePresence>
         </h1>
