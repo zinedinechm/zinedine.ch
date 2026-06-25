@@ -90,6 +90,10 @@ body {
   .social-link {
     padding: 6px 12px !important;
   }
+
+  .social-link.social-link-flush-right {
+    padding-right: 0 !important;
+  }
 }
 
 .social-link:hover {

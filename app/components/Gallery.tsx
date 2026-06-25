@@ -23,7 +23,7 @@ import { playMinimal } from "@/app/lib/ui-sounds";
 import type { ImageItem } from "@/app/types";
 
 /** Matches gallery column width so Next/Image does not over-fetch (e.g. 3840w). */
-const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 703px";
+const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 603px";
 const GALLERY_PRIORITY_COUNT = 2;
 
 const galleryListVariants = {
@@ -228,7 +228,7 @@ export default function Gallery() {
             onTouchEnd={handleTouchEnd}
             onMouseMove={handleModalHitMouseMove}
             onMouseLeave={handleModalHitMouseLeave}
-            className="w-full h-full flex items-center justify-center px-2 py-6 md:p-20 overflow-hidden cursor-pointer"
+            className="w-full h-full flex items-center justify-center px-4 py-4 md:px-12 md:py-6 overflow-hidden"
           >
             <AnimatePresence
               initial
@@ -249,7 +249,7 @@ export default function Gallery() {
                     scale: { type: "spring", ...SPRING_CONFIG },
                     opacity: { duration: 0.2 },
                   }}
-                  className="relative w-[98%] md:w-full max-w-[1320px]"
+                  className="relative"
                   onClick={stopPropagation}
                 >
                   <motion.div
@@ -277,8 +277,8 @@ export default function Gallery() {
                       alt={galleryImages[selectedId].alt}
                       width={1638}
                       height={814}
-                      sizes="(max-width: 768px) 98vw, 1320px"
-                      className="w-full h-auto rounded-[6px] block border-[0.5px] border-zinc-200/70"
+                      sizes="(max-width: 768px) 94vw, 90vw"
+                      className="max-h-[90vh] w-auto h-auto max-w-[94vw] rounded-[6px] block border-[0.5px] border-zinc-200/70"
                       quality={100}
                     />
                   </motion.div>
@@ -291,13 +291,13 @@ export default function Gallery() {
     </AnimatePresence>
   );
 
-  const listClassName = "space-y-[24px] md:space-y-[34px]";
+  const listClassName = "space-y-[20px] md:space-y-[28px]";
 
   const galleryCards = galleryImages.map((image, index) => {
     /** Hidden while modal is open; reveals when close starts (not after exit). */
     const isSlotHidden = selectedId === index && !isClosing;
     const cardClassName = cn(
-      "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative md:cursor-pointer",
+      "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative",
       "transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
       !isSlotHidden &&
         "md:hover:border-zinc-200/90 md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
