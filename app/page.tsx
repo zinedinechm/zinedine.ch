@@ -35,14 +35,14 @@ export default function Home() {
               {...blurIn(0.15)}
               className="text-[14px] md:text-base leading-[1.75] md:leading-[27px] w-full text-zinc-800 text-pretty"
             >
-              {`I'm a self-taught Design Engineer with roots in London and Paris, with experience collaborating with talented teams on refined software interfaces and websites.`}
+              {`I'm a self-taught Design Engineer with roots in London and Paris, with experience collaborating with talented teams on refined and intuitive software interfaces.`}
             </motion.p>
 
             <motion.p
               {...blurIn(0.3)}
               className="text-[14px] md:text-base leading-[1.75] md:leading-[27px] w-full text-zinc-800 mt-5 md:mt-0 text-pretty"
             >
-              {`I care deeply about visual craft and solving problems through design from 0-to-1. Feel free to reach out whether to talk about my work, a project or just to say hello.`}
+              {`I care deeply about visual craft and solving problems through design from 0-to-1. Feel free to reach out whether to talk about my work, a collab or just to say hello.`}
             </motion.p>
           </div>
 
