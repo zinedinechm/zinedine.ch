@@ -71,7 +71,7 @@ const mobileGalleryStackAppear = {
   initial: { opacity: 0, filter: "blur(10px)", y: 8 },
   animate: { opacity: 1, filter: "blur(0px)", y: 0 },
   transition: {
-    duration: 0.6,
+    duration: 0.35,
     delay: 0.85,
     ease: "easeOut" as const,
   },
