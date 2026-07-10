@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "easing-gradients";
 
 @font-face {
   font-family: "Editorial New";
