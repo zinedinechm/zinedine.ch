@@ -1,16 +1,8 @@
-import * as motion from "framer-motion/client";
-
 import content from "@/app/data/content.json";
 import type { SiteContent } from "@/app/types";
 import Gallery from "@/app/components/Gallery";
 import Header from "@/app/components/Header";
 import IntroCTAs from "@/app/components/IntroCTAs";
-
-const blurIn = (delay: number) => ({
-  initial: { opacity: 0, filter: "blur(8px)", y: 6 },
-  animate: { opacity: 1, filter: "blur(0px)", y: 0 },
-  transition: { duration: 0.5, delay, ease: [0.25, 0.1, 0.25, 1] as const },
-});
 
 const siteContent = content as SiteContent;
 
@@ -19,27 +11,24 @@ export default function Home() {
     <main className="min-h-screen bg-white relative">
       <Header />
       {/* Hero Section */}
-      <section className="pt-26 md:pt-[120px] pb-16 md:pb-[74px] px-6">
+      <section className="pt-26 md:pt-[120px] pb-20 md:pb-[88px] px-6">
         <div className="max-w-[603px] ml-0 mr-auto md:mx-auto w-[334px] md:w-full my-3 md:my-0">
           {/* Greeting */}
-          <motion.p
-            {...blurIn(0)}
+          <p
             className="text-zinc-500 text-[14px] md:text-base leading-relaxed mb-4"
           >
             {siteContent.greeting}
-          </motion.p>
+          </p>
 
           {/* Bio & Social */}
           <div className="space-y-3 md:space-y-3 w-full">
-            <motion.p
-              {...blurIn(0.15)}
+            <p
               className="text-[14px] md:text-base leading-[1.75] md:leading-[27px] w-full text-zinc-800 text-pretty"
             >
               {`I'm a self-taught Design Engineer with roots in London and Paris, with experience collaborating with talented teams on refined and intuitive software interfaces.`}
-            </motion.p>
+            </p>
 
-            <motion.p
-              {...blurIn(0.3)}
+            <p
               className="text-[14px] md:text-base leading-[1.75] md:leading-[27px] w-full text-zinc-800 mt-5 md:mt-0 text-pretty"
             >
               {`I care deeply about visual craft and solving problems through design from 0-to-1.`}{" "}
@@ -47,7 +36,7 @@ export default function Home() {
               {`Feel free to reach out whether to talk about`}{" "}
               <br className="md:hidden" aria-hidden />
               {`my work, a collab or just to say hello.`}
-            </motion.p>
+            </p>
           </div>
 
           <IntroCTAs />

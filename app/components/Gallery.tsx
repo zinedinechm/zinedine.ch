@@ -3,7 +3,6 @@
 import {
   useState,
   useEffect,
-  useLayoutEffect,
   useCallback,
   useRef,
   useSyncExternalStore,
@@ -26,34 +25,6 @@ import type { ImageItem } from "@/app/types";
 const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 603px";
 const GALLERY_PRIORITY_COUNT = 2;
 
-const galleryListVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delay: 0.85,
-      staggerChildren: 0.1,
-      delayChildren: 0.12,
-    },
-  },
-};
-
-const galleryItemVariants = {
-  hidden: {
-    opacity: 0,
-    filter: "blur(12px)",
-    y: 14,
-  },
-  visible: {
-    opacity: 1,
-    filter: "blur(0px)",
-    y: 0,
-    transition: {
-      duration: 0.55,
-      ease: [0.25, 0.1, 0.25, 1] as const,
-    },
-  },
-};
-
 const MD_UP_QUERY = "(min-width: 768px)";
 
 /** Grid card hide/show while modal is open (whole card, layout-stable). */
@@ -65,17 +36,6 @@ function slotCardTransition(hidden: boolean) {
     ? { duration: 0.22, ease: EASING.smooth }
     : { duration: 0.52, ease: EASING.smooth };
 }
-
-/** Whole stack blurs in at once on mount (not scroll), after hero-style timing. */
-const mobileGalleryStackAppear = {
-  initial: { opacity: 0, filter: "blur(10px)", y: 8 },
-  animate: { opacity: 1, filter: "blur(0px)", y: 0 },
-  transition: {
-    duration: 0.35,
-    delay: 0.85,
-    ease: "easeOut" as const,
-  },
-} as const;
 
 // SSR-safe check for client-side mounting
 const subscribe = () => () => {};
@@ -92,20 +52,10 @@ export default function Gallery() {
   const [isClosing, setIsClosing] = useState(false);
   const [modalHoverOutsideShot, setModalHoverOutsideShot] =
     useState(false);
-  const [mdUp, setMdUp] = useState<boolean | null>(null);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const modalShotWrapRef = useRef<HTMLDivElement | null>(null);
 
   const galleryImages = content.gallery as ImageItem[];
-  const useGalleryEntrance = mdUp === true;
-
-  useLayoutEffect(() => {
-    const mq = window.matchMedia(MD_UP_QUERY);
-    const sync = () => setMdUp(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
 
   const closeModal = useCallback(() => {
     setIsClosing((prev) => {
@@ -141,10 +91,6 @@ export default function Gallery() {
     };
   }, [selectedId, closeModal]);
 
-  useEffect(() => {
-    setModalHoverOutsideShot(false);
-  }, [selectedId]);
-
   const handleModalHitMouseMove = useCallback(
     (e: React.MouseEvent) => {
       if (typeof window === "undefined") return;
@@ -170,6 +116,7 @@ export default function Gallery() {
       if (typeof window === "undefined") return;
       if (!window.matchMedia(MD_UP_QUERY).matches) return;
       playMinimal("toggle-on");
+      setModalHoverOutsideShot(false);
       setSelectedId(index);
     },
     [],
@@ -317,23 +264,6 @@ export default function Gallery() {
       />
     );
 
-    if (useGalleryEntrance) {
-      return (
-        <motion.div key={image.src} variants={galleryItemVariants} className="w-full">
-          <motion.div
-            initial={false}
-            animate={isSlotHidden ? slotHidden : slotVisible}
-            transition={slotCardTransition(isSlotHidden)}
-            onClick={() => handleImageClick(index)}
-            className={cardClassName}
-            aria-hidden={isSlotHidden}
-          >
-            {img}
-          </motion.div>
-        </motion.div>
-      );
-    }
-
     return (
       <motion.div
         key={image.src}
@@ -352,29 +282,7 @@ export default function Gallery() {
   return (
     <>
       <div className="space-y-4 md:space-y-7 group/gallery">
-        {useGalleryEntrance ? (
-          <motion.div
-            key="gallery-entrance-desktop"
-            className={listClassName}
-            initial="hidden"
-            animate="visible"
-            variants={galleryListVariants}
-          >
-            {galleryCards}
-          </motion.div>
-        ) : mdUp === false ? (
-          <motion.div
-            key="gallery-entrance-mobile"
-            className={listClassName}
-            initial={mobileGalleryStackAppear.initial}
-            animate={mobileGalleryStackAppear.animate}
-            transition={mobileGalleryStackAppear.transition}
-          >
-            {galleryCards}
-          </motion.div>
-        ) : (
-          <div className={listClassName}>{galleryCards}</div>
-        )}
+        <div className={listClassName}>{galleryCards}</div>
       </div>
 
       {mounted && createPortal(modal, document.body)}

@@ -42,13 +42,6 @@ export const galleryModalVariants: Variants = {
   }),
 };
 
-// Page entrance animation
-export const fadeInUp = {
-  initial: { opacity: 0, filter: "blur(10px)", y: 10 },
-  animate: { opacity: 1, filter: "blur(0px)", y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
-} as const;
-
 // Gallery image alt names that need contained styling
 export const CONTAINED_IMAGES = [
   "shot-12",

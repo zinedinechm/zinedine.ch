@@ -3,20 +3,11 @@
 import { useState, useEffect } from "react";
 import * as motion from "framer-motion/client";
 import { AnimatePresence } from "framer-motion";
-import { fadeInUp } from "@/app/lib/constants";
 import { cn } from "@/app/lib/utils";
 import SocialLinks from "./SocialLinks";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [inGallery, setInGallery] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const section = document.getElementById("gallery-section");
@@ -36,10 +27,7 @@ export default function Header() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 px-6 h-[120px] overflow-hidden transition-[padding] duration-300 ease-out",
-        scrolled ? "pt-[18px]" : "pt-6",
-      )}
+      className="fixed top-0 left-0 right-0 z-50 px-6 h-[120px] overflow-hidden pt-[18px]"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent pointer-events-none" />
       <div
@@ -68,13 +56,9 @@ export default function Header() {
             )}
           </AnimatePresence>
         </h1>
-        <motion.div
-          initial={fadeInUp.initial}
-          animate={fadeInUp.animate}
-          transition={fadeInUp.transition}
-        >
+        <div>
           <SocialLinks />
-        </motion.div>
+        </div>
       </div>
     </header>
   );

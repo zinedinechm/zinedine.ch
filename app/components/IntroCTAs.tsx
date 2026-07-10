@@ -12,12 +12,6 @@ import { cn } from "@/app/lib/utils";
 const CONTACT_EMAIL = "contact@zinedine.ch";
 const CAL_BOOKING_URL = "https://cal.com/zinedinechm";
 
-const entrance = {
-  initial: { opacity: 0, filter: "blur(8px)", y: 6 },
-  animate: { opacity: 1, filter: "blur(0px)", y: 0 },
-  transition: { duration: 0.5, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] as const },
-};
-
 const baseBtn =
   "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-50 px-3 py-[6px] text-[12px] md:text-sm font-medium text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 w-auto shrink-0";
 
@@ -46,10 +40,7 @@ export default function IntroCTAs() {
   }, []);
 
   return (
-    <motion.div
-      {...entrance}
-      className="mt-7 md:mt-8 flex flex-row flex-wrap gap-3 w-full"
-    >
+    <div className="mt-7 md:mt-8 flex flex-row flex-wrap gap-3 w-full">
       <a
         href={CAL_BOOKING_URL}
         target="_blank"
@@ -116,6 +107,6 @@ export default function IntroCTAs() {
           </AnimatePresence>
         </span>
       </button>
-    </motion.div>
+    </div>
   );
 }
