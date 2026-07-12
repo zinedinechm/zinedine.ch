@@ -50,6 +50,7 @@ export default function Gallery() {
   );
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
   const [modalHoverOutsideShot, setModalHoverOutsideShot] =
     useState(false);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
@@ -117,6 +118,7 @@ export default function Gallery() {
       if (!window.matchMedia(DESKTOP_QUERY).matches) return;
       playMinimal("toggle-on");
       setModalHoverOutsideShot(false);
+      setModalImageLoaded(false);
       setSelectedId(index);
     },
     [],
@@ -213,7 +215,7 @@ export default function Gallery() {
                       y: 12,
                       transition: { duration: 0.55, ease: EASING.smooth, delay: 0 },
                     }}
-                    className="cursor-default"
+                    className="cursor-default bg-white"
                     ref={modalShotWrapRef}
                   >
                     <Image
@@ -226,7 +228,11 @@ export default function Gallery() {
                       width={1638}
                       height={814}
                       sizes="(max-width: 768px) 94vw, 90vw"
-                      className="max-h-[90vh] w-auto h-auto max-w-[98vw] lg:h-[90vh] rounded-[6px] block border-[0.5px] border-zinc-200/70"
+                      onLoad={() => setModalImageLoaded(true)}
+                      className={cn(
+                        "max-h-[90vh] w-auto h-auto max-w-[98vw] lg:h-[90vh] rounded-[6px] block border-[0.5px] border-zinc-200/70 transition-opacity duration-200",
+                        modalImageLoaded ? "opacity-100" : "opacity-0",
+                      )}
                       quality={90}
                     />
                   </motion.div>
