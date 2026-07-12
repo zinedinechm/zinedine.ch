@@ -25,7 +25,7 @@ import type { ImageItem } from "@/app/types";
 const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 603px";
 const GALLERY_PRIORITY_COUNT = 2;
 
-const MD_UP_QUERY = "(min-width: 768px)";
+const DESKTOP_QUERY = "(min-width: 1024px)";
 
 /** Grid card hide/show while modal is open (whole card, layout-stable). */
 const slotHidden = { opacity: 0, filter: "blur(14px)", y: 6 };
@@ -114,7 +114,7 @@ export default function Gallery() {
   const handleImageClick = useCallback(
     (index: number) => {
       if (typeof window === "undefined") return;
-      if (!window.matchMedia(MD_UP_QUERY).matches) return;
+      if (!window.matchMedia(DESKTOP_QUERY).matches) return;
       playMinimal("toggle-on");
       setModalHoverOutsideShot(false);
       setSelectedId(index);
@@ -175,7 +175,7 @@ export default function Gallery() {
             onTouchEnd={handleTouchEnd}
             onMouseMove={handleModalHitMouseMove}
             onMouseLeave={handleModalHitMouseLeave}
-            className="w-full h-full flex items-center justify-center px-4 py-4 md:px-12 md:py-6 overflow-hidden"
+            className="w-full h-full flex items-center justify-center px-3 py-3 md:px-4 md:py-4 overflow-hidden cursor-pointer"
           >
             <AnimatePresence
               initial
@@ -218,6 +218,7 @@ export default function Gallery() {
                   >
                     <Image
                       src={
+                        galleryImages[selectedId].modalSrc ||
                         galleryImages[selectedId].fullSrc ||
                         galleryImages[selectedId].src
                       }
@@ -225,8 +226,8 @@ export default function Gallery() {
                       width={1638}
                       height={814}
                       sizes="(max-width: 768px) 94vw, 90vw"
-                      className="max-h-[90vh] w-auto h-auto max-w-[94vw] rounded-[6px] block border-[0.5px] border-zinc-200/70"
-                      quality={100}
+                      className="max-h-[90vh] w-auto h-auto max-w-[98vw] lg:h-[90vh] rounded-[6px] block border-[0.5px] border-zinc-200/70"
+                      quality={90}
                     />
                   </motion.div>
                 </motion.div>
@@ -245,6 +246,7 @@ export default function Gallery() {
     const isSlotHidden = selectedId === index && !isClosing;
     const cardClassName = cn(
       "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative",
+      "lg:cursor-pointer",
       "transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
       !isSlotHidden &&
         "md:hover:border-zinc-200/90 md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",

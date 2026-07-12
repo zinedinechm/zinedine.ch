@@ -13,6 +13,7 @@ export interface ImageItem {
   src: string;
   alt: string;
   fullSrc?: string;
+  modalSrc?: string;
 }
 
 export interface SiteContent {
