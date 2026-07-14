@@ -51,10 +51,7 @@ export default function Gallery() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const [modalImageLoaded, setModalImageLoaded] = useState(false);
-  const [modalHoverOutsideShot, setModalHoverOutsideShot] =
-    useState(false);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
-  const modalShotWrapRef = useRef<HTMLDivElement | null>(null);
 
   const galleryImages = content.gallery as ImageItem[];
 
@@ -92,32 +89,11 @@ export default function Gallery() {
     };
   }, [selectedId, closeModal]);
 
-  const handleModalHitMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (typeof window === "undefined") return;
-      if (!modalShotWrapRef.current) return;
-      const prefersFinePointer = window.matchMedia("(pointer: fine)").matches;
-      if (!prefersFinePointer) return;
-
-      const r = modalShotWrapRef.current.getBoundingClientRect();
-      const x = e.clientX;
-      const y = e.clientY;
-      const outside = x < r.left || x > r.right || y < r.top || y > r.bottom;
-      setModalHoverOutsideShot((prev) => (prev === outside ? prev : outside));
-    },
-    [],
-  );
-
-  const handleModalHitMouseLeave = useCallback(() => {
-    setModalHoverOutsideShot(false);
-  }, []);
-
   const handleImageClick = useCallback(
     (index: number) => {
       if (typeof window === "undefined") return;
       if (!window.matchMedia(DESKTOP_QUERY).matches) return;
       playMinimal("toggle-on");
-      setModalHoverOutsideShot(false);
       setModalImageLoaded(false);
       setSelectedId(index);
     },
@@ -159,9 +135,7 @@ export default function Gallery() {
             opacity: isClosing ? 0 : 1,
             backdropFilter: isClosing
               ? "blur(0px)"
-              : modalHoverOutsideShot
-                ? "blur(0px)"
-                : "blur(4px)",
+              : "blur(4px)",
             transition: { duration: isClosing ? 0.4 : 0.28, ease: "easeInOut" },
           }}
           exit={{
@@ -169,14 +143,12 @@ export default function Gallery() {
             backdropFilter: "blur(0px)",
             transition: { duration: 0.1, ease: "easeOut" },
           }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white/70"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-zinc-900/10"
         >
           <div
             onClick={closeModal}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-            onMouseMove={handleModalHitMouseMove}
-            onMouseLeave={handleModalHitMouseLeave}
             className="w-full h-full flex items-center justify-center px-3 py-3 md:px-4 md:py-4 overflow-hidden cursor-pointer"
           >
             <AnimatePresence
@@ -215,8 +187,7 @@ export default function Gallery() {
                       y: 12,
                       transition: { duration: 0.55, ease: EASING.smooth, delay: 0 },
                     }}
-                    className="cursor-default bg-white"
-                    ref={modalShotWrapRef}
+                    className="cursor-default overflow-hidden rounded-[6px] bg-white"
                   >
                     <Image
                       src={
@@ -230,7 +201,7 @@ export default function Gallery() {
                       sizes="(max-width: 768px) 94vw, 90vw"
                       onLoad={() => setModalImageLoaded(true)}
                       className={cn(
-                        "max-h-[90vh] w-auto h-auto max-w-[98vw] lg:h-[90vh] rounded-[6px] block border-[0.5px] border-zinc-200/70 transition-opacity duration-200",
+                        "max-h-[86vh] w-auto h-auto max-w-[98vw] rounded-[6px] block border-[0.5px] border-zinc-200/70 transition-opacity duration-200",
                         modalImageLoaded ? "opacity-100" : "opacity-0",
                       )}
                       quality={90}
