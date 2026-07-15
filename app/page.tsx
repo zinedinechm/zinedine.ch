@@ -23,19 +23,20 @@ export default function Home() {
           {/* Bio & Social */}
           <div className="space-y-3 md:space-y-3 w-full">
             <p
-              className="text-[14px] md:text-base leading-[1.75] md:leading-[27px] w-full text-zinc-800 text-pretty"
+              className="text-[14px] md:text-base leading-[1.8] md:leading-[28px] w-full text-zinc-800 text-balance"
             >
-              {`I'm a self-taught Design Engineer with roots in London and Paris, with experience collaborating with talented teams on refined and intuitive software interfaces.`}
+              {`I’m a self-taught design engineer rooted in London and Paris, with experience collaborating with talented teams to create refined and intuitive software products.`}
             </p>
 
             <p
-              className="text-[14px] md:text-base leading-[1.75] md:leading-[27px] w-full text-zinc-800 mt-5 md:mt-0 text-pretty"
+              className="text-[14px] md:text-base leading-[1.8] md:leading-[28px] w-full text-zinc-800 mt-5 md:mt-0 text-balance"
             >
-              {`I care deeply about visual craft and solving problems through design from 0-to-1.`}{" "}
+              {`I care deeply about visual craft and solving problems through design from `}
+              <span className="whitespace-nowrap">0-to-1.</span>{" "}
               <br className="md:hidden" aria-hidden />
-              {`Feel free to reach out whether to talk about`}{" "}
-              <br className="md:hidden" aria-hidden />
-              {`my work, a collab or just to say hello.`}
+              <span className="block text-balance md:inline">
+                {`Feel free to reach out whether to talk about my work, a collab or just to say hello.`}
+              </span>
             </p>
           </div>
 

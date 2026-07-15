@@ -59,10 +59,10 @@
   ],
   "gallery": [
     {
-      "src": "/gallery/design-shot-4.png",
-      "alt": "Design Shot 4",
-      "fullSrc": "/gallery/design-shot-4.png",
-      "modalSrc": "/gallery/modal/design-shot-4.webp"
+      "src": "/gallery/design-shot-1.png",
+      "alt": "Design Shot 1",
+      "fullSrc": "/gallery/design-shot-1.png",
+      "modalSrc": "/gallery/modal/design-shot-1.webp"
     },
     {
       "src": "/gallery/design-shot-2.png",
@@ -74,12 +74,6 @@
       "alt": "Design Shot 3",
       "fullSrc": "/gallery/design-shot-3.png",
       "modalSrc": "/gallery/modal/design-shot-3.webp"
-    },
-    {
-      "src": "/gallery/design-shot-1.png",
-      "alt": "Design Shot 1",
-      "fullSrc": "/gallery/design-shot-1.png",
-      "modalSrc": "/gallery/modal/design-shot-1.webp"
     },
     {
       "src": "/gallery/design-shot-5.png",
@@ -96,6 +90,12 @@
       "src": "/gallery/design-shot-8.png",
       "alt": "Design Shot 8",
       "modalSrc": "/gallery/modal/design-shot-8.webp"
+    },
+    {
+      "src": "/gallery/design-shot-4.png",
+      "alt": "Design Shot 4",
+      "fullSrc": "/gallery/design-shot-4.png",
+      "modalSrc": "/gallery/modal/design-shot-4.webp"
     },
     {
       "src": "/gallery/design-shot-7.png",
