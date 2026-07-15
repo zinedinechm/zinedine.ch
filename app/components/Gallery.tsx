@@ -170,7 +170,7 @@ export default function Gallery() {
                     scale: { type: "spring", ...SPRING_CONFIG },
                     opacity: { duration: 0.2 },
                   }}
-                  className="relative"
+                  className="relative w-[72vw] max-w-[98vw]"
                   onClick={stopPropagation}
                 >
                   <motion.div
@@ -187,7 +187,7 @@ export default function Gallery() {
                       y: 12,
                       transition: { duration: 0.55, ease: EASING.smooth, delay: 0 },
                     }}
-                    className="cursor-default overflow-hidden rounded-[6px] bg-white"
+                    className="w-full cursor-default overflow-hidden rounded-[6px] bg-white"
                   >
                     <Image
                       src={
@@ -201,7 +201,7 @@ export default function Gallery() {
                       sizes="(max-width: 768px) 94vw, 90vw"
                       onLoad={() => setModalImageLoaded(true)}
                       className={cn(
-                        "max-h-[86vh] w-auto h-auto max-w-[98vw] rounded-[6px] block border-[0.5px] border-zinc-200/70 transition-opacity duration-200",
+                        "block h-auto w-full rounded-[6px] border-[0.5px] border-zinc-200/70 transition-opacity duration-200",
                         modalImageLoaded ? "opacity-100" : "opacity-0",
                       )}
                       quality={90}
