@@ -187,7 +187,7 @@ export default function Gallery() {
                       y: 12,
                       transition: { duration: 0.55, ease: EASING.smooth, delay: 0 },
                     }}
-                    className="w-full cursor-default overflow-hidden rounded-[6px] bg-white"
+                    className="w-full cursor-default overflow-hidden rounded-[8px] bg-white md:rounded-[10px]"
                   >
                     <Image
                       src={
@@ -201,7 +201,7 @@ export default function Gallery() {
                       sizes="(max-width: 768px) 94vw, 90vw"
                       onLoad={() => setModalImageLoaded(true)}
                       className={cn(
-                        "block h-auto w-full rounded-[6px] border-[0.5px] border-zinc-200/70 transition-opacity duration-200",
+                        "block h-auto w-full rounded-[8px] border-[0.5px] border-zinc-200/70 transition-opacity duration-200 md:rounded-[10px]",
                         modalImageLoaded ? "opacity-100" : "opacity-0",
                       )}
                       quality={90}
@@ -222,7 +222,7 @@ export default function Gallery() {
     /** Hidden while modal is open; reveals when close starts (not after exit). */
     const isSlotHidden = selectedId === index && !isClosing;
     const cardClassName = cn(
-      "w-full border-[0.5px] border-zinc-200/70 rounded-[6px] overflow-hidden relative",
+      "w-full border-[0.5px] border-zinc-200/70 rounded-[8px] overflow-hidden relative md:rounded-[10px]",
       "lg:cursor-pointer",
       "transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
       !isSlotHidden &&
@@ -248,7 +248,11 @@ export default function Gallery() {
         key={image.src}
         initial={false}
         animate={isSlotHidden ? slotHidden : slotVisible}
-        transition={slotCardTransition(isSlotHidden)}
+        whileHover={!isSlotHidden ? { scale: 1.005 } : undefined}
+        transition={{
+          ...slotCardTransition(isSlotHidden),
+          scale: { duration: 0.4, ease: EASING.smooth },
+        }}
         onClick={() => handleImageClick(index)}
         className={cardClassName}
         aria-hidden={isSlotHidden}
