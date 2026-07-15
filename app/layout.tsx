@@ -44,9 +44,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: {
-    icon: "/globe_favfav.png",
-  },
 };
 
 interface RootLayoutProps {
