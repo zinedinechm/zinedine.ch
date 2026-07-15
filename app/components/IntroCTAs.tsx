@@ -16,10 +16,10 @@ const baseBtn =
   "inline-flex cursor-pointer items-center justify-center rounded-full border-0 bg-zinc-50 px-3 py-[6px] text-[12px] md:text-sm font-medium text-zinc-800 transition-colors duration-200 ease-out hover:bg-zinc-100 w-auto shrink-0";
 
 const copyLabelRoll = {
-  initial: { opacity: 0, filter: "blur(4px)", x: -8 },
+  initial: { opacity: 0, filter: "blur(3px)", x: -8 },
   animate: { opacity: 1, filter: "blur(0px)", x: 0 },
-  exit: { opacity: 0, filter: "blur(4px)", x: 8 },
-  transition: { duration: 0.2, ease: "easeOut" as const },
+  exit: { opacity: 0, filter: "blur(3px)", x: 8 },
+  transition: { duration: 0.24, ease: "easeOut" as const },
 };
 
 const ICON_HOVER_TRANSITION = {
@@ -67,19 +67,26 @@ export default function IntroCTAs() {
               width: calHover ? 18 : 0,
               marginLeft: calHover ? 4 : 0,
               opacity: calHover ? 1 : 0,
-              filter: calHover ? "blur(0px)" : "blur(8px)",
+              filter: calHover ? "blur(0px)" : "blur(6px)",
               x: calHover ? 0 : -10,
             }}
-            transition={ICON_HOVER_TRANSITION}
+            transition={{
+              ...ICON_HOVER_TRANSITION,
+              opacity: { duration: 0.34, ease: ICON_HOVER_TRANSITION.ease },
+            }}
           >
             <ArrowRightIcon className="h-3.5 w-3.5 min-h-3.5 min-w-3.5" />
           </motion.span>
         </span>
       </a>
-      <button
+      <motion.button
+        layout="size"
         type="button"
         onClick={copyEmail}
         aria-label={copied ? "Email copied" : `Copy ${CONTACT_EMAIL} to clipboard`}
+        transition={{
+          layout: { duration: 0.24, ease: [0.25, 0.1, 0.25, 1] },
+        }}
         className={cn(
           baseBtn,
           "border-[0.5px] border-zinc-300/80 bg-white hover:bg-zinc-50",
@@ -106,7 +113,7 @@ export default function IntroCTAs() {
             )}
           </AnimatePresence>
         </span>
-      </button>
+      </motion.button>
     </div>
   );
 }
