@@ -7,7 +7,7 @@ import {
   useRef,
   useSyncExternalStore,
 } from "react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 
@@ -23,6 +23,7 @@ import type { ImageItem } from "@/app/types";
 
 /** Matches gallery column width so Next/Image does not over-fetch (e.g. 3840w). */
 const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 603px";
+const MODAL_IMAGE_SIZES = "(max-width: 768px) 94vw, 90vw";
 const GALLERY_PRIORITY_COUNT = 2;
 
 const DESKTOP_QUERY = "(min-width: 1024px)";
@@ -54,6 +55,31 @@ export default function Gallery() {
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const galleryImages = content.gallery as ImageItem[];
+
+  // Warm Next/Image's optimized modal variants after the initial page load.
+  useEffect(() => {
+    const preloadModalImages = () => {
+      galleryImages.forEach((image) => {
+        const src = image.modalSrc || image.fullSrc || image.src;
+        const { props } = getImageProps({
+          src,
+          alt: "",
+          width: 1638,
+          height: 814,
+          sizes: MODAL_IMAGE_SIZES,
+          quality: 90,
+        });
+        const preloader = new window.Image();
+        preloader.decoding = "async";
+        preloader.sizes = props.sizes || MODAL_IMAGE_SIZES;
+        preloader.srcset = props.srcSet || "";
+        preloader.src = props.src;
+      });
+    };
+
+    const timeoutId = window.setTimeout(preloadModalImages, 1000);
+    return () => window.clearTimeout(timeoutId);
+  }, [galleryImages]);
 
   const closeModal = useCallback(() => {
     setIsClosing((prev) => {
@@ -198,7 +224,7 @@ export default function Gallery() {
                       alt={galleryImages[selectedId].alt}
                       width={1638}
                       height={814}
-                      sizes="(max-width: 768px) 94vw, 90vw"
+                      sizes={MODAL_IMAGE_SIZES}
                       onLoad={() => setModalImageLoaded(true)}
                       className={cn(
                         "block h-auto w-full rounded-[8px] border-[0.5px] border-zinc-200/70 transition-opacity duration-200 md:rounded-[10px]",
