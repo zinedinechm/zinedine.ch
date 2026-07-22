@@ -29,13 +29,13 @@ export default function Home() {
             </p>
 
             <p
-              className="text-[14px] md:text-base leading-[1.8] md:leading-[28px] w-full text-zinc-800 mt-5 md:mt-0 text-balance"
+              className="text-[14px] md:text-base leading-[1.8] md:leading-[28px] w-full text-zinc-800 mt-5 md:mt-0 text-balance md:text-wrap"
             >
               {`I care deeply about visual craft and solving problems through design from `}
               <span className="whitespace-nowrap">0-to-1.</span>{" "}
               <br className="md:hidden" aria-hidden />
-              <span className="block text-balance md:inline">
-                {`Feel free to reach out whether to talk about my work, a collab or just to say hello.`}
+              <span className="block text-balance md:text-wrap md:inline">
+                {`Feel free to reach out, whether to talk about a collaboration or just to say hello.`}
               </span>
             </p>
           </div>
