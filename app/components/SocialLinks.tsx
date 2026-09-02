@@ -62,7 +62,7 @@ export default function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           className={`social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative${
-            link.name === "Github" ? " social-link-flush-right" : ""
+            index === socialLinks.length - 1 ? " social-link-flush-right" : ""
           }`}
           onMouseEnter={(event) => handleMouseEnter(event, link.name)}
           onMouseLeave={handleMouseLeave}

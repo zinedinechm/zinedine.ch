@@ -6,10 +6,12 @@ import SocialLinks from "./SocialLinks";
 export default function Header() {
   const { scrollY } = useScroll();
   const topOffset = useTransform(scrollY, [0, 48], [6, 0]);
+  const headerHeight = useTransform(scrollY, [0, 48], [120, 136]);
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 px-6 h-[120px] overflow-hidden pt-[22px] md:pt-[18px]"
+    <motion.header
+      className="fixed top-0 left-0 right-0 z-50 px-6 overflow-hidden pt-[22px] md:pt-[18px]"
+      style={{ height: headerHeight }}
     >
       <div className="absolute inset-0 bg-linear-to-b from-white to-transparent gradient-ease-out pointer-events-none" />
       <div
@@ -30,6 +32,6 @@ export default function Header() {
           <SocialLinks />
         </div>
       </motion.div>
-    </header>
+    </motion.header>
   );
 }
