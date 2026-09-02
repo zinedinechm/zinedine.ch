@@ -108,7 +108,7 @@ export default function IntroCTAs() {
                 {...copyLabelRoll}
                 className="col-start-1 row-start-1 whitespace-nowrap"
               >
-                Copy Email
+                Copy Mail
               </motion.span>
             )}
           </AnimatePresence>

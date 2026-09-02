@@ -25,7 +25,13 @@ export default function Home() {
           <div className="space-y-3 md:space-y-3 w-full">
             <PageReveal delay={0.19}>
               <p className="text-[14px] md:text-base leading-[1.8] md:leading-[28px] w-full text-zinc-800 text-balance">
-                {`I’m a self-taught design engineer rooted in London and Paris, with experience collaborating with talented teams to build refined and intuitive software interfaces.`}
+                {`I’m a self-taught Design Engineer`}
+                <br className="md:hidden" aria-hidden />
+                {` born in London and based in Paris,`}
+                <br className="md:hidden" aria-hidden />
+                {` with experience collaborating with talented`}
+                <br className="md:hidden" aria-hidden />
+                {` teams to build refined software interfaces.`}
               </p>
             </PageReveal>
 
