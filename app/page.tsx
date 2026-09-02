@@ -23,22 +23,24 @@ export default function Home() {
 
           {/* Bio & Social */}
           <div className="md:hidden space-y-3 w-full">
-            <p className="text-[14px] leading-[1.75] w-full text-zinc-800 text-balance">
-              <LineReveal delay={0.19}>{`I’m a self-taught Design Engineer`}</LineReveal>
-              <LineReveal delay={0.26}>
-                {` born in London and based in Paris, with`}
-              </LineReveal>
-              <LineReveal delay={0.33}>{` experience working with venture-backed`}</LineReveal>
-              <LineReveal delay={0.4}>{` startups to build software interfaces.`}</LineReveal>
-            </p>
-            <p className="text-[14px] leading-[1.75] w-full text-zinc-800 mt-5 text-balance">
-              <LineReveal delay={0.49}>{`I care deeply about visual craft and solving`}</LineReveal>
-              <LineReveal delay={0.56}>
-                {` problems through design from 0-to-1.`}
-              </LineReveal>
-              <LineReveal delay={0.63}>{`Feel free to reach out, whether to talk`}</LineReveal>
-              <LineReveal delay={0.7}>{`about a collaboration or just to say hello.`}</LineReveal>
-            </p>
+            <PageReveal delay={0.19}>
+              <p className="text-[14px] leading-[1.75] w-full text-zinc-800 text-balance">
+                {`I’m a self-taught Design Engineer`}
+                <br />
+                {`born in London and based in Paris, with`}
+                <br />
+                {`experience working with venture-backed`}
+                <br />
+                {`startups to build software interfaces.`}
+              </p>
+            </PageReveal>
+            <PageReveal delay={0.3}>
+              <p className="text-[14px] leading-[1.75] w-full text-zinc-800 mt-5 text-balance">
+                {`I care deeply about visual craft and solving problems through design from 0-to-1.`}
+                <br />
+                {`Feel free to reach out, whether to talk about a collaboration or just to say hello.`}
+              </p>
+            </PageReveal>
           </div>
 
           <div className="hidden md:block space-y-3 w-full">
@@ -61,7 +63,7 @@ export default function Home() {
           </div>
 
           <div className="md:hidden">
-            <PageReveal delay={0.78}>
+            <PageReveal delay={0.41}>
               <IntroCTAs />
             </PageReveal>
           </div>
@@ -77,7 +79,7 @@ export default function Home() {
       <section id="gallery-section" className="relative z-0">
         <div className="px-3 md:px-6">
           <div className="max-w-[595px] md:max-w-[590px] mx-auto pb-[116px] md:pb-[148px]">
-            <Gallery entryDelay={0.8} />
+            <Gallery entryDelay={0.54} />
           </div>
         </div>
       </section>
