@@ -23,24 +23,30 @@ export default function Home() {
 
           {/* Bio & Social */}
           <div className="md:hidden space-y-3 w-full">
-            <PageReveal delay={0.19}>
-              <p className="text-[14px] leading-[1.75] w-full text-zinc-800 text-balance">
+            <p className="text-[14px] leading-[1.75] w-full text-zinc-800 text-balance">
+              <LineReveal delay={0.19}>
                 {`I’m a self-taught Design Engineer`}
                 <br />
                 {`born in London and based in Paris, with`}
-                <br />
+              </LineReveal>
+              <LineReveal delay={0.26}>
                 {`experience working with venture-backed`}
                 <br />
                 {`startups to build software interfaces.`}
-              </p>
-            </PageReveal>
-            <PageReveal delay={0.3}>
-              <p className="text-[14px] leading-[1.75] w-full text-zinc-800 mt-5 text-balance">
-                {`I care deeply about visual craft and solving problems through design from 0-to-1.`}
+              </LineReveal>
+            </p>
+            <p className="text-[14px] leading-[1.75] w-full text-zinc-800 mt-5 text-balance">
+              <LineReveal delay={0.34}>
+                {`I care deeply about visual craft and solving`}
                 <br />
-                {`Feel free to reach out, whether to talk about a collaboration or just to say hello.`}
-              </p>
-            </PageReveal>
+                {`problems through design from 0-to-1.`}
+              </LineReveal>
+              <LineReveal delay={0.41}>
+                {`Feel free to reach out, whether to talk about a`}
+                <br />
+                {`collaboration or just to say hello.`}
+              </LineReveal>
+            </p>
           </div>
 
           <div className="hidden md:block space-y-3 w-full">
@@ -63,7 +69,7 @@ export default function Home() {
           </div>
 
           <div className="md:hidden">
-            <PageReveal delay={0.41}>
+            <PageReveal delay={0.52}>
               <IntroCTAs />
             </PageReveal>
           </div>
