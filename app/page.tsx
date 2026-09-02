@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       {/* Hero Section */}
       <section className="pt-26 md:pt-[120px] pb-20 md:pb-[88px] px-6">
-        <div className="max-w-[603px] ml-0 mr-auto md:mx-auto w-[334px] md:w-full my-3 md:my-0">
+        <div className="max-w-[590px] ml-0 mr-auto md:mx-auto w-[334px] md:w-full my-3 md:my-0">
           {/* Greeting */}
           <PageReveal delay={0.08}>
             <p className="text-zinc-500 text-[12px] md:text-[14px] leading-relaxed mb-2">
@@ -56,7 +56,7 @@ export default function Home() {
       {/* Gallery Section: per-shot entrance lives in Gallery */}
       <section id="gallery-section" className="relative z-0">
         <div className="px-3 md:px-6">
-          <div className="max-w-[595px] md:max-w-[603px] mx-auto pb-[94px] md:pb-[120px]">
+          <div className="max-w-[595px] md:max-w-[590px] mx-auto pb-[94px] md:pb-[148px]">
             <Gallery entryDelay={0.54} />
           </div>
         </div>

@@ -22,7 +22,7 @@ import { playMinimal } from "@/app/lib/ui-sounds";
 import type { ImageItem } from "@/app/types";
 
 /** Matches gallery column width so Next/Image does not over-fetch (e.g. 3840w). */
-const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 603px";
+const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 590px";
 const MODAL_IMAGE_SIZES = "(max-width: 768px) 94vw, 90vw";
 const GALLERY_PRIORITY_COUNT = 2;
 
@@ -247,13 +247,13 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
     </AnimatePresence>
   );
 
-  const listClassName = "space-y-[20px] md:space-y-[28px]";
+  const listClassName = "space-y-[22px] md:space-y-[30px]";
 
   const galleryCards = galleryImages.map((image, index) => {
     /** Hidden while modal is open; reveals when close starts (not after exit). */
     const isSlotHidden = selectedId === index && !isClosing;
     const cardClassName = cn(
-      "w-full border-[0.5px] border-zinc-200/70 rounded-[8px] overflow-hidden relative md:rounded-[10px]",
+      "w-full border-[0.5px] border-zinc-200/90 rounded-[8px] overflow-hidden relative md:rounded-[10px]",
       "lg:cursor-pointer",
       "transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
       !isSlotHidden &&

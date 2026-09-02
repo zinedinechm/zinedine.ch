@@ -20,7 +20,7 @@ export default function Header() {
         }}
       />
       <motion.div
-        className="relative max-w-[603px] mx-auto w-full flex justify-between items-center"
+        className="relative max-w-[590px] mx-auto w-full flex justify-between items-center"
         style={{ y: topOffset }}
       >
         <h1 className="text-[14px] md:text-base font-medium text-zinc-900">
