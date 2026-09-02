@@ -41,7 +41,7 @@ export default function SocialLinks() {
   return (
     <div
       ref={containerRef}
-      className="flex gap-[12px] md:gap-0 relative items-center social-links-container"
+      className="flex gap-[14px] md:gap-0 relative items-center social-links-container"
     >
       {/* Hover blob - desktop only */}
       {/* <div
@@ -61,9 +61,9 @@ export default function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative${
+          className={`social-link text-zinc-500 text-[14px] cursor-pointer relative${
             index === socialLinks.length - 1 ? " social-link-flush-right" : ""
-          }`}
+          }${link.name === "Are.na" ? " hidden md:inline-flex" : ""}`}
           onMouseEnter={(event) => handleMouseEnter(event, link.name)}
           onMouseLeave={handleMouseLeave}
           onClick={() => playMinimal("tap")}

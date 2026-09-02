@@ -177,7 +177,7 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
             backdropFilter: "blur(0px)",
             transition: { duration: 0.1, ease: "easeOut" },
           }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-zinc-900/10"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-zinc-900/15"
         >
           <div
             onClick={closeModal}
@@ -254,7 +254,7 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
     </AnimatePresence>
   );
 
-  const listClassName = "space-y-[22px] md:space-y-[30px]";
+  const listClassName = "space-y-[24px] md:space-y-[30px]";
 
   const galleryCards = galleryImages.map((image, index) => {
     /** Hidden while modal is open; reveals when close starts (not after exit). */
