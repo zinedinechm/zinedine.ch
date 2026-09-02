@@ -8,7 +8,7 @@ import {
   useSyncExternalStore,
 } from "react";
 import Image, { getImageProps } from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { createPortal } from "react-dom";
 
 import content from "@/app/data/content.json";
@@ -43,7 +43,11 @@ const subscribe = () => () => {};
 const getSnapshot = () => true;
 const getServerSnapshot = () => false;
 
-export default function Gallery() {
+interface GalleryProps {
+  entryDelay?: number;
+}
+
+export default function Gallery({ entryDelay = 0 }: GalleryProps) {
   const mounted = useSyncExternalStore(
     subscribe,
     getSnapshot,
@@ -53,6 +57,7 @@ export default function Gallery() {
   const [isClosing, setIsClosing] = useState(false);
   const [modalImageLoaded, setModalImageLoaded] = useState(false);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const galleryImages = content.gallery as ImageItem[];
 
@@ -272,11 +277,16 @@ export default function Gallery() {
     return (
       <motion.div
         key={image.src}
-        initial={false}
+        initial={
+          prefersReducedMotion
+            ? false
+            : { opacity: 0, filter: "blur(6px)", y: 8 }
+        }
         animate={isSlotHidden ? slotHidden : slotVisible}
         whileHover={!isSlotHidden ? { scale: 1.005 } : undefined}
         transition={{
           ...slotCardTransition(isSlotHidden),
+          delay: prefersReducedMotion ? 0 : entryDelay + index * 0.1,
           scale: { duration: 0.4, ease: EASING.smooth },
         }}
         onClick={() => handleImageClick(index)}

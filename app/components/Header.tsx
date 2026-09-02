@@ -1,8 +1,12 @@
 "use client";
 
+import { motion, useScroll, useTransform } from "framer-motion";
 import SocialLinks from "./SocialLinks";
 
 export default function Header() {
+  const { scrollY } = useScroll();
+  const topOffset = useTransform(scrollY, [0, 48], [6, 0]);
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 px-6 h-[120px] overflow-hidden pt-[22px] md:pt-[18px]"
@@ -15,14 +19,17 @@ export default function Header() {
           maskImage: "linear-gradient(to bottom, black, transparent)",
         }}
       />
-      <div className="relative max-w-[603px] mx-auto w-full flex justify-between items-center">
+      <motion.div
+        className="relative max-w-[603px] mx-auto w-full flex justify-between items-center"
+        style={{ y: topOffset }}
+      >
         <h1 className="text-[14px] md:text-base font-medium text-zinc-900">
           <span className="block text-zinc-900">Zinedine Chami</span>
         </h1>
         <div>
           <SocialLinks />
         </div>
-      </div>
+      </motion.div>
     </header>
   );
 }
