@@ -25,7 +25,7 @@ export default function Header() {
         className="relative max-w-[590px] mx-auto w-full flex justify-between items-center"
         style={{ y: topOffset }}
       >
-        <h1 className="text-base font-medium text-zinc-900">
+        <h1 className="text-[14px] md:text-base font-medium text-zinc-900">
           <span className="block text-zinc-900">Zinedine Chami</span>
         </h1>
         <div>

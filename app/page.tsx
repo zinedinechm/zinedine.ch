@@ -16,14 +16,14 @@ export default function Home() {
         <div className="max-w-[590px] ml-0 mr-auto md:mx-auto w-[334px] md:w-full my-3 md:my-0">
           {/* Greeting */}
           <PageReveal delay={0.08}>
-            <p className="text-zinc-500 text-[14px] leading-relaxed mb-2">
+            <p className="text-zinc-500 text-[12px] md:text-[14px] leading-relaxed mb-2">
               {siteContent.greeting}
             </p>
           </PageReveal>
 
           {/* Bio & Social */}
           <div className="md:hidden space-y-3 w-full">
-            <p className="text-base leading-[1.75] w-full text-zinc-800 text-balance">
+            <p className="text-[14px] leading-[1.75] w-full text-zinc-800 text-balance">
               <LineReveal delay={0.19}>{`I’m a self-taught Design Engineer`}</LineReveal>
               <LineReveal delay={0.26}>
                 {` born in London and based in Paris, with`}
@@ -31,7 +31,7 @@ export default function Home() {
               <LineReveal delay={0.33}>{` experience working with venture-backed`}</LineReveal>
               <LineReveal delay={0.4}>{` startups to build software interfaces.`}</LineReveal>
             </p>
-            <p className="text-base leading-[1.75] w-full text-zinc-800 mt-5 text-balance">
+            <p className="text-[14px] leading-[1.75] w-full text-zinc-800 mt-5 text-balance">
               <LineReveal delay={0.49}>{`I care deeply about visual craft and solving`}</LineReveal>
               <LineReveal delay={0.56}>
                 {` problems through design from 0-to-1.`}

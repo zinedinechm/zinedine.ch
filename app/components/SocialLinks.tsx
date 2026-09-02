@@ -61,7 +61,7 @@ export default function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className={`social-link text-zinc-500 text-[14px] cursor-pointer relative${
+          className={`social-link text-zinc-500 text-[12px] md:text-[14px] cursor-pointer relative${
             index === socialLinks.length - 1 ? " social-link-flush-right" : ""
           }${link.name === "Are.na" ? " hidden md:inline-flex" : ""}`}
           onMouseEnter={(event) => handleMouseEnter(event, link.name)}
