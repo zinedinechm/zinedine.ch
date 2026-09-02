@@ -26,7 +26,7 @@ const GALLERY_IMAGE_SIZES = "(max-width: 768px) calc(100vw - 24px), 590px";
 const MODAL_IMAGE_SIZES = "(max-width: 768px) 94vw, 90vw";
 const GALLERY_PRIORITY_COUNT = 2;
 
-const DESKTOP_QUERY = "(min-width: 1024px)";
+const MODAL_QUERY = "(min-width: 768px)";
 
 /** Grid card hide/show while modal is open (whole card, layout-stable). */
 const slotHidden = { opacity: 0, filter: "blur(14px)", y: 6 };
@@ -56,6 +56,7 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const [modalImageLoaded, setModalImageLoaded] = useState(false);
+  const [isBackdropHovered, setIsBackdropHovered] = useState(false);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
@@ -123,7 +124,7 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
   const handleImageClick = useCallback(
     (index: number) => {
       if (typeof window === "undefined") return;
-      if (!window.matchMedia(DESKTOP_QUERY).matches) return;
+      if (!window.matchMedia(MODAL_QUERY).matches) return;
       playMinimal("toggle-on");
       setModalImageLoaded(false);
       setSelectedId(index);
@@ -166,7 +167,9 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
             opacity: isClosing ? 0 : 1,
             backdropFilter: isClosing
               ? "blur(0px)"
-              : "blur(4px)",
+              : isBackdropHovered
+                ? "blur(0px)"
+                : "blur(4px)",
             transition: { duration: isClosing ? 0.4 : 0.28, ease: "easeInOut" },
           }}
           exit={{
@@ -180,6 +183,10 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
             onClick={closeModal}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
+            onMouseMove={(event) => {
+              setIsBackdropHovered(event.target === event.currentTarget);
+            }}
+            onMouseLeave={() => setIsBackdropHovered(false)}
             className="w-full h-full flex items-center justify-center px-3 py-3 md:px-4 md:py-4 overflow-hidden cursor-pointer"
           >
             <AnimatePresence
@@ -254,7 +261,7 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
     const isSlotHidden = selectedId === index && !isClosing;
     const cardClassName = cn(
       "w-full border-[0.5px] border-zinc-200/90 rounded-[8px] overflow-hidden relative md:rounded-[10px]",
-      "lg:cursor-pointer",
+      "md:cursor-pointer",
       "transition-[border-color,box-shadow] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
       !isSlotHidden &&
         "md:hover:border-zinc-200/90 md:hover:shadow-[0_4px_12px_rgba(0,0,0,0.03)]",
@@ -286,7 +293,10 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
         whileHover={!isSlotHidden ? { scale: 1.005 } : undefined}
         transition={{
           ...slotCardTransition(isSlotHidden),
-          delay: prefersReducedMotion ? 0 : entryDelay + index * 0.1,
+          delay:
+            prefersReducedMotion || selectedId !== null
+              ? 0
+              : entryDelay + index * 0.1,
           scale: { duration: 0.4, ease: EASING.smooth },
         }}
         onClick={() => handleImageClick(index)}

@@ -16,7 +16,7 @@ export default function Home() {
         <div className="max-w-[590px] ml-0 mr-auto md:mx-auto w-[334px] md:w-full my-3 md:my-0">
           {/* Greeting */}
           <PageReveal delay={0.08}>
-            <p className="text-zinc-500 text-[12px] md:text-[14px] leading-relaxed mb-2">
+            <p className="text-zinc-500 text-[14px] leading-relaxed mb-2">
               {siteContent.greeting}
             </p>
           </PageReveal>
@@ -29,9 +29,7 @@ export default function Home() {
                 <br className="md:hidden" aria-hidden />
                 {` born in London and based in Paris,`}
                 <br className="md:hidden" aria-hidden />
-                {` with experience collaborating with talented`}
-                <br className="md:hidden" aria-hidden />
-                {` teams to build refined software interfaces.`}
+                {` with experience working with venture-backed startups to build software interfaces.`}
               </p>
             </PageReveal>
 
