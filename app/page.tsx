@@ -12,7 +12,7 @@ export default function Home() {
     <main className="min-h-screen bg-white relative">
       <Header />
       {/* Hero Section */}
-      <section className="pt-[108px] md:pt-[124px] pb-20 md:pb-[88px] px-6">
+      <section className="pt-[116px] md:pt-[124px] pb-20 md:pb-[96px] px-6">
         <div className="max-w-[590px] ml-0 mr-auto md:mx-auto w-[334px] md:w-full my-3 md:my-0">
           {/* Greeting */}
           <PageReveal delay={0.08}>
@@ -26,9 +26,7 @@ export default function Home() {
             <p className="text-base leading-[1.75] w-full text-zinc-800 text-balance">
               <LineReveal delay={0.19}>{`I’m a self-taught Design Engineer`}</LineReveal>
               <LineReveal delay={0.26}>
-                {` born in London and based in Paris `}
-                —
-                {` with`}
+                {` born in London and based in Paris, with`}
               </LineReveal>
               <LineReveal delay={0.33}>{` experience working with venture-backed`}</LineReveal>
               <LineReveal delay={0.4}>{` startups to build software interfaces.`}</LineReveal>
@@ -36,9 +34,7 @@ export default function Home() {
             <p className="text-base leading-[1.75] w-full text-zinc-800 mt-5 text-balance">
               <LineReveal delay={0.49}>{`I care deeply about visual craft and solving`}</LineReveal>
               <LineReveal delay={0.56}>
-                {` problems through design from 0 `}
-                →
-                {` 1.`}
+                {` problems through design from 0-to-1.`}
               </LineReveal>
               <LineReveal delay={0.63}>{`Feel free to reach out, whether to talk`}</LineReveal>
               <LineReveal delay={0.7}>{`about a collaboration or just to say hello.`}</LineReveal>
@@ -46,21 +42,17 @@ export default function Home() {
           </div>
 
           <div className="hidden md:block space-y-3 w-full">
-            <p className="text-base leading-[26px] w-full text-zinc-800 text-balance">
+            <p className="text-base leading-[28px] w-full text-zinc-800 text-balance">
               <LineReveal delay={0.19}>
-                {`I’m a self-taught Design Engineer born in London and based in Paris `}
-                —
-                {` with`}
+                {`I’m a self-taught Design Engineer born in London and based in Paris, with`}
               </LineReveal>
               <LineReveal delay={0.26}>
                 {`experience working with venture-backed startups to build software interfaces.`}
               </LineReveal>
             </p>
-            <p className="text-base leading-[26px] w-full text-zinc-800 text-balance">
+            <p className="text-base leading-[28px] w-full text-zinc-800 text-balance">
               <LineReveal delay={0.34}>
-                {`I care deeply about visual craft and solving problems through design from 0 `}
-                →
-                {` 1.`}
+                {`I care deeply about visual craft and solving problems through design from 0-to-1.`}
               </LineReveal>
               <LineReveal delay={0.41}>
                 {`Feel free to reach out, whether to talk about a collaboration or just to say hello.`}
