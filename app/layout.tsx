@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   description:
     "I'm a self-taught Design Engineer, born in London and based in Paris, working on refined software interfaces and websites, across agentic coding and canvas tools.",
   metadataBase: new URL("https://zinedine.ch"),
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "Zinedine Chami",
     description:
