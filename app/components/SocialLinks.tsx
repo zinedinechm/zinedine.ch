@@ -41,7 +41,7 @@ export default function SocialLinks() {
   return (
     <div
       ref={containerRef}
-      className="flex gap-[14px] md:gap-0 relative items-center social-links-container"
+      className="flex select-none gap-[14px] md:gap-0 relative items-center social-links-container"
     >
       {/* Hover blob - desktop only */}
       {/* <div

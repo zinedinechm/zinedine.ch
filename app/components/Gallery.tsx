@@ -157,6 +157,10 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
     e.stopPropagation();
   }, []);
 
+  const preventImageContextMenu = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+  }, []);
+
   const modal = (
     <AnimatePresence initial={false}>
       {selectedId !== null && (
@@ -210,6 +214,7 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
                   }}
                   className="relative w-[72vw] max-w-[98vw]"
                   onClick={stopPropagation}
+                  onContextMenu={preventImageContextMenu}
                 >
                   <motion.div
                     initial={{ filter: "blur(20px)", opacity: 0, y: 12 }}
@@ -238,8 +243,9 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
                       height={814}
                       sizes={MODAL_IMAGE_SIZES}
                       onLoad={() => setModalImageLoaded(true)}
+                      draggable={false}
                       className={cn(
-                        "block h-auto w-full rounded-[8px] border-[0.5px] border-zinc-200/70 transition-opacity duration-200 md:rounded-[10px]",
+                        "block h-auto w-full select-none rounded-[8px] border-[0.5px] border-zinc-200/70 transition-opacity duration-200 md:rounded-[10px]",
                         modalImageLoaded ? "opacity-100" : "opacity-0",
                       )}
                       quality={90}
@@ -275,7 +281,8 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
         width={1638}
         height={814}
         sizes={GALLERY_IMAGE_SIZES}
-        className="w-full h-auto block"
+        draggable={false}
+        className="w-full h-auto block select-none"
         quality={88}
         priority={index < GALLERY_PRIORITY_COUNT}
       />
@@ -300,6 +307,7 @@ export default function Gallery({ entryDelay = 0 }: GalleryProps) {
           scale: { duration: 0.4, ease: EASING.smooth },
         }}
         onClick={() => handleImageClick(index)}
+        onContextMenu={preventImageContextMenu}
         className={cardClassName}
         aria-hidden={isSlotHidden}
       >
